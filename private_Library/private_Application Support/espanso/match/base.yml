@@ -1,0 +1,51 @@
+# espanso match file
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+matches:
+  - trigger: ";a"
+    replace: "å"
+    propagate_case: true
+
+  - trigger: ";o"
+    replace: "ø"
+    propagate_case: true
+
+  - trigger: ";e"
+    replace: "æ"
+    propagate_case: true
+
+  - trigger: ";tyk"
+    replace: "to your knowledge"
+    propagate_case: true
+    word: true
+
+  - trigger: ";tmk"
+    replace: "to my knowledge"
+    propagate_case: true
+    word: true
+
+  - trigger: ";today"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%F"
+
+  - trigger: ";tomorrow"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%F"
+          offset: 86400
+
+  - trigger: ":yesterday"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%F"
+          offset: -86400
