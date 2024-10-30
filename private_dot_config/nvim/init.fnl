@@ -11,6 +11,7 @@
 ;;; Search
 (require :search)
 
+(local diff? (vim.opt.diff:get))
 (if (not vim.g.vscode)
   (lazy! [
      ;; Fennel setup
@@ -176,7 +177,8 @@
      [:anuvyklack/pretty-fold.nvim
        :main :pretty-fold
        :opts {}
-       :event :VeryLazy]
+       :event :VeryLazy
+       :disabled diff?]
      ]
      {:defaults {:lazy false}
     :install {:colorscheme [:tokyonight-storm]}
