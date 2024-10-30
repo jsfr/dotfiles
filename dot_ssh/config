@@ -1,7 +1,9 @@
 Host github.com
+  IdentityAgent ~/.1password/agent.sock
   IdentityFile ~/.ssh/id_ed25519.pub
   IdentitiesOnly yes
 
 Host ssh.dev.azure.com
+  IdentityAgent ~/.1password/agent.sock
   IdentityFile ~/.ssh/id_rsa.pub
   IdentitiesOnly yes
