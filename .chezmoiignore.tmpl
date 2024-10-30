@@ -1,7 +1,17 @@
-{{- if ne .chezmoi.os "darwin" }}
+{{- /*
+    vim:set syntax=gitignore
+*/ -}}
+
+{{ if ne .chezmoi.os "darwin" }}
 .aerospace.toml
 .hammerspoon/
 .config/wezterm/
 .config/swiftbar/
 .config/karabiner/
-{{- end }}
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+.config/tridactyl/tridactylrc
+{{ else }}
+.tridactylrc
+{{ end }}
