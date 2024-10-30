@@ -1,0 +1,47 @@
+" source ~/.config/nvim/init.vim
+
+set number
+set relativenumber
+set clipboard+=unnamedplus
+set ignorecase
+set smartcase
+set incsearch
+set wrapscan
+set ideajoin
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
+let mapleader = " "
+
+"disable ex mode
+map Q <Nop>
+
+inoremap jj <Esc>
+
+map <tab> <Action>(TabSwitchPlugin.SwitchTab)
+map <leader>p <Action>(SearchEverywhere)
+map gr <Action>(FindUsages)
+map <leader>ca <Action>(ShowIntentionActions)
+map - <Action>(ActivateProjectToolWindow)
+map <leader>/  <Action>(VimWindowSplitVertical)
+map <leader>-  <Action>(VimWindowSplitHorizontal)
+map <leader>bd <Action>(VimWindowClose)
+
+" map gcc <Action>(CommentByLineComment)
+" map gc :<BS><BS><BS><BS><BS>action VimVisualSwapSelections<CR>:action CommentByLineComment<CR><ESC>gv
+
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+map <leader>ll <Action>(ShowErrorDescription)
+
+" Moving blocks of text in visual mode
+map < <gv
+map > >gv
+
+" Indent everything
+noremap <Space>= miggvG=`i
+
+" " Wrap to column
+" nmap gqq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+" vmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
