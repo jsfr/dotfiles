@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -z $ENV_EXPORTED ]]; then
+# if [[ -z $ENV_EXPORTED ]]; then
     export PAGER="moar"
     export FZF_DEFAULT_COMMAND="fd -It f"
     export EDITOR="nvim"
@@ -31,6 +31,7 @@ if [[ -z $ENV_EXPORTED ]]; then
 
     export GIT_STATUS_LOGLEVEL=DEBUG
 
+    # Path and bin folders
     export CARGO_BIN_PATH="$HOME/.cargo/bin"
     export PNPM_HOME="$XDG_DATA_HOME/pnpm"
     export PNPM_BIN_PATH="$PNPM_HOME"
@@ -43,12 +44,10 @@ if [[ -z $ENV_EXPORTED ]]; then
 
     export BKT_CACHE_DIR="$HOME/.cache"
 
-    export DOFI_DIR="$HOME/repos/github.com/jsfr/dotfiles"
-
+    # Dotnet related
     export NUGET_CREDENTIALPROVIDER_MSAL_ENABLED=true
     export NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO=true
-    # export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
     export DOTNET_ROOT="$XDG_DATA_HOME/mise/installs/dotnet/latest"
 
-    export ENV_EXPORTED="exported"
-fi
+# export ENV_EXPORTED="exported"
+# fi
