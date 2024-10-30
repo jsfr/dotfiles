@@ -1,17 +1,20 @@
 {{- /* vim:set syntax=gitignore */ -}}
 
 {{ if ne .chezmoi.os "darwin" }}
-.aerospace.toml
-.hammerspoon/**
-.config/wezterm/**
-.config/swiftbar/**
-.config/karabiner/**
 .1password/agent.sock
+.aerospace.toml
+.config/karabiner/**
+.config/swiftbar/**
+.config/wezterm/**
+.hammerspoon/**
+.ideavimrc
+Brewfile
+Library/**
 {{ end }}
 
 {{ if ne .chezmoi.os "windows" }}
-.tridactylrc
 .glzr/**
+.tridactylrc
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
