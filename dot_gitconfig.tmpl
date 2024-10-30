@@ -40,10 +40,10 @@
 [core]
     editor = nvim
     pager = delta
-{{- if eq .chezmoi.os "linux" }}
-{{- if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{- if eq .chezmoi.os "linux" -}}
+{{- if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 	sshCommand = ssh.exe
-{{- end }}
+{{- end -}}
 {{- end }}
 [help]
     autocorrect = prompt
