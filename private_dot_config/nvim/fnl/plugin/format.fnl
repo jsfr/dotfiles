@@ -5,6 +5,7 @@
                                    :html [:prettier]
                                    :markdown [:prettier]
                                    :json [:prettier]
-                                   :sh [:shfmt]}})
+                                   :sh [:shfmt]
+                                   :cs [:csharpier]}})
 
 {}
