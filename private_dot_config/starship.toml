@@ -1,0 +1,16 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+[cmd_duration]
+disabled = true
+
+[env_var.DESK_NAME]
+symbol = "◲ "
+format = "in [$symbol($env_value)](blue)"
+
+[aws]
+symbol = ""
+
+[kubernetes]
+disabled = false

@@ -1,0 +1,41 @@
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl
+
+" General Settings
+set newtab about:blank
+set theme auto
+set hintfiltermode simple
+set hintnames uniform
+set hintdelay 100
+set incsearch true
+set tabclosepinned false
+
+" Binds
+unbindurl inoreader.com j
+unbindurl inoreader.com k
+unbindurl inoreader.com v
+unbindurl inoreader.com s
+
+unbind J
+unbind K
+bind J tabnext
+bind K tabprev
+
+" Create mapping to open current url in another container
+bind cow recontain work
+bind cod recontain default
+bind cos recontain shopping
+
+" Redirects
+unset autocmds
+unset autocontain
+
+autocontain -s configure.zsa.io Default
+autocontain -s app.ledgy.com Default
+
+autocontain -s nordnet.dk Banking
+autocontain -s lsb.dk Banking
+autocontain -s heap.dk Banking
+autocontain -s topdanmark.dk Banking
+autocontain -s grandhood.dk Banking
+autocontain -s velliv.dk Banking

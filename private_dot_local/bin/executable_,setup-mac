@@ -1,0 +1,64 @@
+#!/usr/bin/env sh
+set -euxo pipefail
+
+HOSTNAME=kukunochi
+
+# Set hostname and computer name
+sudo scutil --set HostName kukunochi
+sudo scutil --set ComputerName kukunochi
+
+# Install brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# Fetch backup
+brew install age
+read -p "Fetch backup file and un-age it" </dev/tty
+
+# Run setup dotfiles
+curl -Lks https://raw.githubusercontent.com/jsfr/dotfiles-mac/master/.local/bin/,setup-dotfiles | /bin/bash
+
+# Install all packages managed by brewfile
+brew bundle install
+
+# Start skhd
+brew services start skhd
+
+# Install rustup and rust packages
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install cargo-update
+
+# Install tpm plugins
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+~/.config/tmux/plugins/tpm/bin/install_plugins
+
+# Speed up the keyboard
+defaults write -g InitialKeyRepeat -int 15 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 2         # normal minimum is 2 (30 ms)
+
+# Install latest LTS node
+n lts
+
+# Install NPM packages
+npm install -g yarn
+npm install -g snyk
+npm install -g aws-sso-credentials-getter
+
+# Install pipx packages
+pipx install git-delete-merged-branches
+pipx install virtualfish
+
+# Clone and install rmenu
+mkdir -p ~/Repos/github.com/jsfr
+cd ~/Repos/github.com/jsfr
+git clone git@github.com:jsfr/rmenu.git
+just install
+cd ~
+
+# Install native module for tridactyl
+curl -fsSl https://raw.githubusercontent.com/tridactyl/native_messenger/master/installers/install.sh -o /tmp/trinativeinstall.sh && sh /tmp/trinativeinstall.sh 1.22.1
+
+# Add keychain entry for hammerspoon pull request widget
+read -p "Set up a Github Token for Hammerspoon PR widget. Then press Enter to continue" </dev/tty
+
+# Set up k8s, aws-vault, vault and keychain
+read -p "Yabai is installed, follow the guide for system protection and automatic loading https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection" </dev/tty

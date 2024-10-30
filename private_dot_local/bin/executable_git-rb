@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+
+set -l default_branch (git default-branch)
+git sw "$default_branch" && git up && git sw - && git rebase "$default_branch"

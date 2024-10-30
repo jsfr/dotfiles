@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Copied from https://www.atlassian.com/git/tutorials/dotfiles
+# When setting up a new machine call this like so:
+# $ curl -Lks https://raw.githubusercontent.com/jsfr/dotfiles-mac/master/.local/bin/,setup-dotfiles | /bin/bash
+
+git clone --bare git@github.com:jsfr/dotfiles-mac.git "$HOME/.dotfiles"
+
+function cfg() {
+  git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
+}
+
+mkdir -p .dotfiles-backup
+
+if cfg checkout; then
+  echo "Checked out config."
+else
+  echo "Backing up pre-existing dot files."
+  cfg checkout 2>&1 | grep -E "\s+\." | awk "{'print $1'}" | xargs -I{} mv {} .dotfiles-backup/{}
+fi
+
+cfg checkout
+
+cfg config status.showUntrackedFiles no

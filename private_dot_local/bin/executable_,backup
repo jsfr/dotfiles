@@ -1,0 +1,16 @@
+#!/usr/bin/env fish
+
+set -l BACKUP "$HOME/Library/CloudStorage/ProtonDrive-jensfredskov@protonmail.com-folder/backup"
+
+rm -r "$BACKUP"
+mkdir "$BACKUP"
+
+pnpm list -g --json | jq -r '.[] | .dependencies | keys | .[]' > "$BACKUP/pnpm.txt"
+go run github.com/nao1215/gup@latest list | awk -F '[ @]' '{print $2}' > "$BACKUP/go.txt"
+pipx list --json | jq -r '.venvs | keys | .[]' > "$BACKUP/pipx.txt"
+cargo install --list | grep ":" | awk '{print $1}' > "$BACKUP/cargo.txt"
+
+mkdir "$BACKUP/ssh"
+cp -r ~/.ssh/id* "$BACKUP/ssh/"
+
+# zip -r "$BACKUP/arc.zip" $HOME/Library/Application\ Support/Arc/Storable*
