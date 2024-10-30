@@ -49,5 +49,7 @@
     export NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO=true
     export DOTNET_ROOT="$XDG_DATA_HOME/mise/installs/dotnet/latest"
 
+    export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+
 # export ENV_EXPORTED="exported"
 # fi
