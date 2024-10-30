@@ -4,10 +4,10 @@
 
 {{ if ne .chezmoi.os "darwin" }}
 .aerospace.toml
-.hammerspoon/
-.config/wezterm/
-.config/swiftbar/
-.config/karabiner/
+.hammerspoon/**
+.config/wezterm/**
+.config/swiftbar/**
+.config/karabiner/**
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
