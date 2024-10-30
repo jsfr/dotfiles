@@ -1,6 +1,4 @@
-{{- /*
-    vim:set syntax=gitignore
-*/ -}}
+{{- /* vim:set syntax=gitignore */ -}}
 
 {{ if ne .chezmoi.os "darwin" }}
 .aerospace.toml
@@ -10,8 +8,12 @@
 .config/karabiner/**
 {{ end }}
 
-{{ if eq .chezmoi.os "windows" }}
-.config/tridactyl/tridactylrc
-{{ else }}
+{{ if ne .chezmoi.os "windows" }}
 .tridactylrc
+{{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+*
+!.tridactylrc
+!.glzr/**
 {{ end }}
