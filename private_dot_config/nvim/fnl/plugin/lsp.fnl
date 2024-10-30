@@ -44,7 +44,8 @@
                 :htmx {}
                 :html {}
                 :fennel_language_server {:settings {:fennel {:diagnostics {:globals [:vim]}}}}
-                :docker_compose_language_service {}})
+                :docker_compose_language_service {}
+                :omnisharp_mono {}})
 
 (fn get-server-config [server-name]
   (local config (. servers server-name))
