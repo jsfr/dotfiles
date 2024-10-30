@@ -30,6 +30,8 @@
        :ft :just]
      [:tridactyl/vim-tridactyl
        :ft :tridactyl]
+     [:ngynkvn/gotmpl.nvim
+      :opts {}]
      [:nvim-treesitter/nvim-treesitter
        :dependencies [:windwp/nvim-ts-autotag]
        :build #(vim.cmd :TSUpdateSync)
