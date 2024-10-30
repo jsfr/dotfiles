@@ -40,7 +40,7 @@
 [core]
     editor = nvim
     pager = delta
-{{- if eq .chezmoi.os "linux" and (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
     sshCommand = ssh.exe
 {{- end }}
 [help]
