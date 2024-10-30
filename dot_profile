@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-#test
 if [[ -z $ENV_EXPORTED ]]; then
     export PAGER="moar"
     export FZF_DEFAULT_COMMAND="fd -It f"
