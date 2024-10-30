@@ -1,0 +1,7 @@
+Host github.com
+  IdentityFile ~/.ssh/id_ed25519.pub
+  IdentitiesOnly yes
+
+Host ssh.dev.azure.com
+  IdentityFile ~/.ssh/id_rsa.pub
+  IdentitiesOnly yes
