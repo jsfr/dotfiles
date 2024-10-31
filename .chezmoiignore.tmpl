@@ -16,17 +16,20 @@ Library/**
 {{ if ne .chezmoi.os "windows" }}
 .glzr/**
 .tridactylrc
-!AppData/**
-!Documents/**
+AppData/**
+Documents/**
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
 *
+!.config
+.config/*
+!.config/nvim
+!.config/nvim/**
 !.gitconfig
-!.tridactylrc
 !.glzr/**
 !.ssh/**
-!.config/nvim/**
+!.tridactylrc
 !AppData/**
 !Documents/**
 {{ end }}
