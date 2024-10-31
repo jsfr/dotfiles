@@ -1,55 +1,55 @@
 #!/usr/bin/env bash
 
-# if [[ -z $ENV_EXPORTED ]]; then
-    export PAGER="moar"
-    export FZF_DEFAULT_COMMAND="fd -It f"
-    export EDITOR="nvim"
+export PAGER="moar"
+export FZF_DEFAULT_COMMAND="fd -It f"
+export EDITOR="nvim"
 
-    export LANG="en_US.UTF-8"
-    export LC_CTYPE="$LANG"
-    export LC_NUMERIC="$LANG"
-    export LC_TIME="$LANG"
-    export LC_COLLATE="$LANG"
-    export LC_MONETARY="$LANG"
-    export LC_MESSAGES="$LANG"
-    export LC_PAPER="$LANG"
-    export LC_NAME="$LANG"
-    export LC_ADDRESS="$LANG"
-    export LC_TELEPHONE="$LANG"
-    export LC_MEASUREMENT="$LANG"
-    export LC_IDENTIFICATION="$LANG"
-    export LC_ALL="$LANG"
+export LANG="en_US.UTF-8"
+export LC_CTYPE="$LANG"
+export LC_NUMERIC="$LANG"
+export LC_TIME="$LANG"
+export LC_COLLATE="$LANG"
+export LC_MONETARY="$LANG"
+export LC_MESSAGES="$LANG"
+export LC_PAPER="$LANG"
+export LC_NAME="$LANG"
+export LC_ADDRESS="$LANG"
+export LC_TELEPHONE="$LANG"
+export LC_MEASUREMENT="$LANG"
+export LC_IDENTIFICATION="$LANG"
+export LC_ALL="$LANG"
 
-    # XDG
-    export XDG_CONFIG_HOME="$HOME/.config"
-    export XDG_CACHE_HOME="$HOME/.cache"
-    export XDG_DATA_HOME="$HOME/.local/share"
-    export XDG_STATE_HOME="$HOME/.local/state"
+# XDG
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 
-    export GOPATH="$HOME/go"
-    export GOBIN="$GOPATH/bin"
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
 
-    export GIT_STATUS_LOGLEVEL=DEBUG
+export GIT_STATUS_LOGLEVEL=DEBUG
 
-    # Path and bin folders
-    export CARGO_BIN_PATH="$HOME/.cargo/bin"
-    export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-    export PNPM_BIN_PATH="$PNPM_HOME"
-    export LOCAL_BIN_PATH="$HOME/.local/bin"
-    export MISE_SHIM_PATH="$XDG_DATA_HOME/mise/shims"
-    export DOTNET_BIN_PATH="$HOME/.dotnet/tools"
-    export PATH="$LOCAL_BIN_PATH:$GOBIN:$CARGO_BIN_PATH:$PNPM_BIN_PATH:$MISE_SHIM_PATH:$DOTNET_BIN_PATH:$PATH"
+# Path and bin folders
+export CARGO_BIN_PATH="$HOME/.cargo/bin"
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+export PNPM_BIN_PATH="$PNPM_HOME"
+export LOCAL_BIN_PATH="$HOME/.local/bin"
+export MISE_SHIM_PATH="$XDG_DATA_HOME/mise/shims"
+export DOTNET_BIN_PATH="$HOME/.dotnet/tools"
+export PATH="$LOCAL_BIN_PATH:$GOBIN:$CARGO_BIN_PATH:$PNPM_BIN_PATH:$MISE_SHIM_PATH:$DOTNET_BIN_PATH:$PATH"
 
-    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-    export BKT_CACHE_DIR="$HOME/.cache"
+export BKT_CACHE_DIR="$HOME/.cache"
 
-    # Dotnet related
-    export NUGET_CREDENTIALPROVIDER_MSAL_ENABLED=true
-    export NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO=true
-    export DOTNET_ROOT="$XDG_DATA_HOME/mise/installs/dotnet/latest"
+# Dotnet related
+export NUGET_CREDENTIALPROVIDER_MSAL_ENABLED=true
+export NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO=true
+export DOTNET_ROOT="$XDG_DATA_HOME/mise/installs/dotnet/latest"
 
-    export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+{{ if eq chezmoi.os "darwin" -}}
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+{{- end }}
 
-# export ENV_EXPORTED="exported"
-# fi
+# vim:set syntax=bash
