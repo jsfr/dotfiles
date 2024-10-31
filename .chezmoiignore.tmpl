@@ -16,6 +16,8 @@ Library/**
 {{ if ne .chezmoi.os "windows" }}
 .glzr/**
 .tridactylrc
+!AppData/**
+!Documents/**
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
@@ -24,6 +26,7 @@ Library/**
 !.tridactylrc
 !.glzr/**
 !.ssh/**
+!.config/nvim/**
 !AppData/**
 !Documents/**
 {{ end }}
