@@ -8,3 +8,7 @@ Remove-Item Alias:ls
 function ls {
     eza -1 -F $args
 }
+
+function cm {
+    chezmoi $args
+}
