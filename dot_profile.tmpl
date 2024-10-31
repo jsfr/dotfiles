@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#vim:set syntax=bash
+
 export PAGER="moar"
 export FZF_DEFAULT_COMMAND="fd -It f"
 export EDITOR="nvim"
@@ -48,8 +50,6 @@ export NUGET_CREDENTIALPROVIDER_MSAL_ENABLED=true
 export NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO=true
 export DOTNET_ROOT="$XDG_DATA_HOME/mise/installs/dotnet/latest"
 
-{{ if eq chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.os "darwin" -}}
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 {{- end }}
-
-# vim:set syntax=bash
