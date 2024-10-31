@@ -5,7 +5,11 @@
     email = jsfr@users.noreply.github.com
     signingKey = /Users/jens/.ssh/id_ed25519.pub
 [credential]
+{{ if eq .chezmoi.os "windows" -}}
+    helper = manager
+{{ else -}}
     helper = cache
+{{ end -}}
 [push]
     default = current
 [alias]
