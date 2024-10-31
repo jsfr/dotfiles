@@ -49,7 +49,7 @@ CapsLock & w:: {
 
 !^+v::
 CapsLock & v:: {
-    ActivateOrRun("ahk_exe Code.exe", "C:\Users\JensFredskov\scoop\apps\vscode\current\Code.exe")
+    ActivateOrRun("ahk_exe Code.exe", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
 }
 
 !^+c::
