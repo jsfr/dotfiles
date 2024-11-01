@@ -48,6 +48,9 @@
     pager = delta
 {{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
     sshCommand = ssh.exe
+{{- else if eq .chezmoi.os "windows" }}
+    eol = lf
+    autocrlf = false
 {{- end }}
 [help]
     autocorrect = prompt
@@ -60,12 +63,8 @@
     ui = auto
 [branch]
     sort = -committerdate
-#[maintenance]
-#    repo = /Users/jens/Repos/github.com/pleo-io/kerberos
-#    repo = /Users/jens/Repos/github.com/pleo-io/jvm-commons
-#    repo = /Users/jens/Repos/github.com/pleo-io/terraform
 [interactive]
-	diffFilter = riff --color=on
+    diffFilter = riff --color=on
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
@@ -78,6 +77,6 @@
 [gpg]
     format = ssh
 [pager]
-	diff = riff
-	show = riff
-	log = riff
+    diff = riff
+    show = riff
+    log = riff
