@@ -157,6 +157,12 @@
                   (vim.api.nvim_create_user_command :PeekOpen peek.open {})
                   (vim.api.nvim_create_user_command :PeekClose peek.close {}))]
 
+     ;; Chezmoi
+     [:xvzc/chezmoi.nvim
+       :dependencies [:nvim-lua/plenary.nvim]
+       :main :chezmoi
+       :opts {}]
+
      ;; Misc
      [:Wansmer/treesj
        :dependencies [:nvim-treesitter/nvim-treesitter]
