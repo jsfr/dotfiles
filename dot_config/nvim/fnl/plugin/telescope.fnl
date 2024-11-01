@@ -19,6 +19,7 @@
 (telescope.load_extension :fzy_native)
 (telescope.load_extension :undo)
 (telescope.load_extension :file_history)
+(telescope.load_extension :chezmoi)
 
 (map! [n] :<leader>rg builtin.live_grep)
 (map! [n] :<leader>fa #(builtin.find_files {:hidden true}))
@@ -27,5 +28,4 @@
 (map! [n] :<leader>ff builtin.git_files)
 (map! [n] :<leader>fb builtin.buffers)
 (map! [n] :<leader>fr builtin.registers)
-; (map! [n] :<leader>. #(builtin.git_files {:cwd "$DOFI_DIR"
-;                                           :show_untracked true}))
+(map! [n] :<leader>.  telescope.extensions.chezmoi.find_files)
