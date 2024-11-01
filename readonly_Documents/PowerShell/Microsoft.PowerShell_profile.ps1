@@ -1,6 +1,7 @@
 Invoke-Expression (&starship init powershell)
 
 $env:EDITOR = "C:\Users\JensFredskov\scoop\apps\neovim\current\bin\nvim.exe"
+$env:HOME = "C:\Users\JensFredskov"
 
 Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 
