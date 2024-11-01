@@ -1,3 +1,3 @@
-function ss -a arg -d "Searches scoop using ss"
-    pwsh.exe -c "ss $arg"
+function ss
+    pwsh.exe -c "ss $argv"
 end
