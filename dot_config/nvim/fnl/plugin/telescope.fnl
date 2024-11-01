@@ -28,4 +28,4 @@
 (map! [n] :<leader>ff builtin.git_files)
 (map! [n] :<leader>fb builtin.buffers)
 (map! [n] :<leader>fr builtin.registers)
-(map! [n] :<leader>.  telescope.extensions.chezmoi.find_files)
+(map! [n] :<leader>.  #(telescope.extensions.chezmoi.find_files {}))
