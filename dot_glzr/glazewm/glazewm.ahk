@@ -2,9 +2,6 @@
 
 SetCapsLockState("AlwaysOff")
 
-; Disable alt alone
-~LAlt Up:: return
-
 CapsLock:: {
     Send("{Esc}")
 }
