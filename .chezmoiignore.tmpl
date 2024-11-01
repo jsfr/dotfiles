@@ -3,10 +3,10 @@
 {{ if ne .chezmoi.os "darwin" }}
 .1password/agent.sock
 .aerospace.toml
+.config/1Password/**
 .config/karabiner/**
 .config/swiftbar/**
 .config/wezterm/**
-.config/1Password/**
 .hammerspoon/**
 .ideavimrc
 Brewfile
@@ -22,10 +22,6 @@ Documents/**
 
 {{ if eq .chezmoi.os "windows" }}
 *
-!.config
-.config/*
-!.config/nvim
-!.config/nvim/**
 !.gitconfig
 !.glzr/**
 !.ssh/**
