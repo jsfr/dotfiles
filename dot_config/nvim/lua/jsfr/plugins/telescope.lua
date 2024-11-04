@@ -48,6 +48,6 @@ return {
         vim.keymap.set("n", "<leader>ff", builtin.git_files)
         vim.keymap.set("n", "<leader>fb", builtin.buffers)
         vim.keymap.set("n", "<leader>fr", builtin.registers)
-        vim.keymap.set("n", "<leader>. ", telescope.extensions.chezmoi.find_files)
+        vim.keymap.set("n", "<leader>.", telescope.extensions.chezmoi.find_files)
     end,
 }
