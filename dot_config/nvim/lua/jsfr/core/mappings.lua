@@ -14,11 +14,6 @@ vim.keymap.set("n", "<leader>wc/", "<cmd>vsplit<cr>")
 vim.keymap.set("n", "<leader>w-", "<cmd>split<cr>")
 vim.keymap.set("n", "<leader>w_", "<c-w>_")
 
--- open netrw in current folder
-vim.g.netrw_hide = 1
-vim.g.netrw_list_hide = "^\\./$,^\\.\\./$"
-vim.keymap.set("n", "-", "<cmd>Explore<cr>")
-
 -- visual shifting (does not exit visual mode)
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
@@ -31,12 +26,12 @@ vim.keymap.set("v", "k", "gk")
 
 -- tab to go to last active buffer
 local function mru_buffer()
-    local prev_buf = vim.fn.bufnr("#")
-    local buf_exists = vim.fn.buflisted(prev_buf)
-    if buf_exists == 1 then
-        vim.cmd("b #")
-    else
-        vim.cmd("bprev")
-    end
+	local prev_buf = vim.fn.bufnr("#")
+	local buf_exists = vim.fn.buflisted(prev_buf)
+	if buf_exists == 1 then
+		vim.cmd("b #")
+	else
+		vim.cmd("bprev")
+	end
 end
 vim.keymap.set("n", "<tab>", mru_buffer)
