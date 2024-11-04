@@ -2,7 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     cond = not vim.g.vscode,
     dependencies = {
-        "dawsers/telescope-file-history.nvim",
         "debugloop/telescope-undo.nvim",
         "folke/trouble.nvim",
         "nvim-telescope/telescope-fzy-native.nvim",
@@ -13,7 +12,6 @@ return {
         local actions = require("telescope.actions")
         local builtin = require("telescope.builtin")
         local trouble = require("trouble.sources.telescope")
-        local file_history = require("file_history")
         local telescope = require("telescope")
 
         telescope.setup({
@@ -30,12 +28,9 @@ return {
             },
         })
 
-        file_history.setup({})
-
         -- Extensions
         telescope.load_extension("fzy_native")
         telescope.load_extension("undo")
-        telescope.load_extension("file_history")
         telescope.load_extension("chezmoi")
 
         -- Keybindings

@@ -30,12 +30,6 @@ require("lazy").setup({
             vim.cmd("colorscheme tokyonight")
         end,
     },
-    -- {
-    --     "mong8se/actually.nvim",
-    --     cond = not vim.g.vscode,
-    --     lazy = false,
-    --     priority = 999,
-    -- },
     {
         "ahmedkhalf/project.nvim",
         cond = not vim.g.vscode,
