@@ -26,12 +26,12 @@ vim.keymap.set("v", "k", "gk")
 
 -- tab to go to last active buffer
 local function mru_buffer()
-	local prev_buf = vim.fn.bufnr("#")
-	local buf_exists = vim.fn.buflisted(prev_buf)
-	if buf_exists == 1 then
-		vim.cmd("b #")
-	else
-		vim.cmd("bprev")
-	end
+    local prev_buf = vim.fn.bufnr("#")
+    local buf_exists = vim.fn.buflisted(prev_buf)
+    if buf_exists == 1 then
+        vim.cmd("b #")
+    else
+        vim.cmd("bprev")
+    end
 end
 vim.keymap.set("n", "<tab>", mru_buffer)
