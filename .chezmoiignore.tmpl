@@ -22,6 +22,9 @@ Documents/**
 
 {{ if eq .chezmoi.os "windows" }}
 *
+.config/*
+!.config/nvim
+!.config/nvim/*
 !.gitconfig
 !.glzr/**
 !.ssh/**
