@@ -35,3 +35,20 @@ local function mru_buffer()
     end
 end
 vim.keymap.set("n", "<tab>", mru_buffer)
+
+-- VSCode keybindings
+if not vim.g.vscode then
+    return
+end
+
+local vscode = require("vscode")
+
+vim.keymap.set("n", "]d", function()
+    vscode.call("editor.action.marker.nextInFiles")
+end)
+vim.keymap.set("n", "[d", function()
+    vscode.call("editor.action.marker.prevInFiles")
+end)
+vim.keymap.set("n", "-", function()
+    vscode.call("workbench.files.action.showActiveFileInExplorer")
+end)

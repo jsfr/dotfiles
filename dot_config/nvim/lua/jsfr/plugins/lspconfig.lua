@@ -52,7 +52,7 @@ return {
                 -- settings = { Lua = { workspace = { library = { ["/Users/jens/.hammerspoon/Spoons/EmmyLua.spoon/annotations"] = true } } } }
             },
             typos_lsp = {},
-            ruff_lsp = {},
+            ruff = {},
             marksman = {},
             dockerls = {},
             html = {},
