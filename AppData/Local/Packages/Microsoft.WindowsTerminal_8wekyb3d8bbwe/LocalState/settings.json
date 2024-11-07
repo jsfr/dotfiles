@@ -52,6 +52,10 @@
             "command": "closePane",
             "id": "User.closePane",
             "keys": "ctrl+w"
+        },
+        {
+            "command": null,
+            "keys": "win+`"
         }
     ],
     "copyFormatting": "none",
