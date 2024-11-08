@@ -15,35 +15,50 @@
 [alias]
     mc = merge --continue
     rc = rebase --continue
+
+    p = push
     fp = push --force-with-lease
     pf = push --force-with-lease
+    up = pull --all --rebase --autostash
+    uu = pull --all --rebase --autostash
+
     a = add
     aa = add -A
     au = add -u .
+
     batman = "!git commit -m \"Batman! (this commit has no parents)\""
-    bb = "!better-git-branch.sh"
     c = commit
-    cb = "!git switch $(git default-branch) && git up && git create-branch -r"
-    co = checkout
-    d = diff
-    db = delete-branch
-    dc = diff --cached
-    default-branch ="!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
-    dft = difftool
-    echo = "!echo $(git default-branch); echo"
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short --graph
-    p = push
-    re = restore
-    s = status -sb
-    st = stash
-    sw = switch
-    swf = "!git switch $(git branch | fzf)"
-    swd = "!git switch $(git default-branch)"
-    up = pull --all --rebase --autostash
-    uu = pull --all --rebase --autostash
     upd = "!git add -u && git yolo && git push"
     wip = commit -m "wip" --no-verify
     yolo = "!git commit -m \"`curl -s https://whatthecommit.com/index.txt`\""
+
+    bb = "!better-git-branch.sh"
+    cb = "!git switch $(git default-branch) && git up && git create-branch -r"
+    db = delete-branch
+
+    sw = switch
+    swf = "!git switch $(git branch | fzf)"
+    swd = "!git switch $(git default-branch)"
+
+    co = checkout
+    re = restore
+
+    d = diff
+    dc = diff --cached
+    dft = difftool
+
+    default-branch ="!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
+    echo = "!echo $(git default-branch); echo"
+
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short --graph
+
+    s = status -sb
+
+    st = stash
+
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[[:lower:]]"
 [core]
     editor = nvim
     pager = delta
