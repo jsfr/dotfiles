@@ -81,6 +81,11 @@ require("lazy").setup({
 
     -- Misc
     {
+        "MagicDuck/grug-far.nvim",
+        cmd = { "GrugFar" },
+        opts = {},
+    },
+    {
         "nmac427/guess-indent.nvim",
         cond = not vim.g.vscode,
         opts = {},

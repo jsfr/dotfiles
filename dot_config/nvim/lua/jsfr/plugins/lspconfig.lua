@@ -57,7 +57,7 @@ return {
             dockerls = {},
             html = {},
             docker_compose_language_service = {},
-            omnisharp_mono = {},
+            omnisharp = {},
         }
 
         local function get_server_config(server_name)

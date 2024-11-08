@@ -1,5 +1,6 @@
 return {
     "xvzc/chezmoi.nvim",
+    cond = not vim.g.vscode,
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
         local chezmoi = require("chezmoi")

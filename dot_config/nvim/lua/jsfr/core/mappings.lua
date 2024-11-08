@@ -36,6 +36,10 @@ local function mru_buffer()
 end
 vim.keymap.set("n", "<tab>", mru_buffer)
 
+-- open lazy and mason
+vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>")
+vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>")
+
 -- VSCode keybindings
 if not vim.g.vscode then
     return
@@ -44,11 +48,8 @@ end
 local vscode = require("vscode")
 
 vim.keymap.set("n", "]d", function()
-    vscode.call("editor.action.marker.nextInFiles")
+    vscode.call("editor.action.marker.next")
 end)
 vim.keymap.set("n", "[d", function()
-    vscode.call("editor.action.marker.prevInFiles")
-end)
-vim.keymap.set("n", "-", function()
-    vscode.call("workbench.files.action.showActiveFileInExplorer")
+    vscode.call("editor.action.marker.prev")
 end)
