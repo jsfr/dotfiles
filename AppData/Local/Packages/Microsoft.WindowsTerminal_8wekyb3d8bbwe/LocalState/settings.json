@@ -38,7 +38,7 @@
         {
             "command": 
             {
-                "action": "newTab"
+                "action": "duplicateTab"
             },
             "id": "User.newTab.5DEADB41",
             "keys": "ctrl+t"

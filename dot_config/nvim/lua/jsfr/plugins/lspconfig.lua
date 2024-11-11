@@ -32,15 +32,23 @@ return {
 
         local servers = {
             bashls = {},
+            docker_compose_language_service = {},
+            dockerls = {},
+            eslint = {},
             golangci_lint_ls = {},
             gopls = {},
+            html = {},
             jsonls = { settings = { json = { schemas = schemastore.json.schemas, validate = { enable = true } } } },
-            taplo = {},
+            lua_ls = {},
+            marksman = {},
+            omnisharp = {},
+            ruff = {},
             rust_analyzer = { disabled = true },
+            taplo = {},
             terraformls = {},
             tflint = {},
-            eslint = {},
             ts_ls = { disabled = true },
+            typos_lsp = {},
             yamlls = {
                 settings = {
                     yaml = {
@@ -48,16 +56,6 @@ return {
                     },
                 },
             },
-            lua_ls = {
-                -- settings = { Lua = { workspace = { library = { ["/Users/jens/.hammerspoon/Spoons/EmmyLua.spoon/annotations"] = true } } } }
-            },
-            typos_lsp = {},
-            ruff = {},
-            marksman = {},
-            dockerls = {},
-            html = {},
-            docker_compose_language_service = {},
-            omnisharp = {},
         }
 
         local function get_server_config(server_name)
