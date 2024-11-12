@@ -1,4 +1,5 @@
 $env:EDITOR = "C:\Users\JensFredskov\scoop\apps\neovim\current\bin\nvim.exe"
+
 $env:HOME = "C:\Users\JensFredskov"
 
 Remove-Item Alias:ls
