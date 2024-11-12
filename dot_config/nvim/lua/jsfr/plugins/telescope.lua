@@ -2,7 +2,6 @@ return {
     "nvim-telescope/telescope.nvim",
     cond = not vim.g.vscode,
     dependencies = {
-        "debugloop/telescope-undo.nvim",
         "folke/trouble.nvim",
         "nvim-telescope/telescope-fzy-native.nvim",
     },
@@ -30,7 +29,6 @@ return {
 
         -- Extensions
         telescope.load_extension("fzy_native")
-        telescope.load_extension("undo")
         telescope.load_extension("chezmoi")
 
         -- Keybindings
