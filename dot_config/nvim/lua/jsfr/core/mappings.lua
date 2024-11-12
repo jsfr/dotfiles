@@ -2,12 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
--- jj escape sequence
-vim.keymap.set("i", "jj", "<esc>")
-vim.keymap.set("i", "JJ", "<esc>")
-vim.keymap.set("c", "jj", "<c-c>")
-vim.keymap.set("c", "JJ", "<c-c>")
-
 -- spacemacs inspired keybindings
 vim.keymap.set("n", "<leader>wc", "<c-w>q")
 vim.keymap.set("n", "<leader>wc/", "<cmd>vsplit<cr>")
