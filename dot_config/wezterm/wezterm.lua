@@ -15,7 +15,7 @@ config.window_decorations = "RESIZE"
 -- Tab bar
 config.use_fancy_tab_bar = false
 config.window_frame = {
-    font_size = 13.0,
+    font_size = 11.0,
 }
 
 -- Quick-select
