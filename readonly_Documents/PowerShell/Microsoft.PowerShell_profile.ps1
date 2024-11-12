@@ -1,12 +1,5 @@
-Invoke-Expression (&starship init powershell)
-
 $env:EDITOR = "C:\Users\JensFredskov\scoop\apps\neovim\current\bin\nvim.exe"
 $env:HOME = "C:\Users\JensFredskov"
-
-Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
-
-Import-Module PSReadLine
-Set-PSReadLineOption -PredictionSource History
 
 Remove-Item Alias:ls
 function ls {
@@ -20,3 +13,11 @@ function cm {
 function n {
     nvim $args
 }
+
+Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
+
+Import-Module PSReadLine
+Set-PSReadLineOption -PredictionSource History
+
+Invoke-Expression (&starship init powershell)
+Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
