@@ -16,3 +16,7 @@ function ls {
 function cm {
     chezmoi $args
 }
+
+function n {
+    nvim $args
+}

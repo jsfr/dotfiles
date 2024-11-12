@@ -44,7 +44,8 @@ CapsLock & o:: {
 
 !^+w::
 CapsLock & w:: {
-    ActivateOrRun("ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS", "wt.exe")
+    ;ActivateOrRun("ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS", "wt.exe")
+    ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Users\JensFredskov\scoop\apps\wezterm\current\wezterm-gui.exe")
 }
 
 !^+v::
