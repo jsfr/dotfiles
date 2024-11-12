@@ -56,7 +56,7 @@ set_options({
     wildmode = "list:longest,full",
     winminheight = 0,
     wrap = true,
-    undodir = "/tmp//,~/.undodir",
-    backupdir = "/tmp//,~/.backupdir",
-    directory = "/tmp//,~/.swapdir",
+    undodir = "/tmp//," .. vim.fs.normalize("~/.undodir"),
+    backupdir = "/tmp//," .. vim.fs.normalize("~/.backupdir"),
+    directory = "/tmp//," .. vim.fs.normalize("~/.swapdir"),
 })
