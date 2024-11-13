@@ -7,7 +7,6 @@ return {
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
     },
-    event = "BufRead",
     config = function()
         local lspconfig = require("lspconfig")
         local mason_lspconfig = require("mason-lspconfig")

@@ -3,7 +3,6 @@ return {
     cond = not vim.g.vscode,
     main = "nvim-treesitter.configs",
     dependencies = { "windwp/nvim-ts-autotag" },
-    event = "BufRead",
     build = function()
         vim.cmd("TSUpdate")
     end,
