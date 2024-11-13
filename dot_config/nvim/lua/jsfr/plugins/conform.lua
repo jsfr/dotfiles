@@ -28,6 +28,7 @@ return {
             sh = { "shfmt" },
             cs = { "csharpier" },
             lua = { "stylua" },
+            toml = { "taplo" },
         },
     },
 }
