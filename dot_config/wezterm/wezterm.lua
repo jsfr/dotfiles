@@ -20,8 +20,7 @@ config.window_frame = {
 
 -- Quick-select
 config.quick_select_patterns = {
-    --  "(?<=password           )\\S+",
-    --  "(?<=username           )\\S+"
+    [[[a-zA-Z]:\\(?:[\w\s\.]+\\)*[\w\s\.]*]],
 }
 
 -- Theme

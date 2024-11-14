@@ -1,8 +1,7 @@
-$env:EDITOR = "C:\Users\JensFredskov\scoop\apps\neovim\current\bin\nvim.exe"
-$env:HOME = "C:\Users\JensFredskov"
-
-$addPath = "$env:USERPROFILE\.cargo\bin"
-[Environment]::SetEnvironmentVariable('PATH', ($env:PATH + ";$addPath"), 'User')
+$env:HOME = "$env:USERPROFILE"
+$env:EDITOR = "$env:HOME\scoop\apps\neovim\current\bin\nvim.exe"
+$env:PATH = "$env:HOME\.cargo\bin;$env:PATH"
+$env:PATH = "$env:HOME\.local\bin;$env:PATH"
 
 Remove-Item Alias:ls
 function ls {
