@@ -2,6 +2,17 @@
 
 SetCapsLockState("AlwaysOff")
 
+;~LWin:: {
+;    Send("{Blind}{vkE8}")
+;    StartTime := A_TickCount
+;    KeyWait, LWin
+;    if
+;    Return
+;}
+
+*~LAlt::Send "{Blind}{vkE8}"
+*~RAlt::Send "{Blind}{vkE8}"
+
 CapsLock:: {
     Send("{Esc}")
 }
@@ -91,13 +102,3 @@ CapsLock & d::!^+d
 ; Email autocompletion
 ::;mp::jensfredskov@gmail.com
 ::;mw::jens.fredskov@nekohealth.com
-
-;; Rebind C-e and C-a to home and end
-;^e::End
-;^a::Home
-;#a::^a
-;#c::^c
-;
-;#HotIf WinActive("ahk_exe ms-teams.exe")
-;^k::^e
-;^l::^k

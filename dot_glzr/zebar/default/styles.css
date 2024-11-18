@@ -11,7 +11,7 @@ i {
 
 body {
   color: rgb(255 255 255 / 90%);
-  font-family: ui-monospace, monospace;
+  font-family: JetBrainsMono NFM;
   font-size: 12px;
   overflow: hidden;
 }
