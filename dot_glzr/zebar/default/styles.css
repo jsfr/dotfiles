@@ -4,13 +4,23 @@
  */
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
 
+@media (prefers-color-scheme: light) {
+  --main-bg-color: rgb(255 255 255 / 90%);
+}
+@media (prefers-color-scheme: dark) {
+  --main-bg-color: rgb(255 255 255 / 90%);
+}
+
+body {
+}
+
 i {
   color: rgb(115 130 175 / 95%);
   margin-right: 7px;
 }
 
 body {
-  color: rgb(255 255 255 / 90%);
+  color: var(--main-bg-color);
   font-family: JetBrainsMono NFM;
   font-size: 12px;
   overflow: hidden;
