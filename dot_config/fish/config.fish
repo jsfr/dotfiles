@@ -69,9 +69,6 @@ end
 if command -q wezterm
     bkt --ttl "7days" -- wezterm shell-completion --shell fish | source
 end
-if command -q dofi
-    bkt --ttl "7days" -- dofi completions fish | source
-end
 if command -q gs
     bkt --ttl "7days" -- gs shell completion fish | source
 end
