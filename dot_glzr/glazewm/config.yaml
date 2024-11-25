@@ -2,11 +2,15 @@ general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
   # Example: The below command launches Zebar.
-  startup_commands: ["shell-exec zebar", "shell-exec autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"]
+  startup_commands:
+    - "shell-exec zebar"
+    - "shell-exec autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
-  shutdown_commands: ["shell-exec taskkill /IM zebar.exe /F"]
+  shutdown_commands:
+    - "shell-exec taskkill /IM zebar.exe /F"
+    - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands: []
@@ -171,13 +175,6 @@ binding_modes:
       # Press enter/escape to return to default keybindings.
       - commands: ["wm-disable-binding-mode --name resize"]
         bindings: ["escape", "enter"]
-
-  # When enabled, all keybindings are disabled except for alt+shift+p which
-  # returns to default keybindings.
-  # - name: "pause"
-  #   keybindings:
-  #     - commands: ["wm-disable-binding-mode --name pause"]
-  #       bindings: ["alt+shift+p"]
 
 keybindings:
   # Shift focus in a given direction.

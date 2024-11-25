@@ -5,10 +5,14 @@
 @import 'https://www.nerdfonts.com/assets/css/webfont.css';
 
 @media (prefers-color-scheme: light) {
-  --main-bg-color: rgb(255 255 255 / 90%);
+  body {
+    --main-bg-color: rgb(255 255 255 / 90%);
+  }
 }
 @media (prefers-color-scheme: dark) {
-  --main-bg-color: rgb(255 255 255 / 90%);
+  body {
+    --main-bg-color: rgb(255 255 255 / 90%);
+  }
 }
 
 body {
