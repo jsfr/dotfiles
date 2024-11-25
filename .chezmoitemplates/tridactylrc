@@ -21,20 +21,22 @@ unbind K
 bind J tabnext
 bind K tabprev
 
+unbind <c-f>
+
 " Create mapping to open current url in another container
 bind cow recontain work
-bind cod recontain default
+bind cod recontain personal
 bind cos recontain shopping
 
 " Redirects
 unset autocmds
 unset autocontain
 
-autocontain -s configure.zsa.io Default
-autocontain -s app.ledgy.com Default
-
-autocontain -s nordnet.dk Banking
-autocontain -s lsb.dk Banking
-autocontain -s velliv.dk Banking
-
-autocontain -s linkedin.com LinkedIn
+" autocontain -s configure.zsa.io Default
+" autocontain -s app.ledgy.com Default
+"
+" autocontain -s nordnet.dk Banking
+" autocontain -s lsb.dk Banking
+" autocontain -s velliv.dk Banking
+"
+" autocontain -s linkedin.com LinkedIn
