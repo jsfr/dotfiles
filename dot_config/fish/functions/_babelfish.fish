@@ -1,7 +1,14 @@
 function _babelfish -a file
-    if not command -q go
+    switch (uname)
+    case Linux
+        set -f go "go"
+    case Darwin
+        set -f go "/opt/homebrew/bin/go"
+    end
+
+    if not command -q $go
         echo "Please install go runtime to use _babelfish"
-        exit 1
+        return 1
     end
 
     switch (uname)
@@ -25,7 +32,7 @@ function _babelfish -a file
     end
 
     if test -z "$cache_time" -o "$file_time" -gt "$cache_time"
-        cat "$file" | go run bou.ke/babelfish@latest > "$cache_file"
+        cat "$file" | $go run bou.ke/babelfish@latest > "$cache_file"
     end
 
     cat "$cache_file"
