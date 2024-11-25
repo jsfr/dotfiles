@@ -38,7 +38,7 @@ return {
             golangci_lint_ls = {},
             gopls = {},
             html = {},
-            jsonls = { settings = { json = { schemas = schemastore.json.schemas, validate = { enable = true } } } },
+            -- jsonls = { settings = { json = { schemas = schemastore.json.schemas, validate = { enable = true } } } },
             lua_ls = {},
             marksman = {},
             omnisharp = {},

@@ -7,8 +7,7 @@ return {
         vim.cmd("TSUpdate")
     end,
     opts = {
-        ensure_installed = "all",
-        ignore_install = { "phpdoc", "smali", "t32" },
+        auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
         autotag = { enable = true },
