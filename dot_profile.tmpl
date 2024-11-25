@@ -40,6 +40,11 @@ export MISE_SHIM_PATH="$XDG_DATA_HOME/mise/shims"
 export DOTNET_BIN_PATH="$HOME/.dotnet/tools"
 export PATH="$LOCAL_BIN_PATH:$GOBIN:$CARGO_BIN_PATH:$PNPM_BIN_PATH:$MISE_SHIM_PATH:$DOTNET_BIN_PATH:$PATH"
 
+{{ if eq .chezmoi.os "darwin" -}}
+export HOMEBREW_BIN_PATH="/opt/homebrew/bin"
+export PATH="$HOMEBREW_BIN_PATH:$PATH"
+{{- end }}
+
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 export BKT_CACHE_DIR="$HOME/.cache"
