@@ -10,8 +10,8 @@ SetCapsLockState("AlwaysOff")
 ;    Return
 ;}
 
-*~LAlt::Send "{Blind}{vkE8}"
-*~RAlt::Send "{Blind}{vkE8}"
+;*~LAlt::Send "{Blind}{vkE8}"
+;*~RAlt::Send "{Blind}{vkE8}"
 
 CapsLock:: {
     Send("{Esc}")
@@ -93,6 +93,10 @@ CapsLock & l:: {
 
 CapsLock & Esc::`
 CapsLock & d::!^+d
+
+!+Enter:: {
+    Run("C:\Users\JensFredskov\glazewm-workspace-updater\glazewm-workspace-updater.exe")
+}
 
 ; Simple hotstrings for Danish letters
 :?*:;a::å
