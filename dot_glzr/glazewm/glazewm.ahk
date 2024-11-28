@@ -66,7 +66,7 @@ CapsLock & v:: {
 
 !^+c::
 CapsLock & c:: {
-    ActivateOrRun("ahk_exe olk.exe ahk_class Olk Host", "olk.exe")
+    ActivateOrRun("ahk_exe thunderbird.exe ahk_class MozillaWindowClass", "C:\Program Files\Mozilla Thunderbird\thunderbird.exe")
 }
 
 !^+a::
