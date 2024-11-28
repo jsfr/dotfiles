@@ -94,7 +94,8 @@ CapsLock & l:: {
 CapsLock & Esc::`
 CapsLock & d::!^+d
 
-!+Enter:: {
+!^+Enter::
+CapsLock & Enter:: {
     Run("C:\Users\JensFredskov\glazewm-workspace-updater\glazewm-workspace-updater.exe")
 }
 
