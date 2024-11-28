@@ -157,8 +157,6 @@ window_rules:
         window_class: { regex: "HwndWrapper" }
       - window_process: { equals: "FluentSearch" }
         window_title: { regex: "^Fluent Search$" }
-      - window_process: { equals: "olk" }
-        window_title: { regex: "^Reminders -.*$" }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
