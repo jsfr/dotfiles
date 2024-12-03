@@ -96,7 +96,7 @@ CapsLock & d::!^+d
 
 !^+r::
 CapsLock & r:: {
-    Run("C:\Users\JensFredskov\gwu\gwu.exe")
+    Run("C:\Users\JensFredskov\.local\bin\gwu.exe")
 }
 
 ; Simple hotstrings for Danish letters
