@@ -2,7 +2,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     cond = not vim.g.vscode,
     dependencies = {
-        "b0o/schemastore.nvim",
+        -- "b0o/schemastore.nvim",
         "williamboman/mason.nvim",
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
@@ -10,9 +10,9 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         local mason_lspconfig = require("mason-lspconfig")
-        local schemastore = require("schemastore")
+        -- local schemastore = require("schemastore")
 
-        local function on_attach(_, bufnr)
+        local function on_attach(client, bufnr)
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -28,6 +28,10 @@ return {
             vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
             vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
             vim.keymap.set("n", "<leader>q", vim.diagnostic.setqflist, bufopts)
+
+            if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            end
         end
 
         local servers = {
@@ -36,7 +40,21 @@ return {
             dockerls = {},
             eslint = {},
             golangci_lint_ls = {},
-            gopls = {},
+            gopls = {
+                settings = {
+                    gopls = {
+                        hints = {
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            compositeLiteralTypes = true,
+                            constantValues = true,
+                            functionTypeParameters = true,
+                            parameterNames = true,
+                            rangeVariableTypes = true,
+                        },
+                    },
+                },
+            },
             html = {},
             -- jsonls = { settings = { json = { schemas = schemastore.json.schemas, validate = { enable = true } } } },
             lua_ls = {},

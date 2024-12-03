@@ -29,6 +29,7 @@ return {
             cs = { "csharpier" },
             lua = { "stylua" },
             toml = { "taplo" },
+            go = { "gofumpt", "goimports" },
         },
     },
 }
