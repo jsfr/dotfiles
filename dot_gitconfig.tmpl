@@ -35,6 +35,7 @@
     bb = "!better-git-branch.sh"
     cb = "!git switch $(git default-branch) && git up && git create-branch -r"
     db = delete-branch
+    dbf = "!git delete-branch $(git branch | fzf)"
 
     sw = switch
     swf = "!git switch $(git branch | fzf)"
