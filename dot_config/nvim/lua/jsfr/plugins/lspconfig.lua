@@ -2,7 +2,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     cond = not vim.g.vscode,
     dependencies = {
-        -- "b0o/schemastore.nvim",
+        "b0o/schemastore.nvim",
         "williamboman/mason.nvim",
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
@@ -10,7 +10,7 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         local mason_lspconfig = require("mason-lspconfig")
-        -- local schemastore = require("schemastore")
+        local schemastore = require("schemastore")
 
         local function on_attach(client, bufnr)
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -56,10 +56,29 @@ return {
                 },
             },
             html = {},
-            -- jsonls = { settings = { json = { schemas = schemastore.json.schemas, validate = { enable = true } } } },
-            lua_ls = {},
+            jsonls = { settings = { json = { schemas = schemastore.json.schemas, validate = { enable = true } } } },
+            lua_ls = { setting = { Lua = { hint = { enable = true } } } },
             marksman = {},
-            omnisharp = {},
+            omnisharp = {
+                settings = {
+                    RoslynExtensionsOptions = {
+                        InlayHintsOptions = {
+                            EnableForParameters = true,
+                            ForLiteralParameters = true,
+                            ForIndexerParameters = true,
+                            ForObjectCreationParameters = true,
+                            ForOtherParameters = true,
+                            SuppressForParametersThatDifferOnlyBySuffix = false,
+                            SuppressForParametersThatMatchMethodIntent = false,
+                            SuppressForParametersThatMatchArgumentName = false,
+                            EnableForTypes = true,
+                            ForImplicitVariableTypes = true,
+                            ForLambdaParameterTypes = true,
+                            ForImplicitObjectCreatio = true,
+                        },
+                    },
+                },
+            },
             ruff = {},
             rust_analyzer = { disabled = true },
             taplo = {},
@@ -71,6 +90,31 @@ return {
                 settings = {
                     yaml = {
                         schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
+                    },
+                },
+            },
+            zls = {
+                enable_inlay_hints = true,
+                inlay_hints_show_builtin = true,
+                inlay_hints_exclude_single_argument = true,
+                inlay_hints_hide_redundant_param_names = false,
+                inlay_hints_hide_redundant_param_names_last_token = false,
+            },
+            pylyzer = {
+                settings = {
+                    python = {
+                        inlayHints = true,
+                    },
+                },
+            },
+            kotlin_language_server = {
+                settings = {
+                    kotlin = {
+                        hints = {
+                            typeHints = true,
+                            parameterHints = true,
+                            chaineHints = true,
+                        },
                     },
                 },
             },
