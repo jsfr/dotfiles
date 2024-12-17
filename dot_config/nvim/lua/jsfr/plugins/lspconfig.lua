@@ -56,7 +56,7 @@ return {
                 },
             },
             html = {},
-            jsonls = { settings = { json = { schemas = schemastore.json.schemas, validate = { enable = true } } } },
+            jsonls = { settings = { json = { schemas = schemastore.json.schemas(), validate = { enable = true } } } },
             lua_ls = { setting = { Lua = { hint = { enable = true } } } },
             marksman = {},
             omnisharp = {
@@ -89,8 +89,9 @@ return {
             yamlls = {
                 settings = {
                     yaml = {
-                        schemaStore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
+                        schemaStore = { enable = false, url = "" },
                     },
+                    schemas = schemastore.yaml.schemas(),
                 },
             },
             zls = {
