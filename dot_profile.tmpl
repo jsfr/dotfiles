@@ -56,3 +56,7 @@ export NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO=true
 {{ if eq .chezmoi.os "darwin" -}}
 export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 {{- end }}
+
+{{ if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+export BROWSER=wslview
+{{- end }}
