@@ -1,11 +1,11 @@
 after-login-command = []
 after-startup-command = [
-    'exec-and-forget /opt/homebrew/bin/borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000'
+  'exec-and-forget /opt/homebrew/bin/borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
 ]
 exec-on-workspace-change = [
-    '/bin/bash',
-    '-c',
-    'pgrep -fi swiftbar && open -g "swiftbar://refreshplugin?name=aerospace-workspaces"'
+  '/bin/bash',
+  '-c',
+  'pgrep -fi swiftbar && open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
 ]
 
 start-at-login = true
@@ -24,26 +24,25 @@ key-mapping.preset = 'qwerty'
 
 [gaps]
 inner.horizontal = 9
-inner.vertical =   9
-outer.left =       8
-outer.bottom =     8
-outer.top =        8
-outer.right =      8
+inner.vertical = 9
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
 
 [mode.main.binding]
 # Disable annoying hide keybindings
 cmd-h = []
 
-ctrl-alt-shift-cmd-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-firefox'
-ctrl-alt-shift-cmd-p = 'exec-and-forget open -a 1Password'
-ctrl-alt-shift-cmd-a = 'exec-and-forget open -a Beeper && open -a Signal'
-ctrl-alt-shift-cmd-c = 'exec-and-forget open -a "Calendar"'
-ctrl-alt-shift-cmd-s = 'exec-and-forget open -a Slack'
-ctrl-alt-shift-cmd-z = 'exec-and-forget pgrep -fi zoom.us && open -a zoom.us'
-ctrl-alt-shift-cmd-o = 'exec-and-forget open -a Obsidian'
-ctrl-alt-shift-cmd-t = 'exec-and-forget open -a "Microsoft Teams"'
-ctrl-alt-shift-cmd-v = 'exec-and-forget open -a "Visual Studio Code"'
-ctrl-alt-shift-cmd-enter = 'exec-and-forget open -a WezTerm'
+ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-floorp'
+ctrl-alt-shift-p = 'exec-and-forget open -a 1Password'
+ctrl-alt-shift-a = 'exec-and-forget open -a Beeper && open -a Signal'
+ctrl-alt-shift-c = 'exec-and-forget open -a "Calendar"'
+ctrl-alt-shift-s = 'exec-and-forget open -a Slack'
+ctrl-alt-shift-z = 'exec-and-forget pgrep -fi zoom.us && open -a zoom.us'
+ctrl-alt-shift-o = 'exec-and-forget open -a Obsidian'
+ctrl-alt-shift-t = 'exec-and-forget open -a "Microsoft Teams"'
+ctrl-alt-shift-v = 'exec-and-forget open -a "Visual Studio Code"'
 cmd-esc = 'exec-and-forget open -a "Mission Control"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -98,7 +97,10 @@ alt-semicolon = 'mode service'
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
-b = ['exec-and-forget /opt/homebrew/bin/borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000', 'mode main']
+b = [
+  'exec-and-forget /opt/homebrew/bin/borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
+  'mode main',
+]
 h = ['join-with left', 'mode main']
 j = ['join-with down', 'mode main']
 k = ['join-with up', 'mode main']
