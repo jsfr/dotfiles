@@ -36,6 +36,7 @@ cmd-h = []
 
 ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-floorp'
 ctrl-alt-shift-p = 'exec-and-forget open -a 1Password'
+ctrl-alt-shift-w = 'exec-and-forget open -a WezTerm'
 ctrl-alt-shift-a = 'exec-and-forget open -a Beeper && open -a Signal'
 ctrl-alt-shift-c = 'exec-and-forget open -a "Calendar"'
 ctrl-alt-shift-s = 'exec-and-forget open -a Slack'
