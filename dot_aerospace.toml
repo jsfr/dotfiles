@@ -79,7 +79,7 @@ alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
 
 alt-shift-1 = [
-  'move-node-to-workspace 0',
+  'move-node-to-workspace 1',
   'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
 ]
 alt-shift-2 = [
