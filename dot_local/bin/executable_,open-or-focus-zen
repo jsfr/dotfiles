@@ -5,5 +5,5 @@ WINDOW_ID=$(aerospace list-windows --all | grep Zen Browser | grep -v Picture-in
 if [ -n "$WINDOW_ID" ]; then
     aerospace focus --window-id "$WINDOW_ID"
 else
-    open -a "Floorp"
+    open -a "Zen Browser"
 fi
