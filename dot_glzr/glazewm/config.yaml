@@ -131,6 +131,7 @@ window_rules:
       # Move browsers to workspace 1.
       - window_process: { equals: "firefox" }
       - window_process: { equals: "floorp" }
+      - window_process: { equals: "zen" }
   - commands: ["move --workspace 8", "focus --workspace 8"]
     match:
       # Move browsers to workspace 1.
