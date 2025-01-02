@@ -2,17 +2,6 @@
 
 SetCapsLockState("AlwaysOff")
 
-;~LWin:: {
-;    Send("{Blind}{vkE8}")
-;    StartTime := A_TickCount
-;    KeyWait, LWin
-;    if
-;    Return
-;}
-
-;*~LAlt::Send "{Blind}{vkE8}"
-;*~RAlt::Send "{Blind}{vkE8}"
-
 CapsLock:: {
     Send("{Esc}")
 }
@@ -37,7 +26,7 @@ ShiftedSend(key) {
 
 !^+e::
 CapsLock & e:: {
-    ActivateOrRun("ahk_exe floorp.exe ahk_class MozillaWindowClass", "C:\Program Files\Ablaze Floorp\floorp.exe")
+    ActivateOrRun("ahk_exe zen.exe ahk_class MozillaWindowClass", "C:\Program Files\Zen Browser\zen.exe")
 }
 
 !^+t::
@@ -55,7 +44,6 @@ CapsLock & o:: {
 
 !^+w::
 CapsLock & w:: {
-    ;ActivateOrRun("ahk_exe WindowsTerminal.exe ahk_class CASCADIA_HOSTING_WINDOW_CLASS", "wt.exe")
     ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Users\JensFredskov\scoop\apps\wezterm\current\wezterm-gui.exe")
 }
 
@@ -66,7 +54,7 @@ CapsLock & v:: {
 
 !^+c::
 CapsLock & c:: {
-    ActivateOrRun("ahk_exe thunderbird.exe ahk_class MozillaWindowClass", "C:\Program Files\Mozilla Thunderbird\thunderbird.exe")
+    ActivateOrRun("ahk_exe olk.exe ahk_class Olk Host", "olk.exe")
 }
 
 !^+a::
