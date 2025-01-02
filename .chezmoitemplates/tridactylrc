@@ -32,11 +32,12 @@ bind cos recontain shopping
 unset autocmds
 unset autocontain
 
-" autocontain -s configure.zsa.io Default
-" autocontain -s app.ledgy.com Default
+autocontain -s remote.com Work
+
+autocontain -s configure.zsa.io Personal
 "
-" autocontain -s nordnet.dk Banking
-" autocontain -s lsb.dk Banking
-" autocontain -s velliv.dk Banking
+autocontain -s nordnet.dk Banking
+autocontain -s lsb.dk Banking
+autocontain -s velliv.dk Banking
 "
-" autocontain -s linkedin.com LinkedIn
+autocontain -s linkedin.com LinkedIn
