@@ -16,7 +16,7 @@
 focused_workspaces=$(aerospace list-workspaces --monitor all --visible)
 
 workspaces=$(aerospace list-workspaces --monitor all --empty no)
-workspaces=$(echo "$workspaces $focused_workspace" | tr ' ' '\n' | sort -h | uniq)
+workspaces=$(echo "$workspaces $focused_workspaces" | tr ' ' '\n' | sort -h | uniq)
 
 for workspace in $workspaces; do
     is_done=false
