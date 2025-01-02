@@ -16,7 +16,7 @@ return {
         },
         {
             key = "/",
-            mods = "SUPER|SHIFT",
+            mods = "SUPER",
             action = wezterm.action_callback(function(_, pane)
                 local dimensions = pane:get_dimensions()
                 local cols = dimensions.pixel_width
