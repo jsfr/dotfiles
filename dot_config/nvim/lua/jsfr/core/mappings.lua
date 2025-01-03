@@ -4,7 +4,7 @@ vim.g.maplocalleader = ","
 
 -- spacemacs inspired keybindings
 vim.keymap.set("n", "<leader>wc", "<c-w>q")
-vim.keymap.set("n", "<leader>wc/", "<cmd>vsplit<cr>")
+vim.keymap.set("n", "<leader>w/", "<cmd>vsplit<cr>")
 vim.keymap.set("n", "<leader>w-", "<cmd>split<cr>")
 vim.keymap.set("n", "<leader>w_", "<c-w>_")
 
