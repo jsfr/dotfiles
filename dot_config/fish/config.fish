@@ -8,6 +8,7 @@ set -gx SHELL (which fish)
 
 # define aliases
 alias ls="eza -1 -F"
+alias po="az repos pr list --status active | jq -r '.[] | [if .isDraft then \"[Draft]\" else \"\" end, .pullRequestId,.createdBy.displayName,.title] | @csv' | xsv table | fzf | awk '{print \$2}' | xargs -I{} az repos pr show --open --id {} > /dev/null"
 
 # define abbreviations
 abbr k "kubectl"
