@@ -11,7 +11,8 @@ alias ls="eza -1 -F"
 
 # define abbreviations
 abbr k "kubectl"
-abbr pr "gh pr create"
+# abbr pr "gh pr create"
+abbr pr "az repos pr create"
 abbr zap "brew uninstall --force --zap"
 abbr cask "brew install --cask"
 abbr aum 'gh pr edit --add-label "automerge"'
