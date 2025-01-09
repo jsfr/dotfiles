@@ -1,3 +1,5 @@
+set -l jq_expression '.[] | [.pullRequestId,.createdBy.displayName,if .isDraft then "[Draft]" else "." end,.title,.repository.name] | @csv' 
+
 function pr -a subcommand
     switch $subcommand
     case c
@@ -19,7 +21,10 @@ end
 
 function __pr_list_in_repo
     az repos pr list --status active \
-    | __pr_select_id \
+    | jq -r $jq_expression \
+    | xsv table \
+    | fzf \
+    | awk '{print $1}' \
     | xargs -I{} az repos pr show --open --id {} > /dev/null
 end
 
@@ -27,16 +32,11 @@ function __pr_list_own_active
     set -l org 'https://dev.azure.com/cur8/'
     set -l project 'TheRigg'
     set -l creator 'jens.fredskov@nekohealth.com' 
-    
-    az repos pr list --status active --organization $org -p $project --creator $creator \
-    | __pr_select_id \
-    | xargs -I{} az repos pr show --organization $org --open --id {} > /dev/null
-end 
 
-function __pr_select_id
-    tee \
-    | jq -r '.[] | [.pullRequestId,.createdBy.displayName,if .isDraft then "[Draft]" else "." end,.title,.repository.name] | @csv'  \
+    az repos pr list --status active --organization $org -p $project --creator $creator \
+    | jq -r $jq_expression \
     | xsv table \
     | fzf \
-    | awk '{print $1}' 
-end
+    | awk '{print $1}' \
+    | xargs -I{} az repos pr show --organization $org --open --id {} > /dev/null
+end 
