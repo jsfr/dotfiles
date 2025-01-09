@@ -8,13 +8,10 @@ set -gx SHELL (which fish)
 
 # define aliases
 alias ls="eza -1 -F"
-alias po="az repos pr list --status active | jq -r '.[] | [if .isDraft then \"[Draft]\" else \".\" end, .pullRequestId,.createdBy.displayName,.title] | @csv' | xsv table | fzf | awk '{print \$2}' | xargs -I{} az repos pr show --open --id {} > /dev/null"
 alias hx="helix"
 
 # define abbreviations
 abbr k "kubectl"
-# abbr pr "gh pr create"
-abbr pr "az repos pr create"
 abbr zap "brew uninstall --force --zap"
 abbr cask "brew install --cask"
 abbr aum 'gh pr edit --add-label "automerge"'
@@ -76,8 +73,8 @@ if command -q gs
     bkt --ttl "7days" -- gs shell completion fish | source
 end
 
-function storePathForWindowsTerminal --on-variable PWD
-    if test -n "$WT_SESSION"
-      printf "\e]9;9;%s\e\\" (wslpath -w "$PWD")
-    end
-end
+# function storePathForWindowsTerminal --on-variable PWD
+#     if test -n "$WT_SESSION"
+#       printf "\e]9;9;%s\e\\" (wslpath -w "$PWD")
+#     end
+# end
