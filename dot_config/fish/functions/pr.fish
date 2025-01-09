@@ -35,7 +35,7 @@ end
 
 function __pr_select_id
     tee \
-    | jq -r '.[] | [.pullRequestId,.createdBy.displayName,if .isDraft then "[Draft]" else "." end,.title,.repository.name] | @csv'  \
+    | jq -r '.[] | [.pullRequestId,.createdBy.displayName,if .isDraft then "[Draft]" else "" end,.title,.repository.name] | @csv'  \
     | xsv table \
     | fzf \
     | awk '{print $1}' 
