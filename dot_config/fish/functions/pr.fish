@@ -8,6 +8,8 @@ function pr -a subcommand
         __pr_list_in_repo
     case a
         __pr_list_own_active
+    case o
+        __pr_open_current
     case '*'
         echo "unknown subcommand"
     end
@@ -39,4 +41,12 @@ function __pr_select_id
     | xsv table \
     | fzf \
     | awk '{print $1}' 
+end
+
+function __pr_open_current
+    set -l current_ref (git symbolic-ref HEAD)
+
+    az repos pr list --status active \
+    | jq -r ".[] | select(.sourceRefName == \"$current_ref\") | .pullRequestId" \
+    | xargs -I{} az repos pr show --open --id {} > /dev/null
 end
