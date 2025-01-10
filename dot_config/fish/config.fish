@@ -8,7 +8,7 @@ set -gx SHELL (which fish)
 
 # define aliases
 alias ls="eza -1 -F"
-alias hx="helix"
+alias hx="env PATH=\"$PATH:~/.local/share/nvim/mason/bin\" helix"
 
 # define abbreviations
 abbr k "kubectl"
