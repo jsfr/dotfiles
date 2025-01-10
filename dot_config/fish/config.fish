@@ -9,6 +9,8 @@ set -gx SHELL (which fish)
 # define aliases
 alias ls="eza -1 -F"
 alias hx="env PATH=\"$PATH:~/.local/share/nvim/mason/bin\" helix"
+alias wcopy="win32yank.exe -i"
+alias wpaste="win32yank.exe -o"
 
 # define abbreviations
 abbr k "kubectl"
