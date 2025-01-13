@@ -16,7 +16,8 @@ function pr -a subcommand
 end
 
 function __pr_create -a draft
-    az repos pr create --draft $draft
+    az repos pr create --draft $draft && \
+    __pr_open_current
 end
 
 function __pr_list_in_repo
