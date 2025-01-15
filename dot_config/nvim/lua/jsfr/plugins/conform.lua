@@ -32,6 +32,7 @@ return {
             lua = { "stylua" },
             toml = { "taplo" },
             go = { "gofumpt", "goimports" },
+            terraform = { "terraform_fmt" },
         },
     },
 }

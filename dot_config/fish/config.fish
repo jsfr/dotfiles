@@ -27,8 +27,7 @@ abbr p "pnpm"
 abbr x "pnpx"
 abbr n "nvim"
 abbr cm "chezmoi"
-abbr yi "win32yank.exe -i"
-abbr yo "win32yank.exe -o"
+abbr wg "winget.exe"
 
 # define custom keybindings
 function fish_user_key_bindings
