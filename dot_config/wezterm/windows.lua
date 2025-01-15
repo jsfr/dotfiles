@@ -42,11 +42,16 @@ return {
     },
     launch_menu = {
         {
-            label = "New Tab (fish)",
+            label = "WSL: New Tab (fish)",
         },
         {
-            label = "New Tab (powershell)",
+            label = "Win: New Tab (powershell)",
             args = { "pwsh.exe" },
+            domain = { DomainName = "local" },
+        },
+        {
+            label = "Win: New Tab (nushell)",
+            args = { "nu.exe" },
             domain = { DomainName = "local" },
         },
     },
