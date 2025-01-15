@@ -13,11 +13,7 @@ general:
     - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
 
   # Commands to run after the WM config is reloaded.
-  config_reload_commands:
-    - "shell-exec taskkill /IM zebar.exe /F"
-    - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
-    - "shell-exec zebar"
-    - "shell-exec autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
+  config_reload_commands: []
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
