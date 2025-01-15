@@ -1,1 +1,1 @@
-{{- template "helix_config.toml" -}}
+{{- template "helix_config" -}}
