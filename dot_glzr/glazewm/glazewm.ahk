@@ -99,5 +99,5 @@ CapsLock & r:: {
 :o:;wm::jens.fredskov@nekohealth.com
 
 ; Other hotstrings
-::;td::TODO
+::;td::TODO: (jens)
 :o:;jf::jensfredskov
