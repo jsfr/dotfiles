@@ -65,6 +65,14 @@ require("lazy").setup({
         ft = { "rust" },
     },
 
+    -- Search and Replace
+    {
+        "nvimdev/hlsearch.nvim",
+        cond = not vim.g.vscode,
+        opts = {},
+        event = "BufRead",
+    },
+
     -- Git
     {
         "linrongbin16/gitlinker.nvim",
