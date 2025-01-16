@@ -3,9 +3,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- spacemacs inspired keybindings
-vim.keymap.set("n", "<leader>wc", "<c-w>q")
-vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>")
-vim.keymap.set("n", "<leader>ws", "<cmd>split<cr>")
+vim.keymap.set("n", "<leader>wc", "<c-w>q", { desc = "Close window" })
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Vertical split" })
+vim.keymap.set("n", "<leader>ws", "<cmd>split<cr>", { desc = "Horizontal split" })
 
 -- visual shifting (does not exit visual mode)
 vim.keymap.set("v", "<", "<gv")
@@ -30,8 +30,8 @@ end
 vim.keymap.set("n", "<tab>", mru_buffer)
 
 -- open lazy and mason
-vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>")
-vim.keymap.set("n", "<leader>M", "<cmd>Mason<cr>")
+vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
+vim.keymap.set("n", "<leader>M", "<cmd>Mason<cr>", { desc = "Open Mason" })
 
 -- VSCode keybindings
 if vim.g.vscode then

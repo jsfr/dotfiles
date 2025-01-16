@@ -32,11 +32,11 @@ return {
         telescope.load_extension("chezmoi")
 
         -- Keybindings
-        vim.keymap.set("n", "<leader>/", builtin.live_grep)
-        vim.keymap.set("n", "<leader>t", builtin.treesitter)
-        vim.keymap.set("n", "<leader>g", builtin.git_status)
-        vim.keymap.set("n", "<leader>f", builtin.git_files)
-        vim.keymap.set("n", "<leader>b", builtin.buffers)
-        vim.keymap.set("n", "<leader>.", telescope.extensions.chezmoi.find_files)
+        vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Live grep" })
+        vim.keymap.set("n", "<leader>t", builtin.treesitter, { desc = "Open treesitter symbol picker" })
+        vim.keymap.set("n", "<leader>g", builtin.git_status, { desc = "Open changed file picker" })
+        vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Open file picker" })
+        vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Open buffer picker" })
+        vim.keymap.set("n", "<leader>.", telescope.extensions.chezmoi.find_files, { desc = "Open chezmoi picker" })
     end,
 }

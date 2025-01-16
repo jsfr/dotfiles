@@ -7,12 +7,12 @@ return {
         {
             "<leader>D",
             "<cmd>Trouble diagnostics toggle<cr>",
-            desc = "Diagnostics (Trouble)",
+            desc = "Open/Close workspace diagnostics",
         },
         {
             "<leader>d",
             "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-            desc = "Buffer Diagnostics (Trouble)",
+            desc = "Open/Close buffer diagnostics",
         },
         -- {
         --     "<leader>cs",
@@ -27,12 +27,12 @@ return {
         {
             "<leader>l",
             "<cmd>Trouble loclist toggle<cr>",
-            desc = "Location List (Trouble)",
+            desc = "Open location list",
         },
         {
             "<leader>q",
             "<cmd>Trouble qflist toggle<cr>",
-            desc = "Quickfix List (Trouble)",
+            desc = "Open quickfix list",
         },
     },
 }

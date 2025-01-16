@@ -13,16 +13,30 @@ return {
         local schemastore = require("schemastore")
 
         local function on_attach(client, bufnr)
-            local bufopts = { noremap = true, silent = true, buffer = bufnr }
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-            vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, bufopts)
-            vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, bufopts)
-            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, bufopts)
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true, buffer = bufnr })
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr })
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = bufnr })
+            vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
+            vim.keymap.set(
+                "n",
+                "<leader>k",
+                vim.lsp.buf.hover,
+                { noremap = true, silent = true, buffer = bufnr, desc = "Show docs under cursor" }
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>r",
+                vim.lsp.buf.rename,
+                { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
+            )
+            vim.keymap.set(
+                "n",
+                "<leader>a",
+                vim.lsp.buf.code_action,
+                { noremap = true, silent = true, buffer = bufnr, desc = "Perform code action" }
+            )
+            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = bufnr })
+            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr })
 
             if client.server_capabilities.inlayHintProvider then
                 vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })

@@ -17,7 +17,7 @@ return {
     cond = not vim.g.vscode,
     opts = {},
     keys = {
-        { "<leader>x", delete_buffer },
-        { "<leader>X", delete_buffer_simple },
+        { "<leader>x", delete_buffer, desc = "Close buffer" },
+        { "<leader>X", delete_buffer_simple, desc = "Close buffer + window" },
     },
 }

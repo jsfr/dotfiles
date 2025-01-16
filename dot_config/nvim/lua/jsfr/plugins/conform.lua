@@ -12,6 +12,7 @@ return {
                     timeout_ms = 500,
                 })
             end,
+            desc = "Format buffer",
         },
     },
     opts = {
