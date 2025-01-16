@@ -32,15 +32,11 @@ return {
         telescope.load_extension("chezmoi")
 
         -- Keybindings
-        vim.keymap.set("n", "<leader>rg", builtin.live_grep)
-        vim.keymap.set("n", "<leader>fa", function()
-            builtin.find_files({ hidden = true })
-        end)
-        vim.keymap.set("n", "<leader>ft", builtin.treesitter)
-        vim.keymap.set("n", "<leader>fg", builtin.git_status)
-        vim.keymap.set("n", "<leader>ff", builtin.git_files)
-        vim.keymap.set("n", "<leader>fb", builtin.buffers)
-        vim.keymap.set("n", "<leader>fr", builtin.registers)
+        vim.keymap.set("n", "<leader>/", builtin.live_grep)
+        vim.keymap.set("n", "<leader>t", builtin.treesitter)
+        vim.keymap.set("n", "<leader>g", builtin.git_status)
+        vim.keymap.set("n", "<leader>f", builtin.git_files)
+        vim.keymap.set("n", "<leader>b", builtin.buffers)
         vim.keymap.set("n", "<leader>.", telescope.extensions.chezmoi.find_files)
     end,
 }

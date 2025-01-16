@@ -4,9 +4,8 @@ vim.g.maplocalleader = ","
 
 -- spacemacs inspired keybindings
 vim.keymap.set("n", "<leader>wc", "<c-w>q")
-vim.keymap.set("n", "<leader>w/", "<cmd>vsplit<cr>")
-vim.keymap.set("n", "<leader>w-", "<cmd>split<cr>")
-vim.keymap.set("n", "<leader>w_", "<c-w>_")
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>")
+vim.keymap.set("n", "<leader>ws", "<cmd>split<cr>")
 
 -- visual shifting (does not exit visual mode)
 vim.keymap.set("v", "<", "<gv")
@@ -31,19 +30,17 @@ end
 vim.keymap.set("n", "<tab>", mru_buffer)
 
 -- open lazy and mason
-vim.keymap.set("n", "<leader>l", "<cmd>Lazy<cr>")
-vim.keymap.set("n", "<leader>m", "<cmd>Mason<cr>")
+vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>")
+vim.keymap.set("n", "<leader>M", "<cmd>Mason<cr>")
 
 -- VSCode keybindings
-if not vim.g.vscode then
-    return
+if vim.g.vscode then
+    local vscode = require("vscode")
+
+    vim.keymap.set("n", "]d", function()
+        vscode.call("editor.action.marker.next")
+    end)
+    vim.keymap.set("n", "[d", function()
+        vscode.call("editor.action.marker.prev")
+    end)
 end
-
-local vscode = require("vscode")
-
-vim.keymap.set("n", "]d", function()
-    vscode.call("editor.action.marker.next")
-end)
-vim.keymap.set("n", "[d", function()
-    vscode.call("editor.action.marker.prev")
-end)
