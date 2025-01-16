@@ -95,3 +95,9 @@ CapsLock & r:: {
 ; Email autocompletion
 ::;mp::jensfredskov@gmail.com
 ::;mw::jens.fredskov@nekohealth.com
+::;pm::jensfredskov@gmail.com
+::;wm::jens.fredskov@nekohealth.com
+
+; Other hotstrings
+::;td::TODO
+::;jf::jensfredskov
