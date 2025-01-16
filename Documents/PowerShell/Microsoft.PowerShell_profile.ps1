@@ -15,10 +15,15 @@ Import-Module Abbr
 ealias cm "chezmoi"
 ealias n "nvim"
 
-Import-Module PSReadLine
-Set-PSReadLineOption -PredictionSource History
+# Import-Module PSReadLine
+# Set-PSReadLineOption -PredictionSource History
 Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+# Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+
+$env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+carapace _carapace | Out-String | Invoke-Expression
 
 Invoke-Expression (&{ zoxide init powershell --cmd cd | Out-String })
 Invoke-Expression (&{ chezmoi completion powershell | Out-String })
