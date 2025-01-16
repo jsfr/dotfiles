@@ -1,3 +1,3 @@
 function apicli
-    ./src/Api.Client.Cli/bin/Debug/net8.0/Api.Client.Cli $argv
+    ./artifacts/bin/Api.Client.Cli/debug/Api.Client.Cli $argv
 end
