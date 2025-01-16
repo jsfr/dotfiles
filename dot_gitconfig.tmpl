@@ -97,3 +97,7 @@
     diff = riff
     show = riff
     log = riff
+{{- if eq .chezmoi.os "windows" }}
+[credential "helperselector"]
+    selected = manager
+{{- end }}
