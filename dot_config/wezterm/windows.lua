@@ -45,13 +45,13 @@ return {
             label = "WSL: New Tab (fish)",
         },
         {
-            label = "Win: New Tab (powershell)",
-            args = { "pwsh.exe" },
+            label = "Win: New Tab (nushell)",
+            args = { "nu.exe" },
             domain = { DomainName = "local" },
         },
         {
-            label = "Win: New Tab (nushell)",
-            args = { "nu.exe" },
+            label = "Win: New Tab (powershell)",
+            args = { "pwsh.exe" },
             domain = { DomainName = "local" },
         },
     },
