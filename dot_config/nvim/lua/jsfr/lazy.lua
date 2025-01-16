@@ -65,12 +65,6 @@ require("lazy").setup({
         ft = { "rust" },
     },
 
-    -- Search and Replace
-    {
-        "bronson/vim-visual-star-search",
-        event = "VeryLazy",
-    },
-
     -- Git
     {
         "linrongbin16/gitlinker.nvim",
