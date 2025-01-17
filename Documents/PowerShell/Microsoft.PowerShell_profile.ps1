@@ -20,7 +20,7 @@ ealias n "nvim"
 Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 # Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
-$env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+$env:CARAPACE_BRIDGES = 'powershell'
 Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 carapace _carapace | Out-String | Invoke-Expression
