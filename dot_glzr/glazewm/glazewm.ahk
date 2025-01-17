@@ -37,8 +37,8 @@ CapsLock & t:: {
     WinActivate("ahk_exe ms-teams.exe")
 }
 
-!^+l::
-CapsLock & l:: {
+!^+o::
+CapsLock & o:: {
     ActivateOrRun("ahk_exe Logseq.exe", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
 }
 
