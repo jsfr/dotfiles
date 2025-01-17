@@ -16,6 +16,9 @@
     mc = merge --continue
     rc = rebase --continue
 
+    rb = "!git sw $(git default-branch) && git up && git sw - && git rebase $(git default-branch)"
+    sm = "!git sw $(git default-branch) && git up && git sw - && git merge $(git default-branch)"
+
     p = push
     fp = push --force-with-lease
     pf = push --force-with-lease
