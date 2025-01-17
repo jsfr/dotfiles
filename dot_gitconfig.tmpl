@@ -16,8 +16,8 @@
     mc = merge --continue
     rc = rebase --continue
 
-    rb = "!git sw $(git default-branch) && git up && git sw - && git rebase $(git default-branch)"
-    sm = "!git sw $(git default-branch) && git up && git sw - && git merge $(git default-branch)"
+    rb = "!git switch $(git default-branch) && git pull --all --rebase --autostash && git switch - && git rebase $(git default-branch)"
+    sm = "!git switch $(git default-branch) && git pull --all --rebase --autostash && git switch - && git merge $(git default-branch)"
 
     p = push
     fp = push --force-with-lease
@@ -30,12 +30,12 @@
 
     batman = "!git commit -m \"Batman! (this commit has no parents)\""
     c = commit
-    upd = "!git aa && git yolo && git push"
+    upd = "!git add -A && git yolo && git push"
     wip = commit -m "wip" --no-verify
     yolo = "!git commit -m \"`curl -s https://whatthecommit.com/index.txt`\""
 
     bb = "!better-git-branch.sh"
-    cb = "!git switch $(git default-branch) && git up && git create-branch -r"
+    cb = "!git switch $(git default-branch) && git pull --all --rebase --autostash && git create-branch -r"
     db = delete-branch
     dbf = "!git delete-branch $(git branch | fzf)"
 
