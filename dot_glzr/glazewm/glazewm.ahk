@@ -37,9 +37,9 @@ CapsLock & t:: {
     WinActivate("ahk_exe ms-teams.exe")
 }
 
-!^+o::
-CapsLock & o:: {
-    ActivateOrRun("ahk_exe Obsidian.exe", "C:\Users\JensFredskov\scoop\apps\obsidian\current\Obsidian.exe")
+!^+l::
+CapsLock & l:: {
+    ActivateOrRun("ahk_exe Logseq.exe", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
 }
 
 !^+w::
