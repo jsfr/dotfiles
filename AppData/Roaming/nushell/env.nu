@@ -16,5 +16,8 @@ atuin init nu | save -f (get-dir "atuin")
 # Enable sfsu
 sfsu hook --shell nu | save -f (get-dir "sfsu")
 
+# Enable mise
+mise activate nu | save -f (get-dir "mise")
+
 # Enable starship
 starship init nu | save -f (get-dir "starship")
