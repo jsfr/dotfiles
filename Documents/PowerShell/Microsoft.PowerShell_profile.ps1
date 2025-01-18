@@ -26,7 +26,5 @@ Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 carapace _carapace | Out-String | Invoke-Expression
 
 Invoke-Expression (&{ zoxide init powershell --cmd cd | Out-String })
-Invoke-Expression (&{ chezmoi completion powershell | Out-String })
 Invoke-Expression (&sfsu hook)
-
 Invoke-Expression (&starship init powershell)

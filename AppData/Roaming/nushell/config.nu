@@ -2,7 +2,7 @@ $env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://git
 $env.config.buffer_editor = 'hx' # Set editor
 $env.config.show_banner = false # Disable banner
 
-# $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
+$env.CARAPACE_BRIDGES = 'powershell'
 $env.EDITOR = 'hx'
 # $env.PATH = ($env.PATH | split row (char esep) | append $env.BUN_PATH)
 

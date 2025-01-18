@@ -8,7 +8,7 @@ mkdir ($nu.data-dir | path join "vendor/autoload")
 carapace _carapace nushell | save -f (get-dir "carapace")
 
 # Enable zoxide
-zoxide init nushell | save -f (get-dir "zoxide")
+zoxide init nushell --cmd cd | save -f (get-dir "zoxide")
 
 # Enable atuin
 atuin init nu | save -f (get-dir "atuin")

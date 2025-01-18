@@ -1,18 +1,5 @@
 {{- /* vim:set syntax=gitignore */ -}}
 
-{{ if ne .chezmoi.os "darwin" }}
-.1password/agent.sock
-.aerospace.toml
-.config/1Password/**
-.config/karabiner/**
-.config/swiftbar/**
-.config/wezterm/**
-.hammerspoon/**
-.ideavimrc
-Brewfile
-Library/**
-{{ end }}
-
 {{ if ne .chezmoi.os "windows" }}
 .glzr/**
 .tridactylrc
@@ -20,15 +7,14 @@ AppData/**
 Documents/**
 {{ end }}
 
-{{ if eq .chezmoi.os "windows" }}
-*
-
-!.config
-!.gitconfig
-!.ssh/**
-
-!.glzr/**
-!.tridactylrc
-!AppData/**
-!Documents/**
+{{ if ne .chezmoi.os "darwin" }}
+.1password/agent.sock
+.aerospace.toml
+.config/1Password/**
+.config/karabiner/**
+.config/swiftbar/**
+.hammerspoon/**
+.ideavimrc
+Brewfile
+Library/**
 {{ end }}

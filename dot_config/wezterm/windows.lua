@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 
 return {
     font_size = 11.0,
-    default_domain = "WSL:Arch",
+    default_domain = "WSL:NixOS",
     keys = {
         {
             key = "t",
@@ -42,15 +42,15 @@ return {
     },
     launch_menu = {
         {
-            label = "WSL: New Tab (fish)",
+            label = "New Tab (wsl)",
         },
         {
-            label = "Win: New Tab (nushell)",
+            label = "New Tab (win: nushell)",
             args = { "nu.exe" },
             domain = { DomainName = "local" },
         },
         {
-            label = "Win: New Tab (powershell)",
+            label = "New Tab (win: pwsh)",
             args = { "pwsh.exe" },
             domain = { DomainName = "local" },
         },
