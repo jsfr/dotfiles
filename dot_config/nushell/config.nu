@@ -41,6 +41,9 @@ $env.CARAPACE_MATCH = 'CASE_INSENSITIVE'
 
 # WSL paths
 path add "/mnt/c/WINDOWS/System32/OpenSSH"
+path add "/mnt/c/Users/JensFredskov/scoop/shims"
+
+source ($nu.data-dir | path join 'functions/pr.nu')
 
 # Aliases
 alias cm = chezmoi
