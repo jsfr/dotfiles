@@ -1,0 +1,49 @@
+use std/util "path add"
+
+# Config
+$env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://github.com/nushell/nushell/issues/5585
+$env.config.buffer_editor = 'nvim' # Set editor
+$env.config.show_banner = false # Disable banner
+
+# XDG
+$env.XDG_CONFIG_HOME = $env.HOME | path join ".config"
+$env.XDG_CACHE_HOME = $env.HOME | path join ".cache"
+$env.XDG_DATA_HOME = $env.HOME | path join ".local/share"
+$env.XDG_STATE_HOME = $env.HOME | path join ".local/state"
+
+# General env variables
+$env.PAGER = 'moar'
+$env.FZF_DEFAULT_COMMAND = 'fd -It f'
+$env.EDITOR = $env.config.buffer_editor
+$env.BROWSER = 'wslview'
+$env.BKT_CACHE_DIR = $env.XDG_CACHE_HOME
+$env.LOCAL_BIN_PATH = $env.HOME | path join '.local/bin'
+path add $env.LOCAL_BIN_PATH
+
+# Rust related
+$env.RUST_SRC_PATH = ^rustc --print sysroot | str trim | path join 'lib/rustlib/src/rust/src'
+$env.CARGO_BIN_PATH = $env.HOME | path join 'cargo/bin'
+path add $env.CARGO_BIN_PATH
+
+# Go related
+$env.GOPATH = $env.HOME | path join 'go'
+$env.GOBIN = $env.GOPATH | path join 'bin'
+path add $env.GOBIN
+
+# Dotnet related
+$env.DOTNET_BIN_PATH = $env.HOME | path join '.dotnet/tools'
+path add $env.DOTNET_BIN_PATH
+$env.NUGET_CREDENTIALPROVIDER_MSAL_ENABLED = true
+$env.NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO = true
+
+# Carapace
+$env.CARAPACE_MATCH = 'CASE_INSENSITIVE'
+
+# WSL paths
+path add "/mnt/c/WINDOWS/System32/OpenSSH"
+
+# Aliases
+alias cm = chezmoi
+alias n = nvim
+alias rebuild = sudo nixos-rebuild switch
+alias la = ls -a
