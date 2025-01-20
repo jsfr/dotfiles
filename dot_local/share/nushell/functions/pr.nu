@@ -1,5 +1,6 @@
-$env.AZDO_ORG = 'https://dev.azure.com/cur8/'
+$env.AZDO_ORG = 'https://dev.azure.com/cur8'
 $env.AZDO_PROJECT = 'TheRigg'
+$env.AZDO_USER = 'jens.fredskov@nekohealth.com'
 
 def "pr c" [] {
     __pr_create false
@@ -29,7 +30,12 @@ def "pr a" [] {
 }
 
 def "pr o" [] {
-    __pr_open_current
+    let ref = git symbolic-ref HEAD;
+    let id = az repos pr list --status active | from json | where sourceRefName == $ref | first | get pullRequestId;
+
+    if ($id | is-not-empty) {
+        az repos pr show --open --id $id | ignore
+    }
 }
 
 def __pr_select_id [pull_requests] {
@@ -43,23 +49,12 @@ def __pr_select_id [pull_requests] {
     | get id
 }
 
-def __pr_open_current [] {
-    let ref = git symbolic-ref HEAD;
-    let id = az repos pr list --status active | from json | where sourceRefName == $ref | first | get pullRequestId;
-
-    if ($id | is-not-empty) {
-        az repos pr show --open --id $id | ignore
-    }
-}
-
 def __pr_create [draft: bool] {
-    az repos pr create --draft ($draft | into string); __pr_open_current | ignore
+    let pull_request = az repos pr create --draft ($draft | into string) | from json;
+
+    open $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/$($pull_request.pullRequestId)"
 }
 
 def __pr_list_own_active [] {
-    const org = 'https://dev.azure.com/cur8/';
-    const project = 'TheRigg';
-    const creator = 'jens.fredskov@nekohealth.com';
-
-    az repos pr list --status active --organization $org -p $project --creator $creator | from json
+    az repos pr list --status active --organization $env.AZDO_ORG -p $env.AZDO_PROJECT --creator $env.AZDO_USER | from json
 }
