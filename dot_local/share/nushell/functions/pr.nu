@@ -53,7 +53,7 @@ def __pr_open_current [] {
 }
 
 def __pr_create [draft: bool] {
-    az repos pr create --draft $draft; __pr_open_current | ignore
+    az repos pr create --draft ($draft | into string); __pr_open_current | ignore
 }
 
 def __pr_list_own_active [] {
