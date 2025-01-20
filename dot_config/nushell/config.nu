@@ -45,7 +45,8 @@ $env.path ++= [ "/mnt/c/Users/JensFredskov/scoop/shims" ]
 $env.path ++= [ "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps" ]
 
 # Source custom commands
-source ($nu.data-dir | path join 'functions/pr.nu')
+use modules/pr.nu *
+#source ($nu.data-dir | path join 'functions/pr.nu')
 
 # Aliases
 alias cm = chezmoi
@@ -62,4 +63,8 @@ alias wpaste = win32yank.exe -o
 def --wrapped hx [...args] {
     path add ($env.XDG_DATA_HOME | path join "nvim/mason/bin")
     ^hx ...$args
+}
+
+def --env cdg [] {
+    cd (git root)
 }
