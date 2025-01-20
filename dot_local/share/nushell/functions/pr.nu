@@ -34,7 +34,7 @@ def "pr o" [] {
     let pull_request = az repos pr list --status active | from json | where sourceRefName == $ref | first;
 
     if ($pull_request.pullRequestId | is-not-empty) {
-        ^$env.BROWSER $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/$($pull_request.pullRequestId)"
+        ^$env.BROWSER $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/($pull_request.pullRequestId)"
     }
 }
 
@@ -53,7 +53,7 @@ def __pr_create [draft: bool] {
     let pull_request = az repos pr create --draft ($draft | into string) | from json;
 
     if ($pull_request.pullRequestId | is-not-empty) {
-        ^$env.BROWSER $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/$($pull_request.pullRequestId)"
+        ^$env.BROWSER $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/($pull_request.pullRequestId)"
     }
 }
 
