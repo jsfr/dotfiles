@@ -40,13 +40,29 @@ $env.NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO = true
 $env.CARAPACE_MATCH = 'CASE_INSENSITIVE'
 
 # WSL paths
-path add "/mnt/c/WINDOWS/System32/OpenSSH"
-path add "/mnt/c/Users/JensFredskov/scoop/shims"
+$env.path ++= [ "/mnt/c/WINDOWS/System32/OpenSSH" ]
+$env.path ++= [ "/mnt/c/Users/JensFredskov/scoop/shims" ]
+$env.path ++= [ "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps" ]
 
+# Source custom commands
 source ($nu.data-dir | path join 'functions/pr.nu')
 
 # Aliases
 alias cm = chezmoi
 alias n = nvim
 alias rebuild = sudo nixos-rebuild switch
+alias search = nix-search
 alias la = ls -a
+alias k = kubectl
+alias g = git
+alias tf = terraform
+alias wcopy = win32yank.exe -i
+alias wpaste = win32yank.exe -o
+
+def --wrapped hx [...args] {
+    path add ($env.XDG_DATA_HOME | path join "nvim/mason/bin")
+    ^hx ...$args
+}
+
+# Source prompt
+source ($nu.data-dir | path join 'prompt.nu')
