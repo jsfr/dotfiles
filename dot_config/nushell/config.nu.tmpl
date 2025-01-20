@@ -41,10 +41,12 @@ $env.NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO = true
 # Carapace
 $env.CARAPACE_MATCH = 'CASE_INSENSITIVE'
 
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # WSL paths
 $env.path ++= [ "/mnt/c/WINDOWS/System32/OpenSSH" ]
 $env.path ++= [ "/mnt/c/Users/JensFredskov/scoop/shims" ]
 $env.path ++= [ "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps" ]
+{{- end }}
 
 # Source custom commands
 use modules/pr
