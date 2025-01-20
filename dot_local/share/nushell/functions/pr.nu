@@ -31,10 +31,10 @@ def "pr a" [] {
 
 def "pr o" [] {
     let ref = git symbolic-ref HEAD;
-    let id = az repos pr list --status active | from json | where sourceRefName == $ref | first | get pullRequestId;
+    let pull_request = az repos pr list --status active | from json | where sourceRefName == $ref | first;
 
-    if ($id | is-not-empty) {
-        az repos pr show --open --id $id | ignore
+    if ($pull_request.pullRequestId | is-not-empty) {
+        ^$env.BROWSER $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/$($pull_request.pullRequestId)"
     }
 }
 
@@ -52,7 +52,9 @@ def __pr_select_id [pull_requests] {
 def __pr_create [draft: bool] {
     let pull_request = az repos pr create --draft ($draft | into string) | from json;
 
-    ^$env.BROWSER $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/$($pull_request.pullRequestId)"
+    if ($pull_request.pullRequestId | is-not-empty) {
+        ^$env.BROWSER $"($env.AZDO_ORG)/($env.AZDO_PROJECT)/_git/($pull_request.repository.name)/pullrequest/$($pull_request.pullRequestId)"
+    }
 }
 
 def __pr_list_own_active [] {
