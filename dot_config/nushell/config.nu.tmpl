@@ -7,56 +7,41 @@ $env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://git
 $env.config.buffer_editor = 'nvim' # Set editor
 $env.config.show_banner = false # Disable banner
 
+$env.PAGER = 'moar'
+$env.EDITOR = $env.config.buffer_editor
+$env.LOCAL_BIN_PATH = $env.HOME | path join '.local/bin'; path add $env.LOCAL_BIN_PATH
+
 # XDG
 $env.XDG_CONFIG_HOME = $env.HOME | path join ".config"
 $env.XDG_CACHE_HOME = $env.HOME | path join ".cache"
 $env.XDG_DATA_HOME = $env.HOME | path join ".local/share"
 $env.XDG_STATE_HOME = $env.HOME | path join ".local/state"
 
-# General env variables
-$env.PAGER = 'moar'
-$env.FZF_DEFAULT_COMMAND = 'fd -It f'
-$env.EDITOR = $env.config.buffer_editor
-$env.BROWSER = 'wslview'
-$env.BKT_CACHE_DIR = $env.XDG_CACHE_HOME
-$env.LOCAL_BIN_PATH = $env.HOME | path join '.local/bin'
-path add $env.LOCAL_BIN_PATH
-
-# Rust related
+# Rust
 $env.RUST_SRC_PATH = ^rustc --print sysroot | str trim | path join 'lib/rustlib/src/rust/src'
-$env.CARGO_BIN_PATH = $env.HOME | path join 'cargo/bin'
-path add $env.CARGO_BIN_PATH
+$env.CARGO_BIN_PATH = $env.HOME | path join 'cargo/bin'; path add $env.CARGO_BIN_PATH
 
-# Go related
+# Golang
 $env.GOPATH = $env.HOME | path join 'go'
-$env.GOBIN = $env.GOPATH | path join 'bin'
-path add $env.GOBIN
+$env.GOBIN = $env.GOPATH | path join 'bin'; path add $env.GOBIN
 
 # Dotnet related
-$env.DOTNET_BIN_PATH = $env.HOME | path join '.dotnet/tools'
-path add $env.DOTNET_BIN_PATH
+$env.DOTNET_BIN_PATH = $env.HOME | path join '.dotnet/tools'; path add $env.DOTNET_BIN_PATH
 $env.NUGET_CREDENTIALPROVIDER_MSAL_ENABLED = true
 $env.NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO = true
 
 # Carapace
 $env.CARAPACE_MATCH = 'CASE_INSENSITIVE'
 
-{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-# WSL paths
-$env.path ++= [ "/mnt/c/WINDOWS/System32/OpenSSH" ]
-$env.path ++= [ "/mnt/c/Users/JensFredskov/scoop/shims" ]
-$env.path ++= [ "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps" ]
-{{- end }}
+# bkt
+$env.BKT_CACHE_DIR = $env.XDG_CACHE_HOME
 
-# Source custom commands
-use modules/pr
-#source ($nu.data-dir | path join 'functions/pr.nu')
+# fzf
+$env.FZF_DEFAULT_COMMAND = 'fd -It f'
 
 # Aliases
 alias cm = chezmoi
 alias n = nvim
-alias rebuild = sudo nixos-rebuild switch
-alias search = nix-search
 alias la = ls -a
 alias k = kubectl
 alias g = git
@@ -72,3 +57,11 @@ def --wrapped hx [...args] {
 def --env cdg [] {
     cd (git root)
 }
+
+# Source custom modules
+use modules/pr
+
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# Source WSL related config
+source ./wsl.nu
+{{- end }}
