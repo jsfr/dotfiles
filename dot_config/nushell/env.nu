@@ -20,4 +20,4 @@ def --wrapped sfsu [...args] {
 sfsu hook --shell nu | save -f (get-dir "sfsu")
 
 # Enable starship
-# starship init nu | save -f (get-dir "starship")
+starship init nu | save -f (get-dir "starship")
