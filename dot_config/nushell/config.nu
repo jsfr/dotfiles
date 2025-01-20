@@ -63,6 +63,3 @@ def --wrapped hx [...args] {
     path add ($env.XDG_DATA_HOME | path join "nvim/mason/bin")
     ^hx ...$args
 }
-
-# Source prompt
-source ($nu.data-dir | path join 'prompt.nu')
