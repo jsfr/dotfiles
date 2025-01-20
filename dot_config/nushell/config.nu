@@ -45,7 +45,7 @@ $env.path ++= [ "/mnt/c/Users/JensFredskov/scoop/shims" ]
 $env.path ++= [ "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps" ]
 
 # Source custom commands
-use modules/pr.nu
+use modules/pr
 #source ($nu.data-dir | path join 'functions/pr.nu')
 
 # Aliases
