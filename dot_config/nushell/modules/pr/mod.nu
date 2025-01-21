@@ -28,6 +28,8 @@ export def a [] {
     let pull_requests = __pr_list_own_active;
     let id = __pr_select_id $pull_requests;
 
+    echo $id
+
     if ($id | is-not-empty) {
         az repos pr show --organization $azdo_org --open --id $id | ignore
     }
