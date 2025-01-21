@@ -107,7 +107,11 @@ require("lazy").setup({
     {
         "folke/ts-comments.nvim",
         cond = not vim.g.vscode,
-        opts = {},
+        opts = {
+            lang = {
+                nu = "# %s",
+            },
+        },
         event = "VeryLazy",
     },
 }, {
