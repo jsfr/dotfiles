@@ -104,6 +104,12 @@ require("lazy").setup({
         opts = {},
         event = "VeryLazy",
     },
+    {
+        "folke/ts-comments.nvim",
+        cond = not vim.g.vscode,
+        opts = {},
+        event = "VeryLazy",
+    },
 }, {
     install = { colorscheme = { "tokyonight-storm" } },
     performance = { reset_packpath = true },

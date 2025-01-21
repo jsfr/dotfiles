@@ -6,6 +6,7 @@ use std/util "path add"
 $env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://github.com/nushell/nushell/issues/5585
 $env.config.buffer_editor = 'nvim' # Set editor
 $env.config.show_banner = false # Disable banner
+$env.config.completions.algorithm = 'fuzzy' # Make completions match using fuzzy
 
 $env.PAGER = 'moar'
 $env.EDITOR = $env.config.buffer_editor
