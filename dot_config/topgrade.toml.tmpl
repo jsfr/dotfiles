@@ -1,11 +1,16 @@
 [misc]
 no_retry = true
-pre_sudo = true
 assume_yes = true
 skip_notify = true
 disable = ["git_repos", "containers", "microsoft_store"]
+
+{{- if ne .chezmoi.os "windows" }}
+pre_sudo = true
+{{- end}}
 
 # Custom commands
 [commands]
 "Neovim (lazy.nvim)" = "nvim --headless \"+Lazy! sync\" +qa"
 "Neovim (mason.nvim)" = "nvim --headless +MasonUpdate +qa"
+
+# vim: set syntax=toml :
