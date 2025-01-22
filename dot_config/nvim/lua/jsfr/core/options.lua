@@ -29,7 +29,7 @@ set_options({
     ruler = true,
     scrolljump = 5,
     scrolloff = 10,
-    shell = "/bin/bash",
+    -- shell = "/bin/bash",
     shiftwidth = 4,
     shortmess = "atOI",
     showbreak = "↳\\_",
