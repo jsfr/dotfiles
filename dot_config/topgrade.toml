@@ -5,11 +5,7 @@ assume_yes = true
 skip_notify = true
 disable = ["git_repos", "containers", "microsoft_store"]
 
-[linux]
-arch_package_manager = "aura"
-
 # Custom commands
 [commands]
 "Neovim (lazy.nvim)" = "nvim --headless \"+Lazy! sync\" +qa"
 "Neovim (mason.nvim)" = "nvim --headless +MasonUpdate +qa"
-"Mise" = "mise upgrade"
