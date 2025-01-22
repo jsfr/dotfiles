@@ -8,6 +8,10 @@ $env.config.buffer_editor = 'nvim' # Set editor
 $env.config.show_banner = false # Disable banner
 $env.config.completions.algorithm = 'fuzzy' # Make completions match using fuzzy
 
+{{- if eq .chezmoi.os "windows" }}
+$env.HOME = $env.USERPROFILE
+{{- end }}
+
 $env.PAGER = 'moar'
 $env.EDITOR = $env.config.buffer_editor
 $env.LOCAL_BIN_PATH = $env.HOME | path join '.local/bin'; path add $env.LOCAL_BIN_PATH
