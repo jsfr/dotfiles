@@ -1,12 +1,9 @@
-# vim: set syntax=nu :
-
 use std/util "path add"
 
 # Config
 $env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://github.com/nushell/nushell/issues/5585
 $env.config.buffer_editor = 'nvim' # Set editor
 $env.config.show_banner = false # Disable banner
-$env.config.completions.algorithm = 'fuzzy' # Make completions match using fuzzy
 
 {{- if eq .chezmoi.os "windows" }}
 $env.HOME = $env.USERPROFILE
@@ -65,9 +62,8 @@ def --env cdg [] {
 }
 
 # Source custom modules
+use modules/completions
 use modules/pr
+uname | get kernel-name | if $in == "Windows_NT" { use modules/wsl }
 
-{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 # Source WSL related config
-source ./wsl.nu
-{{- end }}
