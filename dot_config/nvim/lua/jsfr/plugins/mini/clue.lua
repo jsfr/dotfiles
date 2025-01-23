@@ -1,5 +1,6 @@
 return {
     "echasnovski/mini.clue",
+    cond = not vim.g.vscode,
     event = "VeryLazy",
     config = function()
         local miniclue = require("mini.clue")

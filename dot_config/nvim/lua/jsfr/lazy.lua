@@ -84,6 +84,7 @@ require("lazy").setup({
     -- Misc
     {
         "MagicDuck/grug-far.nvim",
+        cond = not vim.g.vscode,
         cmd = { "GrugFar" },
         opts = {},
     },
