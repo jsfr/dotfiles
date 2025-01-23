@@ -128,6 +128,7 @@ return {
                     },
                 },
             },
+            nil_ls = {},
         }
 
         local function get_server_config(server_name)
