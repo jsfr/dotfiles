@@ -6,7 +6,7 @@ $env.config.buffer_editor = 'nvim' # Set editor
 $env.config.show_banner = false # Disable banner
 
 {{- if eq .chezmoi.os "windows" }}
-$env.HOME = $env.USERPROFILE
+    $env.HOME = $env.USERPROFILE
 {{- end }}
 
 $env.PAGER = 'moar'
@@ -64,6 +64,7 @@ def --env cdg [] {
 # Source custom modules
 use modules/completions
 use modules/pr
-uname | get kernel-name | if $in == "Windows_NT" { use modules/wsl }
 
-# Source WSL related config
+{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+use modules/wsl *
+{{- end }}
