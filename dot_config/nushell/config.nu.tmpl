@@ -49,9 +49,6 @@ alias k = kubectl
 alias la = ls -a
 alias n = nvim
 alias tf = terraform
-alias wcopy = win32yank.exe -i
-alias wpaste = win32yank.exe -o
-alias wg = winget.exe
 
 def --wrapped hx [...args] {
     path add ($env.XDG_DATA_HOME | path join "nvim/mason/bin")
@@ -68,4 +65,5 @@ use modules/pr
 
 {{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
 use modules/wsl *
+use modules/neko
 {{- end }}
