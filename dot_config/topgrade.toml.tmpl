@@ -2,7 +2,7 @@
 no_retry = true
 assume_yes = true
 skip_notify = true
-disable = ["git_repos", "containers", "microsoft_store"]
+disable = ["git_repos", "containers", "microsoft_store", "bun"]
 
 {{- if ne .chezmoi.os "windows" }}
 pre_sudo = true
