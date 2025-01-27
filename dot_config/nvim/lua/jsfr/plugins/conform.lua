@@ -17,7 +17,7 @@ return {
     },
     opts = {
         format_on_save = {
-            lsp_format = "never",
+            lsp_format = "fallback",
             timeout_ms = 500,
         },
         formatters_by_ft = {
@@ -35,6 +35,7 @@ return {
             go = { "gofumpt", "goimports" },
             terraform = { "terraform_fmt" },
             nix = { "nixfmt" },
+            -- nu = { "nufmt" },
         },
     },
 }

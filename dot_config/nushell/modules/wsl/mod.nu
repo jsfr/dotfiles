@@ -4,10 +4,11 @@ export-env {
 
     # wsl paths
     $env.path ++= [
+        "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps",
+        "/mnt/c/Users/JensFredskov/scoop/shims",
         "/mnt/c/WINDOWS/System32/OpenSSH",
         "/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/",
-        "/mnt/c/Users/JensFredskov/scoop/shims",
-        "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps",
+        "/mnt/c/WINDOWS/system32"
     ]
 }
 

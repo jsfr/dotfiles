@@ -43,13 +43,19 @@ $env.BKT_CACHE_DIR = $env.XDG_CACHE_HOME
 $env.FZF_DEFAULT_COMMAND = 'fd -It f'
 
 # Aliases
-alias cm = chezmoi
-alias "cm g" = chezmoi git
 alias g = git
 alias k = kubectl
 alias la = ls -a
 alias n = nvim
 alias tf = terraform
+
+# Chezmoi alias
+alias cm = chezmoi
+alias "cm g" = chezmoi git
+alias "cm a" = chezmoi apply
+alias "cm d" = chezmoi diff
+alias "cm s" = chezmoi status
+alias "cm e" = chezmoi edit --apply
 
 def --wrapped hx [...args] {
     path add ($env.XDG_DATA_HOME | path join "nvim/mason/bin")

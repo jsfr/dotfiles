@@ -155,6 +155,19 @@ return {
             end
         end
 
+        local configs = require("lspconfig.configs")
+        if not configs.nushell_lsp then
+            configs.nushell_lsp = {
+                default_config = {
+                    cmd = { "nu", "--lsp" },
+                    root_dir = lspconfig.util.root_pattern(".git"),
+                    filetypes = { "nu" },
+                    on_attach = on_attach,
+                },
+            }
+        end
+        lspconfig.nushell_lsp.setup({})
+
         mason_lspconfig.setup({
             ensure_installed = vim.tbl_keys(servers),
             automatic_installation = true,
