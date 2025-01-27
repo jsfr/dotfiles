@@ -10,7 +10,7 @@ general:
   # Example: The below command kills Zebar.
   shutdown_commands:
     - "shell-exec taskkill /IM zebar.exe /F"
-    - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
+    # - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands: []
@@ -170,6 +170,7 @@ window_rules:
         window_class: { regex: "HwndWrapper" }
       - window_process: { equals: "FluentSearch" }
         window_title: { regex: "^Fluent Search$" }
+      - window_process: { equals: "copyq" }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
