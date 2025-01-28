@@ -32,9 +32,11 @@ bind cos recontain shopping
 unset autocmds
 unset autocontain
 " set autocontainmode relaxed
-" autocontain -s remote.com Work
+autocontain -s remote.com Work
+autocontain -s dev.azure.com Work
+autocontain -s portal.azure.com Work
 " autocontain -s configure.zsa.io Personal
 " autocontain -s nordnet.dk Banking
-" autocontain -s lsb.dk Banking
-" autocontain -s velliv.dk Banking
-" autocontain -s linkedin.com LinkedIn
+autocontain -s lsb.dk Banking
+autocontain -s velliv.dk Banking
+autocontain -s linkedin.com LinkedIn
