@@ -29,7 +29,7 @@ general:
     # Trigger for cursor jump:
     # - 'monitor_focus': Jump when focus changes between monitors.
     # - 'window_focus': Jump when focus changes between windows.
-    trigger: "window_focus"
+    trigger: "monitor_focus"
 
   # How windows should be hidden when switching workspaces.
   # - 'cloak': Recommended. Hides windows with no animation.
