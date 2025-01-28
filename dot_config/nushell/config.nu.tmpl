@@ -56,6 +56,7 @@ alias "cm a" = chezmoi apply
 alias "cm d" = chezmoi diff
 alias "cm s" = chezmoi status
 alias "cm e" = chezmoi edit --apply
+alias "cm u" = chezmoi update
 
 def --wrapped hx [...args] {
     path add ($env.XDG_DATA_HOME | path join "nvim/mason/bin")

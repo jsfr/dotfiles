@@ -43,10 +43,17 @@ export-env {
         $ls_dirs ++ $zoxide_dirs
     }
 
+    let chezmoi_completer = {|spans|
+        let spans = if $spans.1 == "git" { $spans | skip 1 } else $spans;
+
+        do $carapace_completer $spans
+    }
+
     let external_completer = {|spans|
         let spans = expand_alias $spans;
         let completer = match $spans.0 {
             __zoxide_z | __zoxide_zi => $zoxide_completer
+            # chezmoi => $chezmoi_completer
             _ => $carapace_completer
         };
 
