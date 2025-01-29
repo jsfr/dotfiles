@@ -128,8 +128,11 @@ return {
                     },
                 },
             },
-            nil_ls = {},
         }
+
+        if vim.env.WSL_DISTRO_NAME == "NixOS" then
+            servers["nil_ls"] = {}
+        end
 
         local function get_server_config(server_name)
             local config = servers[server_name]

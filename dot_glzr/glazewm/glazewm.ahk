@@ -39,7 +39,7 @@ CapsLock & t:: {
 
 !^+o::
 CapsLock & o:: {
-    ActivateOrRun("ahk_exe Logseq.exe", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
+    ActivateOrRun("ahk_exe Logseq.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
 }
 
 !^+w::
