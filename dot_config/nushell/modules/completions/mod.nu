@@ -27,7 +27,7 @@ export-env {
             if ($p.parent == "") { "./" } else $.parent
         };
 
-        let ls_dirs = ls -l $path.parent
+        let ls_dirs = ls -la $path.parent
         | where {|f|
             let type = match $f.type {
                 # For symlinks, use the type of the target

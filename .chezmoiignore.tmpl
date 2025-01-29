@@ -1,13 +1,13 @@
 {{- /* vim:set syntax=gitignore */ -}}
 
-{{ if ne .chezmoi.os "windows" }}
+{{ if not .is_windows }}
 .glzr/**
 .tridactylrc
 AppData/**
 Documents/**
 {{ end }}
 
-{{ if ne .chezmoi.os "darwin" }}
+{{ if not .is_macos }}
 .1password/agent.sock
 .aerospace.toml
 .config/1Password/**

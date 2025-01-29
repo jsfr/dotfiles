@@ -1,9 +1,17 @@
 [diff]
     command = "delta"
     pager = "riff"
+
 [merge]
     command = "nvim"
     args = {{ "[\"-d\", \"{{ .Destination }}\", \"{{ .Source }}\", \"{{ .Target }}\"]" }}
+
 [git]
     autoCommit = true
     autoPush = true
+
+[data]
+    is_wsl = {{ and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+    is_linux = {{ eq .chezmoi.os "linux" }}
+    is_macos = {{ eq .chezmoi.os "darwin" }}
+    is_windows = {{ eq .chezmoi.os "windows" }}

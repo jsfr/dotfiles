@@ -1,13 +1,15 @@
 use std/util "path add"
 
+{{- if .is_wsl }}
+use modules/wsl *
+{{- else if .is_windows }}
+use modules/windows *
+{{- end }}
+
 # Config
 $env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://github.com/nushell/nushell/issues/5585
 $env.config.buffer_editor = 'nvim' # Set editor
 $env.config.show_banner = false # Disable banner
-
-{{- if eq .chezmoi.os "windows" }}
-    $env.HOME = $env.USERPROFILE
-{{- end }}
 
 $env.PAGER = 'moar'
 $env.EDITOR = $env.config.buffer_editor
@@ -70,8 +72,4 @@ def --env cdg [] {
 # Source custom modules
 use modules/completions
 use modules/pr
-
-{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-use modules/wsl *
 use modules/neko
-{{- end }}

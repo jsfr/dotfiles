@@ -4,14 +4,10 @@
     name = Jens Fredskov
     email = jsfr@users.noreply.github.com
     signingKey = /Users/jens/.ssh/id_ed25519.pub
-[credential]
-{{- if eq .chezmoi.os "windows"}}
-    helper = manager
-{{- else}}
-    helper = cache
-{{- end }}
+
 [push]
     default = current
+
 [alias]
     mc = merge --continue
     rc = rebase --continue
@@ -63,44 +59,65 @@
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep "^[[:lower:]]"
+
 [core]
     editor = nvim
     pager = delta
-{{- if and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{- if .is_wsl }}
     sshCommand = ssh.exe
-{{- else if eq .chezmoi.os "windows" }}
+{{- else if .is_windows }}
     eol = lf
     autocrlf = false
 {{- end }}
+
 [help]
     autocorrect = prompt
+
 [init]
     defaultBranch = main
+
 [rerere]
     enabled = true
     autoUpdate = true
+
 [column]
     ui = auto
+
 [branch]
     sort = -committerdate
+
 [interactive]
     diffFilter = riff --color=on
+
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
     side-by-side = true
+
 [merge]
     conflictstyle = zdiff3
+
 [diff]
     colorMoved = default
     algorithm = histogram
+
 [gpg]
     format = ssh
+
 [pager]
     diff = riff
     show = riff
     log = riff
-{{- if eq .chezmoi.os "windows" }}
+
+{{- if .is_windows }}
+
+[credential]
+    helper = manager
 [credential "helperselector"]
     selected = manager
-{{- end }}
+
+{{- else }}
+
+[credential]
+    helper = cache
+{{- end -}}
