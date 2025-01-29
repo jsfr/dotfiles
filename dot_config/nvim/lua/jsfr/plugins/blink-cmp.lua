@@ -37,6 +37,35 @@ return {
                 "accept",
                 "fallback",
             },
+
+            cmdline = {
+                ["<Tab>"] = {
+                    function(cmp)
+                        if cmp.is_visible() then
+                            return cmp.select_next()
+                        else
+                            return false
+                        end
+                    end,
+                    "fallback",
+                },
+                ["<S-Tab>"] = {
+                    function(cmp)
+                        if cmp.is_visible() then
+                            return cmp.select_prev()
+                        else
+                            return false
+                        end
+                    end,
+                    "fallback",
+                },
+                ["<CR>"] = {
+                    function(cmp)
+                        cmp.accept()
+                    end,
+                    "fallback",
+                },
+            },
         },
 
         completion = {
@@ -57,11 +86,18 @@ return {
             nerd_font_variant = "mono",
         },
 
-        -- Default list of enabled providers defined so that you can extend it
-        -- elsewhere in your config, without redefining it, due to `opts_extend`
-        -- sources = {
-        -- default = { "lsp", "path", "snippets", "buffer" },
-        -- },
+        sources = {
+            -- add lazydev to your completion providers
+            default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+            providers = {
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    -- make lazydev completions top priority (see `:h blink.cmp`)
+                    score_offset = 100,
+                },
+            },
+        },
     },
     opts_extend = { "sources.default" },
 }
