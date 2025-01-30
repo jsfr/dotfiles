@@ -1,2 +1,3 @@
 build:
+    bun i
     bun build index.tsx --outdir build

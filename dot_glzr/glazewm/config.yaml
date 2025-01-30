@@ -13,7 +13,8 @@ general:
     # - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
 
   # Commands to run after the WM config is reloaded.
-  config_reload_commands: []
+  config_reload_commands:
+    - "shell-exec autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
@@ -144,14 +145,17 @@ window_rules:
       - window_process: { equals: "firefox" }
       - window_process: { equals: "floorp" }
       - window_process: { equals: "zen" }
+
   - commands: ["move --workspace 8", "focus --workspace 8"]
     match:
       # Move browsers to workspace 1.
       - window_process: { regex: "Signal|Beeper" }
+
   - commands: ["move --workspace 10", "focus --workspace 10"]
     match:
       # Move browsers to workspace 1.
       - window_process: { regex: "ms-teams" }
+
   - commands: ["ignore"]
     match:
       # Ignores any Zebar windows.
@@ -161,16 +165,11 @@ window_rules:
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
         window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
 
+  - commands: ["set-floating"]
+    match:
       # Ignore rules for various 3rd-party apps.
-      - window_process: { equals: "PowerToys" }
-        window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
-      - window_process: { equals: "PowerToys" }
-        window_title: { regex: ".*? - Peek" }
-      - window_process: { equals: "Lively" }
-        window_class: { regex: "HwndWrapper" }
-      - window_process: { equals: "FluentSearch" }
-        window_title: { regex: "^Fluent Search$" }
       - window_process: { equals: "copyq" }
+      - window_process: { equals: "SnippingTool" }
 
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
@@ -251,12 +250,6 @@ keybindings:
   # Redraw all windows.
   - commands: ["wm-redraw"]
     bindings: ["alt+shift+w"]
-
-  # Focus the next/previous workspace defined in `workspaces` config.
-  # - commands: ["focus --next-workspace"]
-  #   bindings: ["alt+s"]
-  # - commands: ["focus --prev-workspace"]
-  #   bindings: ["alt+a"]
 
   # Focus the workspace that last had focus.
   - commands: ["focus --recent-workspace"]

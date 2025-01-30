@@ -31,12 +31,12 @@ bind cos recontain shopping
 " Redirects
 unset autocmds
 unset autocontain
-" set autocontainmode relaxed
+set autocontainmode strict
 autocontain -s remote.com Work
 autocontain -s dev.azure.com Work
 autocontain -s portal.azure.com Work
-" autocontain -s configure.zsa.io Personal
-" autocontain -s nordnet.dk Banking
+autocontain -s configure.zsa.io Personal
+autocontain -s nordnet.dk Banking
 autocontain -s lsb.dk Banking
 autocontain -s velliv.dk Banking
 autocontain -s linkedin.com LinkedIn
