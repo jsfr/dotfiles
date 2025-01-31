@@ -16,7 +16,7 @@ export-env {
     let carapace_completer = {|spans|
         carapace $spans.0 nushell ...$spans
         | from json
-        | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+        | if ($in | default [] | where value == $"($spans | last)ERR" | is-empty) { $in } else { null }
     }
 
 

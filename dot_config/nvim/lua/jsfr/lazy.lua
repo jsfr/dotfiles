@@ -33,10 +33,23 @@ require("lazy").setup({
     {
         "ahmedkhalf/project.nvim",
         cond = not vim.g.vscode,
-        priority = 999,
+        priority = 990,
         lazy = false,
         main = "project_nvim",
         opts = { "detection_methods", { "pattern" } },
+    },
+    {
+        "stevearc/dressing.nvim",
+        cond = not vim.g.vscode,
+        opts = {},
+        priority = 990,
+        lazy = false,
+    },
+    {
+        "mong8se/actually.nvim",
+        cond = not vim.g.vscode,
+        priority = 980,
+        lazy = false,
     },
 
     -- Syntax plugins
@@ -96,12 +109,6 @@ require("lazy").setup({
     {
         "anuvyklack/pretty-fold.nvim",
         cond = not vim.g.vscode and not vim.opt.diff:get(),
-        opts = {},
-        event = "VeryLazy",
-    },
-    {
-        "stevearc/dressing.nvim",
-        cond = not vim.g.vscode,
         opts = {},
         event = "VeryLazy",
     },

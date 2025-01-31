@@ -10,27 +10,13 @@ return {
         keymap = {
             preset = "default",
             ["<Tab>"] = {
-                function(cmp)
-                    if cmp.is_visible() then
-                        return cmp.select_next()
-                    elseif cmp.snippet_active() then
-                        return cmp.snippet_forward()
-                    else
-                        return false
-                    end
-                end,
+                "select_next",
+                "snippet_forward",
                 "fallback",
             },
             ["<S-Tab>"] = {
-                function(cmp)
-                    if cmp.is_visible() then
-                        return cmp.select_prev()
-                    elseif cmp.snippet_active() then
-                        return cmp.snippet_backward()
-                    else
-                        return false
-                    end
-                end,
+                "select_prev",
+                "snippet_backward",
                 "fallback",
             },
             ["<CR>"] = {
@@ -40,28 +26,24 @@ return {
 
             cmdline = {
                 ["<Tab>"] = {
-                    function(cmp)
-                        if cmp.is_visible() then
-                            return cmp.select_next()
-                        else
-                            return false
-                        end
-                    end,
+                    "select_next",
                     "fallback",
                 },
                 ["<S-Tab>"] = {
-                    function(cmp)
-                        if cmp.is_visible() then
-                            return cmp.select_prev()
-                        else
-                            return false
-                        end
-                    end,
+                    "select_prev",
                     "fallback",
                 },
                 ["<CR>"] = {
                     function(cmp)
-                        cmp.accept()
+                        return cmp.accept({
+                            callback = function()
+                                vim.api.nvim_feedkeys(
+                                    vim.api.nvim_replace_termcodes("<CR>", true, false, true),
+                                    "n",
+                                    false
+                                )
+                            end,
+                        })
                     end,
                     "fallback",
                 },

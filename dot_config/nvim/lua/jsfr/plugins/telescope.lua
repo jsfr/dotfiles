@@ -37,6 +37,7 @@ return {
         vim.keymap.set("n", "<leader>g", builtin.git_status, { desc = "Open changed file picker" })
         vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Open file picker" })
         vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Open buffer picker" })
+        vim.keymap.set("n", "<leader>o", builtin.oldfiles, { desc = "Open oldfiles picker" })
         vim.keymap.set("n", "<leader>.", telescope.extensions.chezmoi.find_files, { desc = "Open chezmoi picker" })
     end,
 }
