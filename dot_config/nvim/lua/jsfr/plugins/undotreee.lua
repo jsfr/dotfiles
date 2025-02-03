@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     "jiaoshijie/undotree",
     cond = not vim.g.vscode,

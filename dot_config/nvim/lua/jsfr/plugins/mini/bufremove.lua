@@ -12,6 +12,8 @@ local function delete_buffer_simple()
     vim.api.nvim_buf_delete(0, {})
 end
 
+---@module "lazy"
+---@type LazySpec
 return {
     "echasnovski/mini.bufremove",
     cond = not vim.g.vscode,

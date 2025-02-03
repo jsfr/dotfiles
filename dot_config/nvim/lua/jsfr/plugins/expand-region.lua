@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     "terryma/vim-expand-region",
     keys = {

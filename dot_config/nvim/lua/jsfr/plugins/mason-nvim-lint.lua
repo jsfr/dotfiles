@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     "rshkarin/mason-nvim-lint",
     cond = not vim.g.vscode,

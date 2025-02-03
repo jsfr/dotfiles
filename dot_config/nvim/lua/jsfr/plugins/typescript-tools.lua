@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     "pmizio/typescript-tools.nvim",
     cond = not vim.g.vscode,

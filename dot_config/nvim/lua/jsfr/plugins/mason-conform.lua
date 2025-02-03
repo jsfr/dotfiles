@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     "LittleEndianRoot/mason-conform",
     cond = not vim.g.vscode,

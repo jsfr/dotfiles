@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     {
         "linrongbin16/lsp-progress.nvim",

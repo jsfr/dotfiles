@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     "saghen/blink.cmp",
     cond = not vim.g.vscode,

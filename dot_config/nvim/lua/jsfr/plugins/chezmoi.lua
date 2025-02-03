@@ -1,3 +1,5 @@
+---@module "lazy"
+---@type LazySpec
 return {
     "xvzc/chezmoi.nvim",
     cond = not vim.g.vscode,
