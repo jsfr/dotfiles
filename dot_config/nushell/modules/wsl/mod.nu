@@ -15,9 +15,9 @@ export-env {
 }
 
 # aliases
+export alias dn = dotnet
 export alias rebuild = sudo nixos-rebuild switch
 export alias search = nix-search
 export alias wcopy = win32yank.exe -i
-export alias wpaste = win32yank.exe -o
 export alias wg = winget.exe
-export alias dn = dotnet
+export alias wpaste = win32yank.exe -o

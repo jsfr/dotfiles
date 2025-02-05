@@ -33,9 +33,9 @@ return {
                 local rows = dimensions.pixel_height
 
                 if cols > rows then
-                    pane:split({ direction = "Right" })
+                    pane:split({ direction = "Right", domain = "CurrentPaneDomain" })
                 else
-                    pane:split({ direction = "Bottom" })
+                    pane:split({ direction = "Bottom", domain = "CurrentPaneDomain" })
                 end
             end),
         },
