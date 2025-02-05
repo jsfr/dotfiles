@@ -20,6 +20,9 @@ return {
     {
         "mfussenegger/nvim-lint",
         cond = not vim.g.vscode,
+        dependencies = {
+            "rshkarin/mason-nvim-lint",
+        },
         ft = { "dockerfile", "fennel", "fish", "ghaction", "html" },
         config = function()
             local augroup = require("jsfr.utils.augroup")
