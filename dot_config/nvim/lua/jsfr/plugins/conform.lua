@@ -4,9 +4,17 @@ return {
     {
         "LittleEndianRoot/mason-conform",
         cond = not vim.g.vscode,
+        lazy = true,
         dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
         opts = {
-            ensure_installed = { "stylua", "shfmt", "taplo", "prettier", "gofumpt", "goimports" },
+            ensure_installed = {
+                "stylua",
+                "shfmt",
+                "taplo",
+                "prettier",
+                "gofumpt",
+                "goimports",
+            },
             automatic_installation = false,
             quiet_mode = false,
         },
@@ -14,6 +22,10 @@ return {
     {
         "stevearc/conform.nvim",
         cond = not vim.g.vscode,
+        dependencies = {
+            "LittleEndianRoot/mason-conform",
+        },
+        event = { "BufReadPre" },
         cmd = { "ConformInfo" },
         keys = {
             {
@@ -48,7 +60,6 @@ return {
                 go = { "gofumpt", "goimports" },
                 terraform = { "terraform_fmt" },
                 nix = { "nixfmt" },
-                -- nu = { "nufmt" },
             },
         },
     },

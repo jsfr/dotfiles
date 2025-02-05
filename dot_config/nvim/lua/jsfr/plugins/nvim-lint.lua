@@ -4,6 +4,7 @@ return {
     {
         "rshkarin/mason-nvim-lint",
         cond = not vim.g.vscode,
+        lazy = true,
         dependencies = {
             "williamboman/mason.nvim",
             "mfussenegger/nvim-lint",
