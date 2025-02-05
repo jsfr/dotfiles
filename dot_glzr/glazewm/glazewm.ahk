@@ -24,6 +24,12 @@ ShiftedSend(key) {
     }
 }
 
+!^+s::
+CapsLock & s:: {
+    Run("SnippingTool.exe")
+}
+
+
 !^+e::
 CapsLock & e:: {
     ActivateOrRun("ahk_exe zen.exe ahk_class MozillaWindowClass", "C:\Program Files\Zen Browser\zen.exe")
@@ -44,7 +50,7 @@ CapsLock & o:: {
 
 !^+w::
 CapsLock & w:: {
-    ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Users\JensFredskov\scoop\apps\wezterm\current\wezterm-gui.exe")
+    ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Program Files\WezTerm\wezterm-gui.exe")
 }
 
 !^+v::

@@ -4,7 +4,6 @@ export-env {
 
     # wsl paths
     $env.path ++= [
-        # "/mnt/c/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.42.34433/bin/Hostx64/x64",
         "/mnt/c/Program Files/glzr.io/GlazeWM/cli",
         "/mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps",
         "/mnt/c/Users/JensFredskov/scoop/shims",
