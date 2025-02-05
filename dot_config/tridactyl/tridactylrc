@@ -22,6 +22,8 @@ bind J tabnext
 bind K tabprev
 
 unbind <c-f>
+bind --mode=ex <ArrowRight> ex.insert_completion
+bind --mode=ex <c-f> ex.insert_completion
 
 " Create mapping to open current url in another container
 bind cow recontain work
