@@ -39,15 +39,9 @@ require("lazy").setup({
         opts = { "detection_methods", { "pattern" } },
     },
     {
-        "stevearc/dressing.nvim",
-        cond = not vim.g.vscode,
-        opts = {},
-        priority = 990,
-        lazy = false,
-    },
-    {
         "mong8se/actually.nvim",
         cond = not vim.g.vscode,
+        dependencies = { "stevearc/dressing.nvim" },
         priority = 980,
         lazy = false,
     },
@@ -95,6 +89,12 @@ require("lazy").setup({
     },
 
     -- Misc
+    --
+    {
+        "stevearc/dressing.nvim",
+        cond = not vim.g.vscode,
+        opts = {},
+    },
     {
         "MagicDuck/grug-far.nvim",
         cond = not vim.g.vscode,
