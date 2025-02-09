@@ -7,6 +7,10 @@ AppData/**
 Documents/**
 {{ end }}
 
+{{ if .is_windows }}
+.glzr/zebar/default/node_modules/**
+{{ end }}
+
 {{ if not .is_macos }}
 .1password/agent.sock
 .aerospace.toml

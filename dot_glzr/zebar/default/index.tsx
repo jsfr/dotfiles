@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client"
 import * as zebar from "zebar"
 
 const providers = zebar.createProviderGroup({
-  network: { type: "network" },
   glazewm: { type: "glazewm" },
   date: { type: "date", formatting: "EEE d MMM t" },
   battery: { type: "battery" },
@@ -17,28 +16,6 @@ function App() {
   useEffect(() => {
     providers.onOutput(() => setOutput(providers.outputMap))
   }, [])
-
-  // Get icon to show for current network status.
-  function getNetworkIcon(networkOutput: any) {
-    switch (networkOutput.defaultInterface?.type) {
-      case "ethernet":
-        return <i className="nf nf-md-ethernet_cable"></i>
-      case "wifi":
-        if (networkOutput.defaultGateway?.signalStrength >= 80) {
-          return <i className="nf nf-md-wifi_strength_4"></i>
-        } else if (networkOutput.defaultGateway?.signalStrength >= 65) {
-          return <i className="nf nf-md-wifi_strength_3"></i>
-        } else if (networkOutput.defaultGateway?.signalStrength >= 40) {
-          return <i className="nf nf-md-wifi_strength_2"></i>
-        } else if (networkOutput.defaultGateway?.signalStrength >= 25) {
-          return <i className="nf nf-md-wifi_strength_1"></i>
-        } else {
-          return <i className="nf nf-md-wifi_strength_outline"></i>
-        }
-      default:
-        return <i className="nf nf-md-wifi_strength_off_outline"></i>
-    }
-  }
 
   // Get icon to show for how much of the battery is charged.
   function getBatteryIcon(batteryOutput: any) {
@@ -93,13 +70,6 @@ function App() {
               }
             ></button>
           </>
-        )}
-
-        {output.network && (
-          <div className="network">
-            {getNetworkIcon(output.network)}
-            {output.network.defaultGateway?.ssid}
-          </div>
         )}
 
         {output.battery && (

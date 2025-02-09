@@ -29,14 +29,13 @@ return {
             mods = "CTRL",
             action = wezterm.action_callback(function(_, pane)
                 local dimensions = pane:get_dimensions()
-                local cols = dimensions.pixel_width
-                local rows = dimensions.pixel_height
+                local domain = pane:get_domain_name()
 
-                if cols > rows then
-                    pane:split({ direction = "Right", domain = "CurrentPaneDomain" })
-                else
-                    pane:split({ direction = "Bottom", domain = "CurrentPaneDomain" })
-                end
+                pane:split({
+                    domain = "CurrentPaneDomain",
+                    direction = dimensions.pixel_width > dimensions.pixel_height and "Right" or "Bottom",
+                    args = domain == "local" and { "nu.exe" } or nil,
+                })
             end),
         },
     },
@@ -49,10 +48,10 @@ return {
             args = { "nu.exe" },
             domain = { DomainName = "local" },
         },
-        {
-            label = "New Tab (win: pwsh)",
-            args = { "pwsh.exe" },
-            domain = { DomainName = "local" },
-        },
+        -- {
+        --     label = "New Tab (win: pwsh)",
+        --     args = { "pwsh.exe" },
+        --     domain = { DomainName = "local" },
+        -- },
     },
 }

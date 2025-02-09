@@ -93,6 +93,13 @@ CapsLock & r:: {
     Run("C:\Users\JensFredskov\.local\bin\gwu.exe")
 }
 
+; Remap copilot button to Right Control
+*<+<#f23:: {
+    Send("{Blind}{LShift Up}{LWin Up}{RControl Down}")
+    KeyWait("F23")
+    Send("{RControl up}")
+}
+
 ; Simple hotstrings for Danish letters
 :?*:;a::å
 :?*:;e::æ
