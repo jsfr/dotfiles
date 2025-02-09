@@ -3,6 +3,11 @@
 return {
     "williamboman/mason.nvim",
     cond = not vim.g.vscode,
-    opts = {},
+    opts = {
+        registries = {
+            "github:mason-org/mason-registry",
+            "github:crashdummyy/mason-registry",
+        },
+    },
     cmd = { "Mason", "MasonUpdate" },
 }

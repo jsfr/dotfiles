@@ -70,26 +70,6 @@ return {
             jsonls = { settings = { json = { schemas = schemastore.json.schemas(), validate = { enable = true } } } },
             lua_ls = { setting = { Lua = { hint = { enable = true } } } },
             marksman = {},
-            omnisharp = {
-                settings = {
-                    RoslynExtensionsOptions = {
-                        InlayHintsOptions = {
-                            EnableForParameters = true,
-                            ForLiteralParameters = true,
-                            ForIndexerParameters = true,
-                            ForObjectCreationParameters = true,
-                            ForOtherParameters = true,
-                            SuppressForParametersThatDifferOnlyBySuffix = false,
-                            SuppressForParametersThatMatchMethodIntent = false,
-                            SuppressForParametersThatMatchArgumentName = false,
-                            EnableForTypes = true,
-                            ForImplicitVariableTypes = true,
-                            ForLambdaParameterTypes = true,
-                            ForImplicitObjectCreatio = true,
-                        },
-                    },
-                },
-            },
             ruff = {},
             rust_analyzer = { disabled = true },
             taplo = {},

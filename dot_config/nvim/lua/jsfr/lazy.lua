@@ -80,14 +80,6 @@ require("lazy").setup({
         event = "BufRead",
     },
 
-    -- Git
-    {
-        "linrongbin16/gitlinker.nvim",
-        cond = not vim.g.vscode,
-        opts = {},
-        cmd = { "GitLink" },
-    },
-
     -- Misc
     --
     {
