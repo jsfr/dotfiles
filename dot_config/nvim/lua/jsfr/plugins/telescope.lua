@@ -31,7 +31,6 @@ return {
 
         -- Extensions
         telescope.load_extension("fzy_native")
-        telescope.load_extension("chezmoi")
 
         -- Keybindings
         vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Live grep" })
@@ -40,6 +39,8 @@ return {
         vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Open file picker" })
         vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Open buffer picker" })
         vim.keymap.set("n", "<leader>o", builtin.oldfiles, { desc = "Open oldfiles picker" })
-        vim.keymap.set("n", "<leader>.", telescope.extensions.chezmoi.find_files, { desc = "Open chezmoi picker" })
+        vim.keymap.set("n", "<leader>.", function()
+            builtin.git_files({ cwd = vim.fn.expand("$HOME/.local/share/chezmoi") })
+        end, { desc = "Open chezmoi picker" })
     end,
 }

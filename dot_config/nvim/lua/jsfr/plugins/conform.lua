@@ -29,7 +29,7 @@ return {
         cmd = { "ConformInfo" },
         keys = {
             {
-                "<leader>F",
+                "<leader>=",
                 function()
                     require("conform").format({
                         async = true,
@@ -60,6 +60,7 @@ return {
                 go = { "gofumpt", "goimports" },
                 terraform = { "terraform_fmt" },
                 nix = { "nixfmt" },
+                ["_"] = { "trim_newlines", "trim_whitespace" },
             },
         },
     },
