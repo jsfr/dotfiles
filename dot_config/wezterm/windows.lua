@@ -1,5 +1,24 @@
 local wezterm = require("wezterm")
 
+local WIN_LOGO = wezterm.nerdfonts.md_microsoft
+local NIX_LOGO = wezterm.nerdfonts.md_nix
+
+wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
+    local active_pane = tab.active_pane
+    local title = active_pane.title
+
+    if active_pane.domain_name == "local" then
+        title = WIN_LOGO .. "  " .. title
+    else
+        title = NIX_LOGO .. "  " .. title
+    end
+
+    title = "[" .. tab.tab_index + 1 .. "] " .. title
+    title = wezterm.truncate_right(title, max_width - 2)
+
+    return " " .. title .. " "
+end)
+
 return {
     font_size = 11.0,
     default_domain = "WSL:NixOS",

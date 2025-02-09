@@ -50,11 +50,6 @@ function App() {
             ))}
           </div>
         )}
-      </div>
-
-      <div className="center">{output.date?.formatted}</div>
-
-      <div className="right">
         {output.glazewm && (
           <>
             {output.glazewm.bindingModes.map((bindingMode) => (
@@ -71,7 +66,11 @@ function App() {
             ></button>
           </>
         )}
+      </div>
 
+      <div className="center">{output.date?.formatted}</div>
+
+      <div className="right">
         {output.battery && (
           <div className="battery">
             {/* Show icon for whether battery is charging. */}
