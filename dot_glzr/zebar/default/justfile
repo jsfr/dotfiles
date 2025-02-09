@@ -1,5 +1,0 @@
-set windows-shell := ["pwsh.exe", "-NoLogo", "-Command"]
-
-build:
-    bun install
-    bun build index.tsx --outdir build
