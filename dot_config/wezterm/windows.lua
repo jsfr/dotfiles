@@ -22,6 +22,7 @@ end)
 return {
     font_size = 11.0,
     default_domain = "WSL:NixOS",
+    tab_max_width = 20,
     keys = {
         {
             key = "t",
