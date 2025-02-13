@@ -68,6 +68,11 @@ return {
             args = { "nu.exe" },
             domain = { DomainName = "local" },
         },
+        {
+            label = "New Tab (win: topgrade)",
+            args = { "topgrade.exe" },
+            domain = { DomainName = "local" },
+        },
         -- {
         --     label = "New Tab (win: pwsh)",
         --     args = { "pwsh.exe" },

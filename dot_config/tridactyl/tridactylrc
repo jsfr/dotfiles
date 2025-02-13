@@ -5,7 +5,7 @@
 set newtab about:blank
 set theme auto
 set hintfiltermode simple
-set hintnames uniform
+set hintnames short
 set hintdelay 100
 set incsearch true
 set tabclosepinned false
