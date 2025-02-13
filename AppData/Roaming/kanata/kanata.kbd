@@ -1,0 +1,41 @@
+(defcfg process-unmapped-keys no)
+
+(defvirtualkeys
+  ctl lctl
+  sft lsft
+  met lmet
+  alt lalt
+
+  meh (multi
+        (on-press toggle-virtualkey ctl)
+        (on-press toggle-virtualkey sft)
+        (on-press toggle-virtualkey alt))
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defvar
+  tap-timeout 200
+  hold-timeout 200
+  tt $tap-timeout
+  ht $hold-timeout)
+
+(deflayermap (base-layer)
+  a    (tap-hold $tt $ht a lctl)
+  s    (tap-hold $tt $ht s lalt)
+  d    (tap-hold $tt $ht d lctrl)
+  f    (tap-hold $tt $ht f lshift)
+  j    (tap-hold $tt $ht j rshift)
+  k    (tap-hold $tt $ht k rctrl)
+  l    (tap-hold $tt $ht l ralt)
+  ;    (tap-hold $tt $ht ; rctl)
+  v    (tap-hold $tt $ht v meh)
+  n    (tap-hold $tt $ht n meh)
+  caps (tap-hold $tt $ht esc meh)
+  _     _)
