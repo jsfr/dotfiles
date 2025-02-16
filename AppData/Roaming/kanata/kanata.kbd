@@ -1,15 +1,11 @@
-(defcfg process-unmapped-keys no)
-
-(defvirtualkeys
-  ctl lctl
-  sft lsft
-  met lmet
-  alt lalt
-
-  meh (multi
-        (on-press toggle-virtualkey ctl)
-        (on-press toggle-virtualkey sft)
-        (on-press toggle-virtualkey alt))
+(defcfg
+  process-unmapped-keys    no
+  log-layer-changes        no
+  tray-icon                "./s.png"
+  icon-match-layer-name    no
+  notify-cfg-reload        yes
+  notify-cfg-reload-silent no
+  notify-error             yes
 )
 
 (defsrc
@@ -17,25 +13,35 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rmet rctl
+  lctl lmet lalt           spc            ralt rctl
 )
 
 (defvar
-  tap-timeout 200
-  hold-timeout 200
+  tap-timeout 250
+  hold-timeout 180
   tt $tap-timeout
-  ht $hold-timeout)
+  ht $hold-timeout
+)
 
 (deflayermap (base-layer)
-  a    (tap-hold $tt $ht a lctl)
-  s    (tap-hold $tt $ht s lalt)
-  d    (tap-hold $tt $ht d lctrl)
-  f    (tap-hold $tt $ht f lshift)
-  j    (tap-hold $tt $ht j rshift)
-  k    (tap-hold $tt $ht k rctrl)
-  l    (tap-hold $tt $ht l ralt)
-  ;    (tap-hold $tt $ht ; rctl)
-  v    (tap-hold $tt $ht v meh)
-  n    (tap-hold $tt $ht n meh)
-  caps (tap-hold $tt $ht esc meh)
-  _     _)
+  a    (tap-hold $tt $ht a   lctl)
+  s    (tap-hold $tt $ht s   lalt)
+  d    (tap-hold $tt $ht d   lctrl)
+  f    (tap-hold $tt $ht f   lshift)
+  j    (tap-hold $tt $ht j   rshift)
+  k    (tap-hold $tt $ht k   rctrl)
+  l    (tap-hold $tt $ht l   ralt)
+  ;    (tap-hold $tt $ht ;   rctl)
+  v    (tap-hold $tt $ht v   (layer-while-held meh-layer))
+  n    (tap-hold $tt $ht n   (layer-while-held meh-layer))
+  caps (tap-hold $tt $ht esc (layer-while-held meh-layer))
+  _     _
+)
+
+(deflayer meh-layer
+  _ _          _          _          _          _          _            _            _          _             _          _          _          _
+  _ S-C-A-q    S-C-A-w    S-C-A-e    S-C-A-r    S-C-A-t    S-C-A-y      S-C-A-u      S-C-A-i    S-C-A-o       S-C-A-p    S-C-A-[    S-C-A-]    S-C-A-\
+  _ S-C-A-a    S-C-A-s    S-C-A-d    S-C-A-f    S-C-A-g    ArrowLeft    ArrowDown    ArrowUp    ArrowRight    S-C-A-;    S-C-A-'    _
+  _ S-C-A-z    S-C-A-x    S-C-A-c    S-C-A-v    S-C-A-b    S-C-A-n      S-C-A-m      S-C-A-,    S-C-A-.       S-C-A-/    _
+  _ _ _                                                  _                                                          _ _
+)

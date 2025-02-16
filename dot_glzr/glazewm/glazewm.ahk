@@ -1,11 +1,5 @@
 #SingleInstance Force
 
-SetCapsLockState("AlwaysOff")
-
-CapsLock:: {
-    Send("{Esc}")
-}
-
 ActivateOrRun(window, path) {
     DetectHiddenWindows(true)
     Id := WinExist(window)
