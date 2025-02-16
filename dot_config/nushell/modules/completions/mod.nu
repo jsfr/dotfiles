@@ -12,7 +12,7 @@ def expand_alias [spans] {
     }
 }
 
-export-env { 
+export-env {
     let carapace_completer = {|spans|
         carapace $spans.0 nushell ...$spans
         | from json
@@ -23,7 +23,7 @@ export-env {
     let zoxide_completer = {|spans|
         let zoxide_dirs = $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD} | take 5 | str replace $env.HOME "~"
 
-        let path = $spans | last | path parse | update parent {|p| 
+        let path = $spans | last | path parse | update parent {|p|
             if ($p.parent == "") { "./" } else $.parent
         };
 

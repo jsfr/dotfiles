@@ -8,6 +8,7 @@ return {
         "williamboman/mason.nvim",
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
+        "MysticalDevil/inlay-hints.nvim",
     },
     config = function()
         local lspconfig = require("lspconfig")
@@ -110,6 +111,26 @@ return {
                     },
                 },
             },
+            -- omnisharp = {
+            --     settings = {
+            --         RoslynExtensionsOptions = {
+            --             InlayHintsOptions = {
+            --                 EnableForParameters = true,
+            --                 ForLiteralParameters = true,
+            --                 ForIndexerParameters = true,
+            --                 ForObjectCreationParameters = true,
+            --                 ForOtherParameters = true,
+            --                 SuppressForParametersThatDifferOnlyBySuffix = true,
+            --                 SuppressForParametersThatMatchMethodIntent = true,
+            --                 SuppressForParametersThatMatchArgumentName = true,
+            --                 EnableForTypes = true,
+            --                 ForImplicitVariableTypes = true,
+            --                 ForLambdaParameterTypes = true,
+            --                 ForImplicitObjectCreation = true,
+            --             },
+            --         },
+            --     },
+            -- },
         }
 
         if vim.env.WSL_DISTRO_NAME == "NixOS" then
@@ -158,5 +179,16 @@ return {
             automatic_installation = true,
         })
         mason_lspconfig.setup_handlers({ setup_server })
+
+        require("inlay-hints").setup({
+            commands = { enable = true }, -- Enable InlayHints commands, include `InlayHintsToggle`, `InlayHintsEnable` and `InlayHintsDisable`
+            autocmd = { enable = true }, -- Enable the inlay hints on `LspAttach` event
+        })
+
+        -- require("ufo").setup({
+        --     provider_selector = function(bufnr, filetype, buftype)
+        --         return { "treesitter", "indent" }
+        --     end,
+        -- })
     end,
 }

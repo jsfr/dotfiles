@@ -99,12 +99,6 @@ require("lazy").setup({
         opts = {},
     },
     {
-        "anuvyklack/pretty-fold.nvim",
-        cond = not vim.g.vscode and not vim.opt.diff:get(),
-        opts = {},
-        event = "VeryLazy",
-    },
-    {
         "folke/ts-comments.nvim",
         cond = not vim.g.vscode,
         opts = {

@@ -25,31 +25,6 @@ return {
                 "accept",
                 "fallback",
             },
-
-            cmdline = {
-                ["<Tab>"] = {
-                    "select_next",
-                    "fallback",
-                },
-                ["<S-Tab>"] = {
-                    "select_prev",
-                    "fallback",
-                },
-                ["<CR>"] = {
-                    function(cmp)
-                        return cmp.accept({
-                            callback = function()
-                                vim.api.nvim_feedkeys(
-                                    vim.api.nvim_replace_termcodes("<CR>", true, false, true),
-                                    "n",
-                                    false
-                                )
-                            end,
-                        })
-                    end,
-                    "fallback",
-                },
-            },
         },
 
         completion = {
@@ -79,6 +54,33 @@ return {
                     module = "lazydev.integrations.blink",
                     -- make lazydev completions top priority (see `:h blink.cmp`)
                     score_offset = 100,
+                },
+            },
+        },
+
+        cmdline = {
+            keymap = {
+                ["<Tab>"] = {
+                    "select_next",
+                    "fallback",
+                },
+                ["<S-Tab>"] = {
+                    "select_prev",
+                    "fallback",
+                },
+                ["<CR>"] = {
+                    function(cmp)
+                        return cmp.accept({
+                            callback = function()
+                                vim.api.nvim_feedkeys(
+                                    vim.api.nvim_replace_termcodes("<CR>", true, false, true),
+                                    "n",
+                                    false
+                                )
+                            end,
+                        })
+                    end,
+                    "fallback",
                 },
             },
         },

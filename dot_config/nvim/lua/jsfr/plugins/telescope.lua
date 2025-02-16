@@ -19,11 +19,11 @@ return {
             defaults = {
                 mappings = {
                     i = {
-                        ["<c-t>"] = trouble.open,
+                        ["<c-o>"] = trouble.open,
                         ["<esc>"] = actions.close,
                     },
                     n = {
-                        ["<c-t>"] = trouble.open,
+                        ["<c-o>"] = trouble.open,
                     },
                 },
             },

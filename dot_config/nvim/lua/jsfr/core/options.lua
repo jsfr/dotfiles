@@ -59,4 +59,6 @@ set_options({
     undodir = "/tmp//," .. vim.fs.normalize("~/.undodir"),
     backupdir = "/tmp//," .. vim.fs.normalize("~/.backupdir"),
     directory = "/tmp//," .. vim.fs.normalize("~/.swapdir"),
+    -- foldmethod = "expr",
+    -- foldexpr = "nvim_treesitter#foldexpr()",
 })
