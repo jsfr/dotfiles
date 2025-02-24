@@ -18,7 +18,10 @@ Documents/**
 .config/karabiner/**
 .config/swiftbar/**
 .hammerspoon/**
-.ideavimrc
 Brewfile
 Library/**
+{{ end }}
+
+{{ if (or (not .is_macos) (not .is_windows)) }}
+.ideavimrc
 {{ end }}
