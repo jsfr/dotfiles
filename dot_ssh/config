@@ -1,5 +1,5 @@
 Host github.com
-  IdentityFile ~/.ssh/personal_key.pub
+  IdentityFile ~/.ssh/personal
 
 Host ssh.dev.azure.com
-  IdentityFile ~/.ssh/neko_key.pub
+  IdentityFile ~/.ssh/nekohealth
