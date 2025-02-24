@@ -29,12 +29,12 @@ return {
         cmd = { "ConformInfo" },
         keys = {
             {
-                "<leader>=",
+                "<leader>F",
                 function()
                     require("conform").format({
                         async = true,
                         lsp_format = "fallback",
-                        timeout_ms = 500,
+                        timeout_ms = 1000,
                     })
                 end,
                 desc = "Format buffer",
@@ -43,7 +43,7 @@ return {
         opts = {
             format_on_save = {
                 lsp_format = "fallback",
-                timeout_ms = 500,
+                timeout_ms = 1000,
             },
             formatters_by_ft = {
                 typescript = { "prettier" },

@@ -3,7 +3,6 @@
 [user]
     name = Jens Fredskov
     email = jsfr@users.noreply.github.com
-    signingKey = /Users/jens/.ssh/id_ed25519.pub
 
 [push]
     default = current
@@ -65,9 +64,7 @@
 [core]
     editor = nvim
     pager = delta
-{{- if .is_wsl }}
-    sshCommand = ssh.exe
-{{- else if .is_windows }}
+{{- if .is_windows }}
     eol = lf
     autocrlf = false
 {{- end }}

@@ -13,5 +13,6 @@ return {
             replace = "cs",
             update_n_lines = "",
         },
+        n_lines = 20,
     },
 }
