@@ -1,5 +1,11 @@
 #SingleInstance Force
 
+SetCapsLockState("AlwaysOff")
+
+CapsLock:: {
+    Send("{Esc}")
+}
+
 ActivateOrRun(window, path) {
     DetectHiddenWindows(true)
     Id := WinExist(window)
@@ -10,48 +16,85 @@ ActivateOrRun(window, path) {
     }
 }
 
-!^+s::{
+ShiftedSend(key) {
+    if GetKeyState("Shift") {
+        Send("+" key)
+    } else {
+        Send(key)
+    }
+}
+
+!^+s::
+CapsLock & s:: {
     Run("SnippingTool.exe")
 }
 
 
-!^+e::{
+!^+e::
+CapsLock & e:: {
     ActivateOrRun("ahk_exe zen.exe ahk_class MozillaWindowClass", "C:\Program Files\Zen Browser\zen.exe")
 }
 
-!^+t::{
+!^+t::
+CapsLock & t:: {
     DetectHiddenWindows(true)
     Run("ms-teams.exe")
     WinWait("ahk_exe ms-teams.exe")
     WinActivate("ahk_exe ms-teams.exe")
 }
 
-!^+o::{
+!^+o::
+CapsLock & o:: {
     ActivateOrRun("ahk_exe Logseq.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
 }
 
-!^+w::{
+!^+w::
+CapsLock & w:: {
     ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Program Files\WezTerm\wezterm-gui.exe")
 }
 
-!^+v::{
+!^+v::
+CapsLock & v:: {
     ActivateOrRun("ahk_exe Code.exe", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
 }
 
-!^+c::{
+!^+c::
+CapsLock & c:: {
     ActivateOrRun("ahk_exe olk.exe ahk_class Olk Host", "olk.exe")
 }
 
-!^+a::{
+!^+a::
+CapsLock & a:: {
     ; ActivateOrRun("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\signal-desktop\Signal.exe")
     ActivateOrRun("ahk_exe Beeper.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\beeper\Beeper.exe")
 }
 
-!^+r::{
+CapsLock & h:: {
+    ShiftedSend("{Left}")
+}
+
+CapsLock & j:: {
+    ShiftedSend("{Down}")
+}
+
+CapsLock & k:: {
+    ShiftedSend("{Up}")
+}
+
+CapsLock & l:: {
+    ShiftedSend("{Right}")
+}
+
+CapsLock & Esc::`
+CapsLock & d::!^+d
+
+!^+r::
+CapsLock & r:: {
     Run("C:\Users\JensFredskov\.local\bin\gwu.exe")
 }
 
 ; Remap copilot button to Right Control
+; rebind copilot to rCtrl
 *<+<#f23:: {
     Send("{Blind}{LShift Up}{LWin Up}{RControl Down}")
     KeyWait("F23")
