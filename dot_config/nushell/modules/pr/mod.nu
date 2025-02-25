@@ -35,7 +35,7 @@ export def a [] {
 
 export def o [] {
     let ref = git symbolic-ref HEAD;
-    let pull_request = az repos pr list --status active | from json | where sourceRefName == $ref | first;
+    let pull_request = az repos pr list --status active -s $ref | from json | first;
 
     if ($pull_request.pullRequestId | is-not-empty) {
         ^$env.BROWSER $"($azdo_org)/($azdo_project)/_git/($pull_request.repository.name)/pullrequest/($pull_request.pullRequestId)"
