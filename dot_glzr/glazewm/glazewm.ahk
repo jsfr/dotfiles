@@ -49,10 +49,12 @@ CapsLock & a:: {
 }
 
 CapsLock & r:: {
-    Run("C:\Users\JensFredskov\.local\bin\gwu.exe")
+    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files (x86)\JetBrains\JetBrains Rider 2024.3.5\bin\rider64.exe")
 }
 
-CapsLock & d::!^+d
+CapsLock & q:: {
+    Run("C:\Users\JensFredskov\.local\bin\gwu.exe")
+}
 
 ; Remap copilot button to Right Control
 ; rebind copilot to rCtrl
@@ -70,9 +72,7 @@ CapsLock & d::!^+d
 ; Email autocompletion
 :o:;mp::jensfredskov@gmail.com
 :o:;mw::jens.fredskov@nekohealth.com
-:o:;pm::jensfredskov@gmail.com
-:o:;wm::jens.fredskov@nekohealth.com
 
 ; Other hotstrings
-:?:;td::TODO: (jens)
+:*:;td::TODO: (jens)
 :o:;jf::jensfredskov

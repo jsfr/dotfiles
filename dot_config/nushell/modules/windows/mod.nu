@@ -1,5 +1,6 @@
 export-env {
     $env.BROWSER = 'C:\Program Files\Zen Browser\zen.exe'
+    $env.GIT_EDITOR = 'hx'
 
     $env.HOME = $env.USERPROFILE
 }

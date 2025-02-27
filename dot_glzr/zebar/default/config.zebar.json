@@ -6,6 +6,14 @@
   "focused": false,
   "resizable": false,
   "transparent": false,
+  "privileges": {
+    "shellCommands": [
+      {
+        "program": "C:\\Users\\JensFredskov\\Downloads\\keymapper-4.10.2-Windows-x86_64\\keymapperctl.exe",
+        "argsRegex": ".*"
+      }
+    ]
+  },
   "presets": [
     {
       "name": "default",

@@ -12,9 +12,23 @@ createRoot(document.getElementById("root")!).render(<App />)
 
 function App() {
   const [output, setOutput] = useState(providers.outputMap)
+  const [isKeymapperEnabled, setKeymapperEnabled] = useState("wait")
 
   useEffect(() => {
     providers.onOutput(() => setOutput(providers.outputMap))
+  }, [])
+
+  useEffect(() => {
+    zebar
+      .shellExec(
+        "C:\\Users\\JensFredskov\\Downloads\\keymapper-4.10.2-Windows-x86_64\\keymapperctl.exe --is-pressed Virtual1",
+      )
+      .then(({ code }) => {
+        setKeymapperEnabled(code == 0 ? "good" : "bad")
+      })
+      .catch((err) => {
+        setKeymapperEnabled(err)
+      })
   }, [])
 
   // Get icon to show for how much of the battery is charged.
@@ -81,6 +95,12 @@ function App() {
             {Math.round(output.battery.chargePercent)}%
           </div>
         )}
+        <div>
+          {/* <button */}
+          {/* className={`nf ${isKeymapperEnabled ? "nf-md-keyboard" : "nf-md-keyboard_off"}`} */}
+          {/* {`${isKeymapperEnabled}`} */}
+          {/* ></button> */}
+        </div>
       </div>
     </div>
   )
