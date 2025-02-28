@@ -26,7 +26,7 @@ i {
 body {
   color: var(--main-bg-color);
   font-family: JetBrainsMono NFM;
-  font-size: 12px;
+  font-size: 13px;
   overflow: hidden;
 }
 
@@ -64,16 +64,6 @@ body,
   justify-self: end;
 }
 
-.logo,
-.binding-mode,
-.tiling-direction,
-.network,
-.memory,
-.cpu,
-.battery {
-  margin-right: 20px;
-}
-
 .workspaces {
   display: flex;
   align-items: center;
@@ -99,7 +89,8 @@ body,
 }
 
 .binding-mode,
-.tiling-direction {
+.tiling-direction,
+.keymapper-button {
   background: rgb(255 255 255 / 15%);
   color: rgb(255 255 255 / 90%);
   border-radius: 2px;
@@ -107,14 +98,15 @@ body,
   padding: 4px 8px;
   border: 0;
   cursor: pointer;
-}
-
-.binding-mode {
   margin-right: 4px;
 }
 
-.cpu .high-usage {
-  color: #900029;
+.binding-mode {
+  background: rgb(255 75 75 / 50%)
+}
+
+.keymapper-button.off {
+  color: rgb(255 255 255 / 40%);
 }
 
 .battery {

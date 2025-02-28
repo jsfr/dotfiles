@@ -9,7 +9,7 @@
   "privileges": {
     "shellCommands": [
       {
-        "program": "C:\\Users\\JensFredskov\\Downloads\\keymapper-4.10.2-Windows-x86_64\\keymapperctl.exe",
+        "program": "C:\\Program Files\\keymapper\\keymapperctl.exe",
         "argsRegex": ".*"
       }
     ]

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { createRoot } from "react-dom/client"
 import * as zebar from "zebar"
 
+const KEYMAPPER = "C:\\Program Files\\keymapper\\keymapperctl.exe" as const
+
 const providers = zebar.createProviderGroup({
   glazewm: { type: "glazewm" },
   date: { type: "date", formatting: "EEE d MMM t" },
@@ -12,23 +14,21 @@ createRoot(document.getElementById("root")!).render(<App />)
 
 function App() {
   const [output, setOutput] = useState(providers.outputMap)
-  const [isKeymapperEnabled, setKeymapperEnabled] = useState("wait")
+  const [isKeymapperEnabled, setKeymapperEnabled] = useState(false)
+
+  const checkKeymapper = async () => {
+    const { code } = await zebar.shellExec(KEYMAPPER, "--is-pressed Virtual1")
+    setKeymapperEnabled(code == 0)
+  }
+
+  const toggleKeymapper = async () => {
+    await zebar.shellExec(KEYMAPPER, "--toggle Virtual1")
+    await checkKeymapper()
+  }
 
   useEffect(() => {
     providers.onOutput(() => setOutput(providers.outputMap))
-  }, [])
-
-  useEffect(() => {
-    zebar
-      .shellExec(
-        "C:\\Users\\JensFredskov\\Downloads\\keymapper-4.10.2-Windows-x86_64\\keymapperctl.exe --is-pressed Virtual1",
-      )
-      .then(({ code }) => {
-        setKeymapperEnabled(code == 0 ? "good" : "bad")
-      })
-      .catch((err) => {
-        setKeymapperEnabled(err)
-      })
+    checkKeymapper()
   }, [])
 
   // Get icon to show for how much of the battery is charged.
@@ -65,19 +65,24 @@ function App() {
           </div>
         )}
         {output.glazewm && (
+          <button
+            className={`tiling-direction nf ${output.glazewm.tilingDirection === "horizontal" ? "nf-md-swap_horizontal" : "nf-md-swap_vertical"}`}
+            onClick={() =>
+              output.glazewm?.runCommand("toggle-tiling-direction")
+            }
+          ></button>
+        )}
+        <button
+          onClick={toggleKeymapper}
+          className={`nf ${isKeymapperEnabled ? "nf-md-keyboard_outline" : "nf-md-keyboard_off_outline off"} keymapper-button`}
+        ></button>
+        {output.glazewm && (
           <>
             {output.glazewm.bindingModes.map((bindingMode) => (
               <button className="binding-mode" key={bindingMode.name}>
                 {bindingMode.displayName ?? bindingMode.name}
               </button>
             ))}
-
-            <button
-              className={`tiling-direction nf ${output.glazewm.tilingDirection === "horizontal" ? "nf-md-swap_horizontal" : "nf-md-swap_vertical"}`}
-              onClick={() =>
-                output.glazewm?.runCommand("toggle-tiling-direction")
-              }
-            ></button>
           </>
         )}
       </div>
@@ -95,12 +100,6 @@ function App() {
             {Math.round(output.battery.chargePercent)}%
           </div>
         )}
-        <div>
-          {/* <button */}
-          {/* className={`nf ${isKeymapperEnabled ? "nf-md-keyboard" : "nf-md-keyboard_off"}`} */}
-          {/* {`${isKeymapperEnabled}`} */}
-          {/* ></button> */}
-        </div>
       </div>
     </div>
   )
