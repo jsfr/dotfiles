@@ -165,6 +165,9 @@ window_rules:
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
         window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
 
+      # Ignore Windows Terminal to use it as toggle term (quake-style)
+      - window_process: { equals: "WindowsTerminal" }
+
   - commands: ["set-floating"]
     match:
       # Ignore rules for various 3rd-party apps.
