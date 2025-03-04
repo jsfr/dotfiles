@@ -5,11 +5,15 @@ general:
   startup_commands:
     - "shell-exec zebar"
     - "shell-exec autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
+    - "shell-exec C:\\Program Files\\keymapperd.exe"
+    - "shell-exec C:\\Program Files\\keymapper.exe"
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
   shutdown_commands:
     - "shell-exec taskkill /IM zebar.exe /F"
+    - "shell-exec taskkill /IM keymapper.exe /F"
+    - "shell-exec taskkill /IM keymapperd.exe /F"
     # - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
 
   # Commands to run after the WM config is reloaded.
