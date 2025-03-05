@@ -14,6 +14,9 @@ return {
         local ts_error_translator = require("ts-error-translator")
 
         typescript_tools.setup({
+            single_file_support = false,
+            root_dir = vim.fs.root(0, { "package.json" }),
+
             settings = {
                 tsserver_file_preferences = {
                     includeInlayParameterNameHints = "all",

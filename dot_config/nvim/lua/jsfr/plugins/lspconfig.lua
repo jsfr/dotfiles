@@ -75,6 +75,7 @@ return {
             rust_analyzer = { disabled = true },
             taplo = {},
             terraformls = {},
+            denols = {},
             tflint = {},
             ts_ls = { disabled = true },
             typos_lsp = {},
