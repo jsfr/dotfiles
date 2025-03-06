@@ -52,7 +52,7 @@ export-env {
     let external_completer = {|spans|
         let spans = expand_alias $spans;
         let completer = match $spans.0 {
-            __zoxide_z | __zoxide_zi => $zoxide_completer
+            # __zoxide_z | __zoxide_zi => $zoxide_completer
             # chezmoi => $chezmoi_completer
             _ => $carapace_completer
         };

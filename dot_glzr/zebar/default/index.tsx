@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     providers.onOutput(() => setOutput(providers.outputMap))
     checkKeymapper()
-  }, [])
+  }, [output.glazewm?.focusedMonitor.id])
 
   // Get icon to show for how much of the battery is charged.
   function getBatteryIcon(batteryOutput: any) {

@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
     "pmizio/typescript-tools.nvim",
-    cond = not vim.g.vscode,
+    cond = false,
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "dmmulroy/ts-error-translator.nvim",

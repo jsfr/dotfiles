@@ -75,9 +75,15 @@ return {
             rust_analyzer = { disabled = true },
             taplo = {},
             terraformls = {},
-            denols = {},
+            ts_ls = {
+                single_file_support = false,
+                root_dir = lspconfig.util.root_pattern("package.json"),
+            },
+            denols = {
+                single_file_support = false,
+                root_dir = lspconfig.util.root_pattern("deno.json"),
+            },
             tflint = {},
-            ts_ls = { disabled = true },
             typos_lsp = {},
             yamlls = {
                 settings = {
@@ -112,26 +118,6 @@ return {
                     },
                 },
             },
-            -- omnisharp = {
-            --     settings = {
-            --         RoslynExtensionsOptions = {
-            --             InlayHintsOptions = {
-            --                 EnableForParameters = true,
-            --                 ForLiteralParameters = true,
-            --                 ForIndexerParameters = true,
-            --                 ForObjectCreationParameters = true,
-            --                 ForOtherParameters = true,
-            --                 SuppressForParametersThatDifferOnlyBySuffix = true,
-            --                 SuppressForParametersThatMatchMethodIntent = true,
-            --                 SuppressForParametersThatMatchArgumentName = true,
-            --                 EnableForTypes = true,
-            --                 ForImplicitVariableTypes = true,
-            --                 ForLambdaParameterTypes = true,
-            --                 ForImplicitObjectCreation = true,
-            --             },
-            --         },
-            --     },
-            -- },
         }
 
         if vim.env.WSL_DISTRO_NAME == "NixOS" then
