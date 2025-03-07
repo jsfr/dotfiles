@@ -4,23 +4,22 @@ general:
   # Example: The below command launches Zebar.
   startup_commands:
     - "shell-exec zebar"
-    - "shell-exec autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
-    - "shell-exec C:\\Program Files\\keymapper\\keymapperd.exe"
+    - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
+    - "shell-exec --hide-window C:\\Program Files\\keymapper\\keymapperd.exe"
     - "shell-exec C:\\Program Files\\keymapper\\keymapper.exe"
-    - "shell-exec C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe"
+    - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe"
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
   shutdown_commands:
-    - "shell-exec taskkill /IM zebar.exe /F"
-    - "shell-exec taskkill /IM keymapper.exe /F"
-    - "shell-exec taskkill /IM keymapperd.exe /F"
-    - "shell-exec taskkill /IM glazewm-listener.exe /F"
-    # - "shell-exec taskkill /IM AutoHotkeyUX.exe /F"
+    - "shell-exec --hide-window taskkill /IM zebar.exe /F"
+    - "shell-exec --hide-window taskkill /IM keymapper.exe /F"
+    - "shell-exec --hide-window taskkill /IM keymapperd.exe /F"
+    - "shell-exec --hide-window taskkill /IM glazewm-listener.exe /F"
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands:
-    - "shell-exec autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
+    - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
@@ -230,12 +229,12 @@ keybindings:
     bindings: ["alt+v"]
 
   # Change focus from tiling windows -> floating -> fullscreen.
-  - commands: ["wm-cycle-focus"]
-    bindings: ["alt+space"]
+  # - commands: ["wm-cycle-focus"]
+  #   bindings: ["alt+space"]
 
   # Change the focused window to be floating.
   - commands: ["toggle-floating --centered"]
-    bindings: ["alt+shift+space"]
+    bindings: ["alt+space"]
 
   # Change the focused window to be tiling.
   - commands: ["toggle-tiling"]
@@ -254,12 +253,8 @@ keybindings:
     bindings: ["alt+shift+r"]
 
   # Redraw all windows.
-  - commands: ["wm-redraw"]
-    bindings: ["alt+shift+w"]
-
-  # Focus the workspace that last had focus.
-  - commands: ["focus --recent-workspace"]
-    bindings: ["alt+d", "alt+escape", "alt+oem_tilde"]
+  # - commands: ["wm-redraw"]
+  #   bindings: ["alt+shift+w"]
 
   # Change focus to a workspace defined in `workspaces` config.
   - commands: ["focus --workspace 1"]
@@ -284,13 +279,15 @@ keybindings:
     bindings: ["alt+0"]
   - commands: ["focus --workspace 11"]
     bindings: ["alt+oem_minus"]
+  - commands: ["focus --recent-workspace"]
+    bindings: ["alt+oem_plus"]
 
   # Move the focused window's parent workspace to a monitor in a given
   # direction.
-  - commands: ["move-workspace --direction left"]
-    bindings: ["alt+shift+a", "alt+shift+oem_comma"]
-  - commands: ["move-workspace --direction right"]
-    bindings: ["alt+shift+f", "alt+shift+oem_period"]
+  # - commands: ["move-workspace --direction left"]
+  #   bindings: ["alt+shift+a", "alt+shift+oem_comma"]
+  # - commands: ["move-workspace --direction right"]
+  #   bindings: ["alt+shift+f", "alt+shift+oem_period"]
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move --workspace 1", "focus --workspace 1"]
@@ -315,3 +312,5 @@ keybindings:
     bindings: ["alt+shift+0"]
   - commands: ["move --workspace 11", "focus --workspace 11"]
     bindings: ["alt+shift+oem_minus"]
+  - commands: ["move --recent-workspace", "focus --recent-workspace"]
+    bindings: ["alt+shift+oem_plus"]

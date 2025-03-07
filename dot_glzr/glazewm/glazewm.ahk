@@ -55,7 +55,7 @@ CapsLock & r:: {
 }
 
 CapsLock & q:: {
-    Run("C:\Users\JensFredskov\.local\bin\gwu.exe", , "Hide")
+    Run("C:\Users\JensFredskov\repos\github.com\jsfr\glazewm-listener\glazewm-listener.exe update", , "Hide")
 }
 
 CapsLock & g:: {
