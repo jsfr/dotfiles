@@ -1,6 +1,8 @@
 export-env {
     $env.BROWSER = 'C:\Program Files\Zen Browser\zen.exe'
-    # $env.GIT_EDITOR = 'micro'
+    $env.path ++= [
+        'C:\Program Files\Git\bin',
+    ]
 
     $env.HOME = $env.USERPROFILE
 }

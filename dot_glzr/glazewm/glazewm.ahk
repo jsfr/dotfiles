@@ -10,6 +10,7 @@ ActivateOrRun(window, path) {
     } else {
         Run(path)
     }
+    DetectHiddenWindows(false)
 }
 
 CapsLock & s:: {
@@ -25,6 +26,7 @@ CapsLock & t:: {
     Run("ms-teams.exe")
     WinWait("ahk_exe ms-teams.exe")
     WinActivate("ahk_exe ms-teams.exe")
+    DetectHiddenWindows(false)
 }
 
 CapsLock & o:: {
@@ -53,7 +55,11 @@ CapsLock & r:: {
 }
 
 CapsLock & q:: {
-    Run("C:\Users\JensFredskov\.local\bin\gwu.exe")
+    Run("C:\Users\JensFredskov\.local\bin\gwu.exe", , "Hide")
+}
+
+CapsLock & g:: {
+    Run("C:\Program Files\WezTerm\wezterm.exe connect wuake --class org.wezfurlong.wezterm.wuake", , "Hide")
 }
 
 ; Remap copilot button to Right Control
@@ -70,9 +76,9 @@ CapsLock & q:: {
 :?*:;o::ø
 
 ; Email autocompletion
-:o:;mp::jensfredskov@gmail.com
-:o:;mw::jens.fredskov@nekohealth.com
+:?*:;mp::jensfredskov@gmail.com
+:?*:;mw::jens.fredskov@nekohealth.com
 
 ; Other hotstrings
-:*:;td::TODO: (jens)
-:o:;jf::jensfredskov
+:?*:;td::TODO: (jens)
+:?*:;jf::jensfredskov
