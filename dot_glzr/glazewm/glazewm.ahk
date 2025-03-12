@@ -18,7 +18,7 @@ CapsLock & s:: {
 }
 
 CapsLock & e:: {
-    ActivateOrRun("ahk_exe zen.exe ahk_class MozillaWindowClass", "C:\Program Files\Zen Browser\zen.exe")
+    ActivateOrRun("ahk_exe firefox.exe ahk_class MozillaWindowClass", "C:\Program Files\Mozilla Firefox\firefox.exe")
 }
 
 CapsLock & t:: {
@@ -58,9 +58,9 @@ CapsLock & q:: {
     Run("C:\Users\JensFredskov\repos\github.com\jsfr\glazewm-listener\glazewm-listener.exe update", , "Hide")
 }
 
-CapsLock & g:: {
-    Run("C:\Program Files\WezTerm\wezterm.exe connect wuake --class org.wezfurlong.wezterm.wuake", , "Hide")
-}
+; CapsLock & g:: {
+;     Run("C:\Program Files\WezTerm\wezterm.exe connect wuake --class org.wezfurlong.wezterm.wuake", , "Hide")
+; }
 
 ; Remap copilot button to Right Control
 ; rebind copilot to rCtrl
