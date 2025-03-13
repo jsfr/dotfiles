@@ -37,9 +37,4 @@ local function append_table(src_tbl, dst_tbl)
 end
 append_table(ss.keys, config.keys)
 
--- Enable wuake
-require("wuake").setup({
-    config = config,
-})
-
 return config

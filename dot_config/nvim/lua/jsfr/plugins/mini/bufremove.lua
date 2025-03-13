@@ -16,10 +16,10 @@ end
 ---@type LazySpec
 return {
     "echasnovski/mini.bufremove",
-    cond = not vim.g.vscode,
+    cond = false,
     opts = {},
     keys = {
-        { "<C-w>", delete_buffer, desc = "Close buffer" },
+        { "<C-W>", delete_buffer, desc = "Close buffer" },
         -- { "<C-W>", delete_buffer_simple, desc = "Close buffer + window" },
     },
 }

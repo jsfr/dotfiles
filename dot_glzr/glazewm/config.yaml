@@ -280,14 +280,7 @@ keybindings:
   - commands: ["focus --workspace 11"]
     bindings: ["alt+oem_minus"]
   - commands: ["focus --recent-workspace"]
-    bindings: ["alt+oem_plus"]
-
-  # Move the focused window's parent workspace to a monitor in a given
-  # direction.
-  # - commands: ["move-workspace --direction left"]
-  #   bindings: ["alt+shift+a", "alt+shift+oem_comma"]
-  # - commands: ["move-workspace --direction right"]
-  #   bindings: ["alt+shift+f", "alt+shift+oem_period"]
+    bindings: ["alt+oem_plus", "alt+oem_tilde", "alt+escape"]
 
   # Move focused window to a workspace defined in `workspaces` config.
   - commands: ["move --workspace 1", "focus --workspace 1"]
@@ -313,4 +306,4 @@ keybindings:
   - commands: ["move --workspace 11", "focus --workspace 11"]
     bindings: ["alt+shift+oem_minus"]
   - commands: ["move --recent-workspace", "focus --recent-workspace"]
-    bindings: ["alt+shift+oem_plus"]
+    bindings: ["alt+shift+oem_plus", "alt+shift+oem_tilde", "alt+shift+escape"]

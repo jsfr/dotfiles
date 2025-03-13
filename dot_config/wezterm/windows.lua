@@ -74,10 +74,5 @@ return {
             args = { "topgrade.exe" },
             domain = { DomainName = "local" },
         },
-        -- {
-        --     label = "New Tab (win: pwsh)",
-        --     args = { "pwsh.exe" },
-        --     domain = { DomainName = "local" },
-        -- },
     },
 }
