@@ -31,9 +31,9 @@ $env.GOBIN = $env.GOPATH | path join bin; path add $env.GOBIN
 
 # Dotnet related
 $env.DOTNET_BIN_PATH = $env.HOME | path join .dotnet tools; path add $env.DOTNET_BIN_PATH
+$env.DOTNET_CLI_TELEMETRY_OPTOUT = true
 $env.NUGET_CREDENTIALPROVIDER_MSAL_ENABLED = true
 $env.NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO = true
-# $env.DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1
 
 # Carapace
 $env.CARAPACE_MATCH = 'CASE_INSENSITIVE'
