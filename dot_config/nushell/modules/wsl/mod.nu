@@ -16,6 +16,7 @@ export-env {
 
 # aliases
 export alias rebuild = sudo nixos-rebuild switch
+export alias upgrade = cd /etc/nixos && sudo nix flake update && sudo nixos-rebuild switch
 export alias search = nix-search
 
 export alias dn = dotnet
