@@ -46,8 +46,13 @@ CapsLock & c:: {
 }
 
 CapsLock & a:: {
-    ActivateOrRun("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\signal-desktop\Signal.exe")
-    ActivateOrRun("ahk_exe Beeper.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\beeper\Beeper.exe")
+    DetectHiddenWindows(true)
+    if (WinActive("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1")) {
+        ActivateOrRun("ahk_exe Beeper.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\beeper\Beeper.exe")
+    } else {
+        ActivateOrRun("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\signal-desktop\Signal.exe")
+    }
+    DetectHiddenWindows(false)
 }
 
 CapsLock & r:: {
@@ -80,5 +85,7 @@ CapsLock & q:: {
 :?*:;mw::jens.fredskov@nekohealth.com
 
 ; Other hotstrings
-:?*:;td::TODO: (jens)
+:?*:;td::{
+    Send(FormatTime(,"'TODO: ('yyyy-MM-dd' - jens)'"))
+}
 :?*:;jf::jensfredskov

@@ -54,7 +54,7 @@ return {
                         },
                     },
                 },
-                filewatching = false,
+                filewatching = "off",
             })
         end,
         init = function()

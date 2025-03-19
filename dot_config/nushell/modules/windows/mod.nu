@@ -1,8 +1,9 @@
 export-env {
-    $env.BROWSER = 'C:\Program Files\Zen Browser\zen.exe'
+    $env.BROWSER = 'C:\Program Files\Mozilla Firefox\firefox.exe'
     $env.path ++= [
         'C:\Program Files\Git\bin',
     ]
+    $env.GIT_EDITOR = 'hx'
 
     $env.HOME = $env.USERPROFILE
 }
