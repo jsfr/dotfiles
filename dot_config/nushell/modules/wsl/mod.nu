@@ -16,10 +16,15 @@ export-env {
 
 # aliases
 export alias rebuild = sudo nixos-rebuild switch
-export alias upgrade = cd /etc/nixos && sudo nix flake update && sudo nixos-rebuild switch
 export alias search = nix-search
 
 export alias dn = dotnet
 export alias wg = winget.exe
 export alias wcopy = win32yank.exe -i
 export alias wpaste = win32yank.exe -o
+
+export def upgrade [] {
+    cd /etc/nixos
+    sudo nix flake update
+    sudo nixos-rebuild switch
+}

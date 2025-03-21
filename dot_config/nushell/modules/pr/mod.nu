@@ -1,5 +1,5 @@
 const azdo_org = 'https://dev.azure.com/cur8'
-const azdo_project = 'TheRigg'
+const azdo_project = 'Engineering'
 const azdo_user = 'jens.fredskov@nekohealth.com'
 
 export def main [] {
