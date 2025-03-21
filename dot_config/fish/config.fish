@@ -9,20 +9,15 @@ set -gx SHELL (which fish)
 # define aliases
 alias ls="eza -1 -F"
 alias hx="env PATH=\"$PATH:~/.local/share/nvim/mason/bin\" helix"
-alias wcopy="win32yank.exe -i"
-alias wpaste="win32yank.exe -o"
 
 # define abbreviations
-abbr k "kubectl"
 abbr zap "brew uninstall --force --zap"
 abbr cask "brew install --cask"
-abbr tf "terraform"
 abbr cdg "cd (git root)"
 abbr g "git"
 abbr lg "lazygit"
 abbr n "nvim"
 abbr cm "chezmoi"
-abbr wg "winget.exe"
 
 # define custom keybindings
 function fish_user_key_bindings
@@ -60,7 +55,7 @@ end
 
 # completions
 if command -q just
-    bkt --ttl "7days" -- just --completions fish | source 
+    bkt --ttl "7days" -- just --completions fish | source
 end
 if command -q wezterm
     bkt --ttl "7days" -- wezterm shell-completion --shell fish | source
@@ -68,9 +63,3 @@ end
 if command -q gs
     bkt --ttl "7days" -- gs shell completion fish | source
 end
-
-# function storePathForWindowsTerminal --on-variable PWD
-#     if test -n "$WT_SESSION"
-#       printf "\e]9;9;%s\e\\" (wslpath -w "$PWD")
-#     end
-# end

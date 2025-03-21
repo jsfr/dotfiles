@@ -32,6 +32,6 @@ return {
     },
     -- Hotfix for https://github.com/wez/wezterm/issues/3774
     freetype_load_target = "Light",
-    -- config.freetype_render_target = "HorizontalLcd"
+    -- freetype_render_target = "HorizontalLcd",
     cell_width = 0.9,
 }

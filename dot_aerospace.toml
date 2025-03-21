@@ -34,16 +34,10 @@ outer.right = 8
 # Disable annoying hide keybindings
 cmd-h = []
 
-ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-zen'
-ctrl-alt-shift-p = 'exec-and-forget open -a 1Password'
-ctrl-alt-shift-w = 'exec-and-forget open -a WezTerm'
+ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-firefox'
+ctrl-alt-shift-w = 'exec-and-forget open -a Wezterm'
 ctrl-alt-shift-a = 'exec-and-forget open -a Beeper && open -a Signal'
-ctrl-alt-shift-c = 'exec-and-forget open -a "Calendar"'
-ctrl-alt-shift-s = 'exec-and-forget open -a Slack'
-ctrl-alt-shift-z = 'exec-and-forget pgrep -fi zoom.us && open -a zoom.us'
-ctrl-alt-shift-o = 'exec-and-forget open -a Obsidian'
-ctrl-alt-shift-t = 'exec-and-forget open -a "Microsoft Teams"'
-ctrl-alt-shift-v = 'exec-and-forget open -a "Visual Studio Code"'
+ctrl-alt-shift-o = 'exec-and-forget open -a Logseq'
 cmd-esc = 'exec-and-forget open -a "Mission Control"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
