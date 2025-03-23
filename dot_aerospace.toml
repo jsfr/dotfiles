@@ -34,7 +34,7 @@ outer.right = 8
 # Disable annoying hide keybindings
 cmd-h = []
 
-ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-firefox'
+ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-browser Firefox'
 ctrl-alt-shift-w = 'exec-and-forget open -a Wezterm'
 ctrl-alt-shift-a = 'exec-and-forget open -a Beeper && open -a Signal'
 ctrl-alt-shift-o = 'exec-and-forget open -a Logseq'

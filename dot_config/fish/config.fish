@@ -1,10 +1,5 @@
-# source .profile
-if type -q _babelfish
-    _babelfish "$HOME/.profile" | source
-end
-
-# set $SHELL
-set -gx SHELL (which fish)
+# source environment vars
+cat ~/.config/fish/env.fish | source
 
 # define aliases
 alias ls="eza -1 -F"

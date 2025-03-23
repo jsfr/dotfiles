@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+BROWSER="$1"
+WINDOW_ID=$(aerospace list-windows --all | grep "$BROWSER" | grep -v Picture-in-Picture | awk 'NR==1{print $1}')
+
+if [ -n "$WINDOW_ID" ]; then
+	aerospace focus --window-id "$WINDOW_ID"
+else
+	open -a "$BROWSER"
+fi
