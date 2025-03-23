@@ -3,16 +3,28 @@ cat ~/.config/fish/env.fish | source
 
 # define aliases
 alias ls="eza -1 -F"
-alias hx="env PATH=\"$PATH:~/.local/share/nvim/mason/bin\" helix"
+alias n=nvim
+alias k=kubectl
+alias tf=terraform
+alias lg=lazygit
+alias g=git
 
 # define abbreviations
 abbr zap "brew uninstall --force --zap"
 abbr cask "brew install --cask"
-abbr cdg "cd (git root)"
-abbr g "git"
-abbr lg "lazygit"
-abbr n "nvim"
-abbr cm "chezmoi"
+abbr cdg "git root | cd"
+
+alias cm=chezmoi
+abbr --command cm a apply
+abbr --command cm g git
+abbr --command cm d diff
+abbr --command cm s status
+abbr --command cm e "edit --apply"
+abbr --command cm u update
+
+function hx -w hx
+    env PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin" command hx $argv
+end
 
 # define custom keybindings
 function fish_user_key_bindings
@@ -29,32 +41,32 @@ if command -q starship
     function starship_transient_prompt_func
         starship module character
     end
-    bkt --ttl "7days" -- starship init fish | source
+    bkt --ttl "1day" -- starship init fish | source
     enable_transience
 end
 
 # enable mise
 if command -q mise
-    bkt --ttl "7days" -- mise activate fish | source
+    bkt --ttl "1day" -- mise activate fish | source
 end
 
 # enable zoxide
 if command -q zoxide
-    bkt --ttl "7days" -- zoxide init fish --cmd cd | source
+    bkt --ttl "1day" -- zoxide init fish --cmd cd | source
 end
 
 # enable atuin
 if command -q atuin
-    bkt --ttl "7days" -- atuin init fish | source
+    bkt --ttl "1day" -- atuin init fish | source
 end
 
 # completions
 if command -q just
-    bkt --ttl "7days" -- just --completions fish | source
+    bkt --ttl "1day" -- just --completions fish | source
 end
 if command -q wezterm
-    bkt --ttl "7days" -- wezterm shell-completion --shell fish | source
+    bkt --ttl "1day" -- wezterm shell-completion --shell fish | source
 end
 if command -q gs
-    bkt --ttl "7days" -- gs shell completion fish | source
+    bkt --ttl "1day" -- gs shell completion fish | source
 end

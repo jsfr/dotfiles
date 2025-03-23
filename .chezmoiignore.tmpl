@@ -2,7 +2,6 @@
 
 {{ if not .is_windows }}
 .glzr/**
-.tridactylrc
 AppData/**
 Documents/**
 keymapper.conf
@@ -21,4 +20,8 @@ keymapper.conf
 .hammerspoon/**
 Brewfile
 Library/**
+{{ end }}
+
+{{ if not (or .is_windows .is_macos)}}
+.tridactylrc
 {{ end }}
