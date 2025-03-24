@@ -5,6 +5,7 @@
 AppData/**
 Documents/**
 keymapper.conf
+.tridactylrc
 {{ end }}
 
 {{ if .is_windows }}
@@ -20,8 +21,4 @@ keymapper.conf
 .hammerspoon/**
 Brewfile
 Library/**
-{{ end }}
-
-{{ if not (or .is_windows .is_macos)}}
-.tridactylrc
 {{ end }}
