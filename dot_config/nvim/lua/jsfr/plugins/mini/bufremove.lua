@@ -8,9 +8,9 @@ local function delete_buffer()
     end
 end
 
--- local function delete_buffer_simple()
---     vim.api.nvim_buf_delete(0, {})
--- end
+local function delete_buffer_simple()
+    vim.api.nvim_buf_delete(0, {})
+end
 
 ---@module "lazy"
 ---@type LazySpec
@@ -19,7 +19,7 @@ return {
     cond = false,
     opts = {},
     keys = {
-        { "<C-W>", delete_buffer, desc = "Close buffer" },
-        -- { "<C-W>", delete_buffer_simple, desc = "Close buffer + window" },
+        { "<Leader>d", delete_buffer, desc = "Close buffer" },
+        -- { "<Leader>D", delete_buffer_simple, desc = "Close buffer + window" },
     },
 }

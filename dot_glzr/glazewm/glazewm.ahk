@@ -37,10 +37,6 @@ CapsLock & w:: {
     ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Program Files\WezTerm\wezterm-gui.exe")
 }
 
-CapsLock & v:: {
-    ActivateOrRun("ahk_exe Code.exe", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
-}
-
 CapsLock & c:: {
     ActivateOrRun("ahk_exe olk.exe ahk_class Olk Host", "olk.exe")
 }
@@ -62,10 +58,6 @@ CapsLock & r:: {
 CapsLock & q:: {
     Run("C:\Users\JensFredskov\repos\github.com\jsfr\glazewm-listener\glazewm-listener.exe update", , "Hide")
 }
-
-; CapsLock & g:: {
-;     Run("C:\Program Files\WezTerm\wezterm.exe connect wuake --class org.wezfurlong.wezterm.wuake", , "Hide")
-; }
 
 ; Remap copilot button to Right Control
 ; rebind copilot to rCtrl

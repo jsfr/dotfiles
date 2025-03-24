@@ -4,8 +4,8 @@ vim.g.maplocalleader = ","
 
 -- spacemacs inspired keybindings
 vim.keymap.set("n", "<leader>wc", "<c-w>q", { desc = "Close window" })
-vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<cr>", { desc = "Vertical split" })
-vim.keymap.set("n", "<leader>ws", "<cmd>split<cr>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<leader>w/", "<cmd>vsplit<cr>", { desc = "Vertical split" })
+vim.keymap.set("n", "<leader>w-", "<cmd>split<cr>", { desc = "Horizontal split" })
 
 -- visual shifting (does not exit visual mode)
 vim.keymap.set("v", "<", "<gv")

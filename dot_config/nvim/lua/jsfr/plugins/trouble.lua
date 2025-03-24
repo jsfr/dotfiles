@@ -6,13 +6,13 @@ return {
     opts = {},
     cmd = "Trouble",
     keys = {
+        -- {
+        --     "<leader>D",
+        --     "<cmd>Trouble diagnostics toggle<cr>",
+        --     desc = "Open/Close workspace diagnostics",
+        -- },
         {
             "<leader>D",
-            "<cmd>Trouble diagnostics toggle<cr>",
-            desc = "Open/Close workspace diagnostics",
-        },
-        {
-            "<leader>d",
             "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
             desc = "Open/Close buffer diagnostics",
         },

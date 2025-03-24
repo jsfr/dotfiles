@@ -2,7 +2,7 @@
 " vim: set filetype=tridactyl:
 
 " General Settings
-set newtab about:blank
+" set newtab about:blank
 set theme auto
 set hintfiltermode simple
 set hintnames short
@@ -33,12 +33,10 @@ bind cos recontain shopping
 " Redirects
 unset autocmds
 unset autocontain
-set autocontainmode strict
-autocontain -s remote.com Work
-autocontain -s dev.azure.com Work
-autocontain -s portal.azure.com Work
-autocontain -s configure.zsa.io Personal
-autocontain -s nordnet.dk Banking
-autocontain -s lsb.dk Banking
-autocontain -s velliv.dk Banking
-autocontain -s linkedin.com LinkedIn
+" autocontain -s remote.com Work
+" autocontain -s dev.azure.com Work
+" autocontain -s portal.azure.com Work
+" autocontain -s nordnet.dk Banking
+" autocontain -s lsb.dk Banking
+" autocontain -s velliv.dk Banking
+" autocontain -s linkedin.com LinkedIn

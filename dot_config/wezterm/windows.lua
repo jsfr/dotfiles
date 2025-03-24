@@ -33,7 +33,10 @@ return {
         {
             key = "T",
             mods = "CTRL|SHIFT",
-            action = wezterm.action.ShowLauncherArgs({ flags = "LAUNCH_MENU_ITEMS" }),
+            action = wezterm.action.SpawnCommandInNewTab({
+                args = { "nu.exe" },
+                domain = { DomainName = "local" },
+            }),
         },
         {
             key = "K",
