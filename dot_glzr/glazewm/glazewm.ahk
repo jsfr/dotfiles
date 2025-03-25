@@ -59,6 +59,10 @@ CapsLock & q:: {
     Run("C:\Users\JensFredskov\repos\github.com\jsfr\glazewm-listener\glazewm-listener.exe update", , "Hide")
 }
 
+CapsLock & n:: {
+    ActivateOrRun("ahk_exe neovide", "C:\Program Files\Neovide\neovide.exe")
+}
+
 ; Remap copilot button to Right Control
 ; rebind copilot to rCtrl
 *<+<#f23:: {

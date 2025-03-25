@@ -170,9 +170,9 @@ window_rules:
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
         window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
 
-      # Ignore Wuake version of wezterm to use it as toggle term (quake-style)
-      - window_process: { equals: "wezterm-gui" }
-        window_class: { equals: "org.wezfurlong.wezterm.wuake" }
+      # Ignore WSLg Rider
+      - window_class: { equals: "RAIL_WINDOW" }
+
 
   - commands: ["set-floating"]
     match:
