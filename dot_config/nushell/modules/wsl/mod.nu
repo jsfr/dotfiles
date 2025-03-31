@@ -22,6 +22,7 @@ export alias dn = dotnet
 export alias wg = winget.exe
 export alias wcopy = win32yank.exe -i
 export alias wpaste = win32yank.exe -o
+export alias apicli = neko cli
 
 export def upgrade [] {
     cd /etc/nixos
