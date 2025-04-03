@@ -1,5 +1,10 @@
 # source environment vars
-cat ~/.config/fish/env.fish | source
+source ~/.config/fish/env.fish
+
+# WSL
+if uname -a | grep -q WSL2
+    source ~/.config/fish/wsl.fish
+end
 
 # define aliases
 alias ls="eza -1 -F"
@@ -58,6 +63,11 @@ end
 # enable atuin
 if command -q atuin
     bkt --ttl "1day" -- atuin init fish | source
+end
+
+# enable direnv
+if command -q direnv
+    bkt --ttl "1day" -- direnv hook fish | source
 end
 
 # completions

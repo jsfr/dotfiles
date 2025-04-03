@@ -24,7 +24,7 @@ return {
         dependencies = {
             "rshkarin/mason-nvim-lint",
         },
-        ft = { "dockerfile", "fennel", "fish", "ghaction", "html" },
+        ft = { "dockerfile", "fennel", "fish", "ghaction", "html", "css" },
         config = function()
             local augroup = require("jsfr.utils.augroup")
             local lint = require("lint")

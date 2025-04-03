@@ -118,6 +118,7 @@ return {
                     },
                 },
             },
+            cssls = {},
         }
 
         if vim.env.WSL_DISTRO_NAME == "NixOS" then
