@@ -1,14 +1,18 @@
 set number
 set relativenumber
-set clipboard^=ideaput
 set ignorecase
 set smartcase
 set incsearch
 set wrapscan
 set ideajoin
+" Plugins
+set commentary
+set easymotion
+set functiontextobj
+set mini-ai
 
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
+" Enable clipboard sharing between IdeaVim and system clipboard
+set clipboard+=unnamedplus
 
 let mapleader = " "
 
@@ -18,16 +22,16 @@ map Q <Nop>
 inoremap jj <Esc>
 
 map <tab> <Action>(TabSwitchPlugin.SwitchTab)
-" map <leader>p <Action>(SearchEverywhere)
+map <leader>f <Action>(SearchEverywhere)
 map gr <Action>(FindUsages)
 map <leader>a <Action>(ShowIntentionActions)
 map - <Action>(ActivateProjectToolWindow)
-map <leader>x <Action>(VimWindowClose)
+map <leader>d <Action>(VimWindowClose)
+map <leader>D <Action>(ShowErrorDescription)
 
 map gcc <Action>(CommentByLineComment)
 map gc :<BS><BS><BS><BS><BS>action VimVisualSwapSelections<CR>:action CommentByLineComment<CR><ESC>gv
 
-map <leader>d <Action>(ShowErrorDescription)
 
 " Moving blocks of text in visual mode
 map < <gv

@@ -121,10 +121,13 @@ window_behavior:
 
 workspaces:
   - name: "1"
+    display_name: "1: web"
     bind_to_monitor: 1
   - name: "2"
+    display_name: "2: code"
     bind_to_monitor: 1
   - name: "3"
+    display_name: "3: term"
     bind_to_monitor: 1
   - name: "4"
     bind_to_monitor: 1
@@ -135,30 +138,42 @@ workspaces:
   - name: "7"
     bind_to_monitor: 1
   - name: "8"
+    display_name: "8: mail"
     bind_to_monitor: 1
   - name: "9"
+    display_name: "9: chat"
     bind_to_monitor: 1
   - name: "10"
+    display_name: "10: teams"
     bind_to_monitor: 1
   - name: "11"
+    display_name: "11: extra"
     bind_to_monitor: 0
 
 window_rules:
   - commands: ["move --workspace 1", "focus --workspace 1"]
     match:
-      # Move browsers to workspace 1.
       - window_process: { equals: "firefox" }
-      - window_process: { equals: "floorp" }
-      - window_process: { equals: "zen" }
+
+  - commands: ["move --workspace 2", "focus --workspace 2"]
+    match:
+      - window_process: { equals: "rider64" }
+
+  - commands: ["move --workspace 3", "focus --workspace 3"]
+    match:
+      - window_process: { equals: "wezterm-gui" }
 
   - commands: ["move --workspace 8", "focus --workspace 8"]
     match:
-      # Move browsers to workspace 1.
-      - window_process: { regex: "Signal|Beeper" }
+      - window_process: { equals: "olk" }
+
+  - commands: ["move --workspace 9", "focus --workspace 9"]
+    match:
+      - window_process: { equals: "Signal" }
+      - window_process: { equals: "Beeper" }
 
   - commands: ["move --workspace 10", "focus --workspace 10"]
     match:
-      # Move browsers to workspace 1.
       - window_process: { regex: "ms-teams" }
 
   - commands: ["ignore"]
@@ -169,10 +184,6 @@ window_rules:
       # Ignores picture-in-picture windows for browsers.
       - window_title: { regex: "[Pp]icture.in.[Pp]icture" }
         window_class: { regex: "Chrome_WidgetWin_1|MozillaDialogClass" }
-
-      # Ignore WSLg Rider
-      - window_class: { equals: "RAIL_WINDOW" }
-
 
   - commands: ["set-floating"]
     match:
