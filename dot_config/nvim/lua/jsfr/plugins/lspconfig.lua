@@ -1,11 +1,12 @@
 ---@module "lazy"
 ---@type LazySpec
 return {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    version = "^1.0.0",
     cond = not vim.g.vscode,
     dependencies = {
         "b0o/schemastore.nvim",
-        "williamboman/mason.nvim",
+        { "mason-org/mason.nvim", version = "^1.0.0" },
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
         "MysticalDevil/inlay-hints.nvim",
@@ -163,6 +164,7 @@ return {
         lspconfig.nushell_lsp.setup({})
 
         mason_lspconfig.setup({
+            automatic_enable = true,
             ensure_installed = vim.tbl_keys(servers),
             automatic_installation = true,
         })
@@ -172,11 +174,5 @@ return {
             commands = { enable = true }, -- Enable InlayHints commands, include `InlayHintsToggle`, `InlayHintsEnable` and `InlayHintsDisable`
             autocmd = { enable = true }, -- Enable the inlay hints on `LspAttach` event
         })
-
-        -- require("ufo").setup({
-        --     provider_selector = function(bufnr, filetype, buftype)
-        --         return { "treesitter", "indent" }
-        --     end,
-        -- })
     end,
 }

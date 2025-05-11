@@ -4,7 +4,7 @@ fish_add_path -P ~/.local/bin
 
 set -gx SHELL (which fish)
 
-set -gx PAGER moar
+# set -gx PAGER moar
 set -gx FZF_DEFAULT_COMMAND "fd -It f"
 set -gx EDITOR nvim
 
