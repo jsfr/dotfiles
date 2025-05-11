@@ -121,13 +121,13 @@ window_behavior:
 
 workspaces:
   - name: "1"
-    display_name: "1: web"
+    display_name: "1"
     bind_to_monitor: 1
   - name: "2"
-    display_name: "2: code"
+    display_name: "2"
     bind_to_monitor: 1
   - name: "3"
-    display_name: "3: term"
+    display_name: "3"
     bind_to_monitor: 1
   - name: "4"
     bind_to_monitor: 1
@@ -138,16 +138,16 @@ workspaces:
   - name: "7"
     bind_to_monitor: 1
   - name: "8"
-    display_name: "8: mail"
+    display_name: "8"
     bind_to_monitor: 1
   - name: "9"
-    display_name: "9: chat"
+    display_name: "9"
     bind_to_monitor: 1
   - name: "10"
-    display_name: "10: teams"
+    display_name: "10"
     bind_to_monitor: 1
   - name: "11"
-    display_name: "11: extra"
+    display_name: "11"
     bind_to_monitor: 0
 
 window_rules:

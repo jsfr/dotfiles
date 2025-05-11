@@ -52,7 +52,7 @@ CapsLock & a:: {
 }
 
 CapsLock & r:: {
-    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files (x86)\JetBrains\JetBrains Rider 2024.3.6\bin\rider64.exe")
+    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files (x86)\JetBrains\JetBrains Rider 2025.1\bin\rider64.exe")
 }
 
 CapsLock & q:: {
