@@ -13,6 +13,7 @@ alias k=kubectl
 alias tf=terraform
 alias lg=lazygit
 alias g=git
+alias j=jj
 
 # define abbreviations
 abbr zap "brew uninstall --force --zap"
@@ -46,37 +47,40 @@ if command -q starship
     function starship_transient_prompt_func
         starship module character
     end
-    bkt --ttl "1day" -- starship init fish | source
+    bkt --ttl 1day -- starship init fish | source
     enable_transience
 end
 
 # enable mise
 if command -q mise
-    bkt --ttl "1day" -- mise activate fish | source
+    bkt --ttl 1day -- mise activate fish | source
 end
 
 # enable zoxide
 if command -q zoxide
-    bkt --ttl "1day" -- zoxide init fish --cmd cd | source
+    bkt --ttl 1day -- zoxide init fish --cmd cd | source
 end
 
 # enable atuin
 if command -q atuin
-    bkt --ttl "1day" -- atuin init fish | source
+    bkt --ttl 1day -- atuin init fish | source
 end
 
 # enable direnv
 if command -q direnv
-    bkt --ttl "1day" -- direnv hook fish | source
+    bkt --ttl 1day -- direnv hook fish | source
 end
 
 # completions
 if command -q just
-    bkt --ttl "1day" -- just --completions fish | source
+    bkt --ttl 1day -- just --completions fish | source
 end
 if command -q wezterm
-    bkt --ttl "1day" -- wezterm shell-completion --shell fish | source
+    bkt --ttl 1day -- wezterm shell-completion --shell fish | source
 end
 if command -q gs
-    bkt --ttl "1day" -- gs shell completion fish | source
+    bkt --ttl 1day -- gs shell completion fish | source
+end
+if command -q jj
+    bkt --ttl 1day -- jj util completion fish | source
 end

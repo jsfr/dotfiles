@@ -101,13 +101,8 @@ return {
                 inlay_hints_hide_redundant_param_names = false,
                 inlay_hints_hide_redundant_param_names_last_token = false,
             },
-            pylyzer = {
-                settings = {
-                    python = {
-                        inlayHints = true,
-                    },
-                },
-            },
+            basedpyright = {},
+            pylsp = {},
             kotlin_language_server = {
                 settings = {
                     kotlin = {

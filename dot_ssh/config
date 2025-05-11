@@ -1,5 +1,11 @@
 Host github.com
   IdentityFile ~/.ssh/personal
 
+Host pico.sh
+  IdentityFile ~/.ssh/personal
+
+Host pgs.sh
+  IdentityFile ~/.ssh/personal
+
 Host ssh.dev.azure.com
   IdentityFile ~/.ssh/nekohealth
