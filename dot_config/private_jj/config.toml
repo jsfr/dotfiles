@@ -1,0 +1,16 @@
+[user]
+name = "Jens Fredskov"
+email = "jsfr@users.noreply.github.com"
+
+[revset-aliases]
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+
+[aliases]
+tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
+re = ["restore"]
+g = ["git"]
+gf = ["git fetch"]
+gp = ["git push --allow-new"]
+
+[ui]
+default-command = "log"

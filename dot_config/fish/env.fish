@@ -7,6 +7,7 @@ set -gx SHELL (which fish)
 # set -gx PAGER moar
 set -gx FZF_DEFAULT_COMMAND "fd -It f"
 set -gx EDITOR nvim
+set -gx LESS -FRX
 
 set -gx XDG_CONFIG_HOME ~/.config
 set -gx XDG_CACHE_HOME ~/.cache
