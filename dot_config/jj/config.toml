@@ -1,17 +1,31 @@
+"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
+
 [user]
 name = "Jens Fredskov"
 email = "jsfr@users.noreply.github.com"
 
 [revset-aliases]
-"closest_bookmark(to)" = "heads(::to & bookmarks())"
-"immutable_heads()" = "builtin_immutable_heads() | (trunk().. & ~mine())"
+# "immutable_heads()" = "builtin_immutable_heads() | (trunk().. & ~mine())"
+# "closest_bookmark(to)" = "heads(::to & bookmarks())"
+"closest_bookmark(to)" = 'heads(::to & (bookmarks() ~ (bookmarks(exact:"main") | bookmarks(exact:"master"))))'
+"immutable_heads()" = "builtin_immutable_heads() | (remote_bookmarks() ~ mine())"
 
 [aliases]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 re = ["restore"]
+rb = ["rebase"]
 g = ["git"]
-gf = ["git fetch"]
-gp = ["git push --allow-new"]
+gf = ["git", "fetch"]
+gp = ["git", "push", "--allow-new"]
+s = ["st"]
+e = ["edit"]
+d = ["diff"]
 
 [ui]
 default-command = "log"
+# pager = ["sh", "-c", "riff | less -RFX"]
+# pager = "riff"
+# pager = ["sh", "-c", "riff | delta"]
+
+# [ui.diff]
+# format = "git"

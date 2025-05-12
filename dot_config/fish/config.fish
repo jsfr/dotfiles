@@ -82,5 +82,6 @@ if command -q gs
     bkt --ttl 1day -- gs shell completion fish | source
 end
 if command -q jj
-    bkt --ttl 1day -- jj util completion fish | source
+    # bkt --ttl 1day -- jj util completion fish | source
+    COMPLETE=fish jj | source
 end
