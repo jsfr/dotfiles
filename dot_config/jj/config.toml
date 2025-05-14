@@ -13,14 +13,18 @@ tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 re = ["restore"]
 rb = ["rebase"]
 g = ["git"]
-gf = ["git", "fetch"]
-gp = ["git", "push", "--allow-new"]
+f = ["git", "fetch"]
+p = ["git", "push", "--allow-new"]
 s = ["st"]
 e = ["edit"]
 d = ["diff"]
+n = ["new"]
+nt = ["new", "-r", "trunk()"]
 
 [ui]
 default-command = "log"
 
 [git]
 auto-local-bookmark = true
+# Prevent pushing work in progress or anything explicitly labeled "private"
+private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
