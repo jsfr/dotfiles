@@ -7,12 +7,15 @@ command_timeout = 5000
 [cmd_duration]
 disabled = true
 
-[env_var.DESK_NAME]
-symbol = "◲ "
-format = "in [$symbol($env_value)](blue)"
-
 [kubernetes]
 disabled = false
+
+[os]
+disabled = false
+
+[os.symbols]
+Windows = "🪟"
+NixOS = "🐧"
 
 [custom.jj]
 description = "The current jj status"
@@ -38,7 +41,6 @@ jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 -
   )
 '
 '''
-
 
 [git_branch]
 disabled = true
