@@ -1,16 +1,18 @@
 local wezterm = require("wezterm")
 
-local WIN_LOGO = wezterm.nerdfonts.md_microsoft
-local NIX_LOGO = wezterm.nerdfonts.md_nix
+-- local WIN_LOGO = wezterm.nerdfonts.md_microsoft
+-- local NIX_LOGO = wezterm.nerdfonts.md_nix
+local WIN_LOGO = "🪟"
+local NIX_LOGO = "🐧"
 
 wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
     local active_pane = tab.active_pane
     local title = active_pane.title
 
     if active_pane.domain_name == "local" then
-        title = WIN_LOGO .. "  " .. title
+        title = WIN_LOGO .. title
     else
-        title = NIX_LOGO .. "  " .. title
+        title = NIX_LOGO .. title
     end
 
     title = "[" .. tab.tab_index + 1 .. "] " .. title
@@ -53,12 +55,22 @@ return {
             mods = "CTRL",
             action = wezterm.action_callback(function(_, pane)
                 local dimensions = pane:get_dimensions()
-                local domain = pane:get_domain_name()
 
                 pane:split({
-                    domain = "CurrentPaneDomain",
                     direction = dimensions.pixel_width > dimensions.pixel_height and "Right" or "Bottom",
-                    args = domain == "local" and { "nu.exe" } or nil,
+                })
+            end),
+        },
+        {
+            key = "?",
+            mods = "CTRL|SHIFT",
+            action = wezterm.action_callback(function(_, pane)
+                local dimensions = pane:get_dimensions()
+
+                pane:split({
+                    domain = { DomainName = "local" },
+                    direction = dimensions.pixel_width > dimensions.pixel_height and "Right" or "Bottom",
+                    args = { "nu.exe" },
                 })
             end),
         },
