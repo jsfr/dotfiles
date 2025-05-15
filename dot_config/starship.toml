@@ -45,28 +45,12 @@ jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 -
 [git_branch]
 disabled = true
 
-[custom.git_branch]
-detect_folders = ["!.jj"]
-command = "starship module git_branch"
-
 [git_commit]
 disabled = true
-
-[custom.git_commit]
-detect_folders = ["!.jj"]
-command = "starship module git_commit"
 
 [git_state]
 disabled = true
 
-[custom.git_state]
-detect_folders = ["!.jj"]
-command = "starship module git_state"
-
 [git_status]
 disabled = true
 windows_starship = '/mnt/c/Users/JensFredskov/scoop/apps/starship/current/starship.exe'
-
-[custom.git_status]
-detect_folders = ["!.jj"]
-command = "starship module git_status"
