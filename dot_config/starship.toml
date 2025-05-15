@@ -56,16 +56,17 @@ disabled = true
 detect_folders = ["!.jj"]
 command = "starship module git_commit"
 
-[git_metrics]
-disabled = true
-
-[custom.git_metrics]
-detect_folders = ["!.jj"]
-command = "starship module git_metrics"
-
 [git_state]
 disabled = true
 
 [custom.git_state]
 detect_folders = ["!.jj"]
 command = "starship module git_state"
+
+[git_status]
+disabled = true
+windows_starship = '/mnt/c/Users/JensFredskov/scoop/apps/starship/current/starship.exe'
+
+[custom.git_status]
+when = true
+command = "jj root >/dev/null 2>&1 || starship module git_status"
