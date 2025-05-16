@@ -32,7 +32,7 @@
     "autoHideWindow": true,
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{c397f356-5e7b-55bc-956b-8cb4b9762c26}",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "keybindings": 
     [
         {
@@ -79,11 +79,7 @@
         "defaults": 
         {
             "colorScheme": "Tokyo Night Storm",
-            "cursorShape": "filledBox",
-            "font": 
-            {
-                "face": "JetBrainsMono Nerd Font Mono"
-            }
+            "cursorShape": "filledBox"
         },
         "list": 
         [
