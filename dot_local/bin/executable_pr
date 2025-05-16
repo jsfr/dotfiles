@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# List and open in project
+az repos pr list --status active --query "[].{id:pullRequestId, name:createdBy.displayName, title:title}" -o tsv | xsv table -d'\t' | fzf |
+awk '{print $1}' | xargs az repos pr show --open --id &>/dev/null
+
+# Create pull request
+jj bookmark list -r "heads(::@ & (bookmarks()))" -T "name" | xargs az repos pr create -s
+
+# Open current pull request
+jj bookmark list -r "heads(::@ & (bookmarks()))" -T "name"
+az repos pr list --status active --query "[].{id:pullRequestId, branch:sourceRefName}" -o tsv | grep '$bookmark' | awk '{print $1}'
+
+# List my PRs across all projects
+# TODO
