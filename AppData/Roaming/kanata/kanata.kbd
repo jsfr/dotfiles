@@ -1,47 +1,70 @@
+;; The proposed main layer implements one of the variants of home row modifers:
+;; - We white-list the core keys of the layout to ensure they are evaluated by the `key-timing` logic.
+;; - `switch` checks if the `key-timing` of the 3rd most recent key is less than a quarter of a second and, if so, skips the modifier evaluation.
+;; - 3 represents the `key-recency` and should equal the maximum number of modifiers to be held simultaneously (accounting for chords).
+;; - 250 represents the elapsed `time` since the key specified above was pressed and it should be adjusted to your typing speed.
+;; - `tap-hold-release-timeout` triggers a modifier while held only if another key is pressed *and* released before the timeout, after which the expected repeat action for the key would trigger instead.
+
 (defcfg
-  process-unmapped-keys    no
-  log-layer-changes        no
-  tray-icon                "./s.png"
-  icon-match-layer-name    no
-  notify-cfg-reload        yes
-  notify-cfg-reload-silent no
-  notify-error             yes
+  process-unmapped-keys no
 )
 
 (defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           spc            ralt rctl
+  ` 1 2 3 4 5 6 7 8 9 0 - =
+  q w e r t y u i o p [ ] \
+  a s d f g h j k l ; '
+  z x c v b n m , . /
+         spc
 )
 
-(defvar
-  tap-timeout 250
-  hold-timeout 180
-  tt $tap-timeout
-  ht $hold-timeout
+(deftemplate charmod (char mod)
+  (switch
+    ((key-timing 3 less-than 250)) $char break
+    () (tap-hold-release 200 500 $char $mod) break
+  )
 )
 
-(deflayermap (base-layer)
-  a    (tap-hold $tt $ht a   lctl)
-  s    (tap-hold $tt $ht s   lalt)
-  d    (tap-hold $tt $ht d   lctrl)
-  f    (tap-hold $tt $ht f   lshift)
-  j    (tap-hold $tt $ht j   rshift)
-  k    (tap-hold $tt $ht k   rctrl)
-  l    (tap-hold $tt $ht l   ralt)
-  ;    (tap-hold $tt $ht ;   rctl)
-  v    (tap-hold $tt $ht v   (layer-while-held meh-layer))
-  n    (tap-hold $tt $ht n   (layer-while-held meh-layer))
-  caps (tap-hold $tt $ht esc (layer-while-held meh-layer))
-  _     _
+(defchords mtl 50
+  (w  ) w
+  (  e) e
+  (w e) esc
 )
 
-(deflayer meh-layer
-  _ _          _          _          _          _          _            _            _          _             _          _          _          _
-  _ S-C-A-q    S-C-A-w    S-C-A-e    S-C-A-r    S-C-A-t    S-C-A-y      S-C-A-u      S-C-A-i    S-C-A-o       S-C-A-p    S-C-A-[    S-C-A-]    S-C-A-\
-  _ S-C-A-a    S-C-A-s    S-C-A-d    S-C-A-f    S-C-A-g    ArrowLeft    ArrowDown    ArrowUp    ArrowRight    S-C-A-;    S-C-A-'    _
-  _ S-C-A-z    S-C-A-x    S-C-A-c    S-C-A-v    S-C-A-b    S-C-A-n      S-C-A-m      S-C-A-,    S-C-A-.       S-C-A-/    _
-  _ _ _                                                  _                                                          _ _
+(defchords mtr 50
+  (i  ) i
+  (  o) o
+  (i o) bspc
+)
+
+(defchords mbl 50
+  (x  ) (t! charmod x ralt)
+  (  c) c
+  (x c) tab
+)
+
+(defchords mbr 50
+  (,  ) ,
+  (  .) (t! charmod . ralt)
+  (, .) ret
+)
+
+(deflayermap (main)
+  w (chord mtl w)
+  e (chord mtl e)
+  i (chord mtr i)
+  o (chord mtr o)
+  a (t! charmod a lctl)
+  s (t! charmod s lalt)
+  d (t! charmod d lctl)
+  f (t! charmod f lsft)
+  j (t! charmod j rsft)
+  k (t! charmod k rctl)
+  l (t! charmod l lalt)
+  ; (t! charmod ; rctl)
+  x (chord mbl x)
+  c (chord mbl c)
+  v (t! charmod v (multi lalt lctl lsft))
+  n (t! charmod n (multi lalt lctl lsft))
+  , (chord mbr ,)
+  . (chord mbr .)
 )
