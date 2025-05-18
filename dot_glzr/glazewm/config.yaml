@@ -6,12 +6,14 @@ general:
     - "shell-exec zebar"
     - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
     - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe"
+    # - "shell-exec --hide-window C:\\Users\\JensFredskov\\scoop\\shims\\kanata.exe"
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
   shutdown_commands:
     - "shell-exec --hide-window taskkill /IM zebar.exe /F"
     - "shell-exec --hide-window taskkill /IM glazewm-listener.exe /F"
+    # - "shell-exec --hide-window taskkill /IM kanata.exe /F"
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands:
