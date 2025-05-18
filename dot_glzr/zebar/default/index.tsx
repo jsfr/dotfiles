@@ -2,8 +2,6 @@ import { useState, useEffect } from "react"
 import { createRoot } from "react-dom/client"
 import * as zebar from "zebar"
 
-const KEYMAPPER = "C:\\Program Files\\keymapper\\keymapperctl.exe" as const
-
 const providers = zebar.createProviderGroup({
   glazewm: { type: "glazewm" },
   date: { type: "date", formatting: "EEE d MMM t" },
@@ -14,21 +12,9 @@ createRoot(document.getElementById("root")!).render(<App />)
 
 function App() {
   const [output, setOutput] = useState(providers.outputMap)
-  const [isKeymapperEnabled, setKeymapperEnabled] = useState(false)
-
-  const checkKeymapper = async () => {
-    const { code } = await zebar.shellExec(KEYMAPPER, "--is-pressed Virtual1")
-    setKeymapperEnabled(code == 0)
-  }
-
-  const toggleKeymapper = async () => {
-    await zebar.shellExec(KEYMAPPER, "--toggle Virtual1")
-    await checkKeymapper()
-  }
 
   useEffect(() => {
     providers.onOutput(() => setOutput(providers.outputMap))
-    checkKeymapper()
   }, [output.glazewm?.focusedMonitor.id])
 
   // Get icon to show for how much of the battery is charged.
@@ -72,10 +58,6 @@ function App() {
             }
           ></button>
         )}
-        <button
-          onClick={toggleKeymapper}
-          className={`nf ${isKeymapperEnabled ? "nf-md-keyboard_outline" : "nf-md-keyboard_off_outline off"} keymapper-button`}
-        ></button>
         {output.glazewm && (
           <>
             {output.glazewm.bindingModes.map((bindingMode) => (
