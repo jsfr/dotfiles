@@ -1,56 +1,58 @@
 #!/usr/bin/env sh
 
+set -euo pipefail
+
 create_pr() {
-    draft="$1"
+	draft="$1"
 
-    # Get the closest bookmark
-    bookmark=$(jj bookmark list -r "heads(::@ & (bookmarks()))" -T "name")
+	# Get the closest bookmark
+	bookmark=$(jj bookmark list -r "heads(::@ & (bookmarks()))" -T "name")
 
-    # Create PR from bookmark
-    pull_request=$(az repos pr create -s "$bookmark" --draft "$draft")
+	# Create PR from bookmark
+	pull_request=$(az repos pr create -s "$bookmark" --draft "$draft")
 
-    # Open the PR
-    az repos pr show --open --id "$(jq -r '.pullRequestId')" >/dev/null
+	# Open the PR
+	az repos pr show --open --id "$(jq -r '.pullRequestId')" >/dev/null
 }
 
 open_pr() {
-    # Get the currently closes bookmark
-    bookmark=$(jj bookmark list -r "heads(::@ & (bookmarks()))" -T "name")
+	# Get the currently closes bookmark
+	bookmark=$(jj bookmark list -r "heads(::@ & (bookmarks()))" -T "name")
 
-    # Find ID of PR for bookmark
-    id=$(az repos pr list --status active --query "[].{id:pullRequestId, branch:sourceRefName}" -o tsv | grep "$bookmark" | awk '{print $1}')
+	# Find ID of PR for bookmark
+	id=$(az repos pr list --status active --query "[].{id:pullRequestId, branch:sourceRefName}" -o tsv | grep "$bookmark" | awk '{print $1}')
 
-    # Open the PR
-    az repos pr show --open --id "$id" >/dev/null
+	# Open the PR
+	az repos pr show --open --id "$id" >/dev/null
 }
 
 list_mine_prs() {
-    exit
+	exit
 }
 
 list_repo_prs() {
-    exit
-    # az repos pr list --status active --query "[].{id:pullRequestId, name:createdBy.displayName, title:title}" -o tsv | xsv table -d'\t' | fzf |
-    # awk '{print $1}' | xargs az repos pr show --open --id &>/dev/null
+	exit
+	# az repos pr list --status active --query "[].{id:pullRequestId, name:createdBy.displayName, title:title}" -o tsv | xsv table -d'\t' | fzf |
+	# awk '{print $1}' | xargs az repos pr show --open --id &>/dev/null
 }
 
 case "$1" in
 "a")
-    list_mine_prs
-    ;;
+	list_mine_prs
+	;;
 "l")
-    list_repo_prs
-    ;;
+	list_repo_prs
+	;;
 "c")
-    create_pr false
-    ;;
+	create_pr false
+	;;
 "d")
-    create_pr true
-    ;;
+	create_pr true
+	;;
 "o")
-    open_pr
-    ;;
+	open_pr
+	;;
 *)
-    exit 1
-    ;;
+	exit 1
+	;;
 esac
