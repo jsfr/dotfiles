@@ -63,6 +63,10 @@ CapsLock & n:: {
     ActivateOrRun("ahk_exe neovide", "C:\Program Files\Neovide\neovide.exe")
 }
 
+CapsLock & d::^!+d
+CapsLock & y::^!+y
+CapsLock & 1::^!+1
+
 ; Remap copilot button to Right Control
 ; rebind copilot to rCtrl
 *<+<#f23:: {
