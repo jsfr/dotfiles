@@ -2,25 +2,24 @@
 ---@type LazySpec
 return {
     {
-        "rshkarin/mason-nvim-lint",
-        lazy = true,
-        dependencies = {
-            "williamboman/mason.nvim",
-            "mfussenegger/nvim-lint",
-        },
-        opts = {
-            ensure_installed = {
-                "hadolint",
-                "actionlint",
-                "htmlhint",
-            },
-            automatic_installation = false,
-        },
-    },
-    {
         "mfussenegger/nvim-lint",
         dependencies = {
-            "rshkarin/mason-nvim-lint",
+            {
+                "rshkarin/mason-nvim-lint",
+                lazy = true,
+                dependencies = {
+                    "williamboman/mason.nvim",
+                    "mfussenegger/nvim-lint",
+                },
+                opts = {
+                    ensure_installed = {
+                        "hadolint",
+                        "actionlint",
+                        "htmlhint",
+                    },
+                    automatic_installation = false,
+                },
+            },
         },
         ft = { "dockerfile", "fennel", "fish", "ghaction", "html", "css" },
         config = function()

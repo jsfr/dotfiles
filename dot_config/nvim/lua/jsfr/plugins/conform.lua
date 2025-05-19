@@ -2,27 +2,26 @@
 ---@type LazySpec
 return {
     {
-        "LittleEndianRoot/mason-conform",
-        lazy = true,
-        dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
-        opts = {
-            ensure_installed = {
-                "stylua",
-                "shfmt",
-                "taplo",
-                "prettier",
-                "gofumpt",
-                "goimports",
-                "black",
-            },
-            automatic_installation = false,
-            quiet_mode = false,
-        },
-    },
-    {
         "stevearc/conform.nvim",
         dependencies = {
-            "LittleEndianRoot/mason-conform",
+            {
+                "LittleEndianRoot/mason-conform",
+                lazy = true,
+                dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
+                opts = {
+                    ensure_installed = {
+                        "stylua",
+                        "shfmt",
+                        "taplo",
+                        "prettier",
+                        "gofumpt",
+                        "goimports",
+                        "black",
+                    },
+                    automatic_installation = false,
+                    quiet_mode = false,
+                },
+            },
         },
         event = { "BufReadPre" },
         cmd = { "ConformInfo" },
