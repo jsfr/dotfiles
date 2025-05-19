@@ -100,4 +100,5 @@ require("lazy").setup({
 }, {
     install = { colorscheme = { "tokyonight-storm" } },
     performance = { reset_packpath = true },
+    rocks = { enabled = false },
 })
