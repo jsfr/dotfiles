@@ -2,7 +2,6 @@ return {
     {
         "seblyng/roslyn.nvim",
         ft = { "cs", "razor" },
-        cond = not vim.g.vscode,
         dependencies = {
             { "tris203/rzls.nvim", opts = {} },
             "williamboman/mason.nvim",

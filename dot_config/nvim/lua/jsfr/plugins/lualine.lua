@@ -8,7 +8,6 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        cond = not vim.g.vscode,
         dependencies = { "nvim-tree/nvim-web-devicons", "mfussenegger/nvim-lint", "linrongbin16/lsp-progress.nvim" },
         config = function()
             local lualine = require("lualine")

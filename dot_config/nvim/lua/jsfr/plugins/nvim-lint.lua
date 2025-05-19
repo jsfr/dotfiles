@@ -3,7 +3,6 @@
 return {
     {
         "rshkarin/mason-nvim-lint",
-        cond = not vim.g.vscode,
         lazy = true,
         dependencies = {
             "williamboman/mason.nvim",
@@ -20,7 +19,6 @@ return {
     },
     {
         "mfussenegger/nvim-lint",
-        cond = not vim.g.vscode,
         dependencies = {
             "rshkarin/mason-nvim-lint",
         },

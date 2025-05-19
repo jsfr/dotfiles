@@ -32,15 +32,3 @@ vim.keymap.set("n", "<tab>", mru_buffer)
 -- open lazy and mason
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Open Lazy" })
 vim.keymap.set("n", "<leader>M", "<cmd>Mason<cr>", { desc = "Open Mason" })
-
--- VSCode keybindings
-if vim.g.vscode then
-    local vscode = require("vscode")
-
-    vim.keymap.set("n", "]d", function()
-        vscode.call("editor.action.marker.next")
-    end)
-    vim.keymap.set("n", "[d", function()
-        vscode.call("editor.action.marker.prev")
-    end)
-end

@@ -2,7 +2,6 @@
 ---@type LazySpec
 return {
     "linrongbin16/gitlinker.nvim",
-    cond = not vim.g.vscode,
     cmd = { "GitLink" },
 
     ---@module 'gitlinker'

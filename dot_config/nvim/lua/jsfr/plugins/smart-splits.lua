@@ -2,7 +2,6 @@
 ---@type LazySpec
 return {
     "mrjones2014/smart-splits.nvim",
-    cond = not vim.g.vscode,
     event = "VeryLazy",
     config = function()
         local ss = require("smart-splits")

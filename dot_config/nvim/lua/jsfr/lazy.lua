@@ -22,7 +22,6 @@ require("lazy").setup({
     -- During startup
     {
         "folke/tokyonight.nvim",
-        cond = not vim.g.vscode,
         lazy = false,
         priority = 1000,
         config = function()
@@ -32,7 +31,6 @@ require("lazy").setup({
     },
     {
         "ahmedkhalf/project.nvim",
-        cond = not vim.g.vscode,
         priority = 990,
         lazy = false,
         main = "project_nvim",
@@ -40,7 +38,6 @@ require("lazy").setup({
     },
     {
         "mong8se/actually.nvim",
-        cond = not vim.g.vscode,
         dependencies = { "stevearc/dressing.nvim" },
         priority = 980,
         lazy = false,
@@ -49,33 +46,29 @@ require("lazy").setup({
     -- Syntax plugins
     {
         "NoahTheDuke/vim-just",
-        cond = not vim.g.vscode,
         ft = "just",
     },
     {
         "tridactyl/vim-tridactyl",
-        cond = not vim.g.vscode,
         ft = "tridactyl",
     },
     {
         "ngynkvn/gotmpl.nvim",
-        cond = not vim.g.vscode,
         opts = {},
     },
 
     -- LSP
     {
         "mrcjkb/rustaceanvim",
-        cond = not vim.g.vscode,
         dependencies = { "williamboman/mason-lspconfig.nvim" },
-        version = "^5",
+        version = "^6",
+        lazy = false,
         ft = { "rust" },
     },
 
     -- Search and Replace
     {
         "nvimdev/hlsearch.nvim",
-        cond = not vim.g.vscode,
         opts = {},
         event = "BufRead",
     },
@@ -84,23 +77,19 @@ require("lazy").setup({
     --
     {
         "stevearc/dressing.nvim",
-        cond = not vim.g.vscode,
         opts = {},
     },
     {
         "MagicDuck/grug-far.nvim",
-        cond = not vim.g.vscode,
         cmd = { "GrugFar" },
         opts = {},
     },
     {
         "nmac427/guess-indent.nvim",
-        cond = not vim.g.vscode,
         opts = {},
     },
     {
         "folke/ts-comments.nvim",
-        cond = not vim.g.vscode,
         opts = {
             lang = {
                 nu = "# %s",

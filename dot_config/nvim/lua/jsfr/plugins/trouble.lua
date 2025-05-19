@@ -2,7 +2,6 @@
 ---@type LazySpec
 return {
     "folke/trouble.nvim",
-    cond = not vim.g.vscode,
     opts = {},
     cmd = "Trouble",
     keys = {

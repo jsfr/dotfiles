@@ -2,7 +2,6 @@
 ---@type LazySpec
 return {
     "nvim-telescope/telescope.nvim",
-    cond = not vim.g.vscode,
     dependencies = {
         "folke/trouble.nvim",
         "nvim-telescope/telescope-fzy-native.nvim",

@@ -2,172 +2,201 @@
 ---@type LazySpec
 return {
     "mason-org/mason-lspconfig.nvim",
-    version = "^1.0.0",
-    cond = not vim.g.vscode,
     dependencies = {
-        "b0o/schemastore.nvim",
-        { "mason-org/mason.nvim", version = "^1.0.0" },
+        "mason-org/mason.nvim",
         "neovim/nvim-lspconfig",
-        "nvim-lua/plenary.nvim",
+        "b0o/schemastore.nvim",
         "MysticalDevil/inlay-hints.nvim",
     },
     config = function()
-        local lspconfig = require("lspconfig")
-        local mason_lspconfig = require("mason-lspconfig")
-        local schemastore = require("schemastore")
-
-        local function on_attach(client, bufnr)
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true, buffer = bufnr })
-            vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr })
-            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = bufnr })
-            vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
-            vim.keymap.set(
-                "n",
-                "<leader>k",
-                vim.lsp.buf.hover,
-                { noremap = true, silent = true, buffer = bufnr, desc = "Show docs under cursor" }
-            )
-            vim.keymap.set(
-                "n",
-                "<leader>r",
-                vim.lsp.buf.rename,
-                { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
-            )
-            vim.keymap.set(
-                "n",
-                "<leader>a",
-                vim.lsp.buf.code_action,
-                { noremap = true, silent = true, buffer = bufnr, desc = "Perform code action" }
-            )
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = bufnr })
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr })
-
-            if client.server_capabilities.inlayHintProvider then
-                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-            end
-        end
-
-        local servers = {
-            bashls = {},
-            docker_compose_language_service = {},
-            dockerls = {},
-            eslint = {},
-            golangci_lint_ls = {},
-            gopls = {
-                settings = {
-                    gopls = {
-                        hints = {
-                            assignVariableTypes = true,
-                            compositeLiteralFields = true,
-                            compositeLiteralTypes = true,
-                            constantValues = true,
-                            functionTypeParameters = true,
-                            parameterNames = true,
-                            rangeVariableTypes = true,
-                        },
-                    },
-                },
-            },
-            html = {},
-            jsonls = { settings = { json = { schemas = schemastore.json.schemas(), validate = { enable = true } } } },
-            lua_ls = { setting = { Lua = { hint = { enable = true } } } },
-            marksman = {},
-            ruff = {},
-            rust_analyzer = { disabled = true },
-            taplo = {},
-            terraformls = {},
-            ts_ls = {
-                single_file_support = false,
-                root_dir = lspconfig.util.root_pattern("package.json"),
-            },
-            denols = {
-                single_file_support = false,
-                root_dir = lspconfig.util.root_pattern("deno.json"),
-            },
-            tflint = {},
-            typos_lsp = {},
-            yamlls = {
-                settings = {
-                    yaml = {
-                        schemaStore = { enable = false, url = "" },
-                    },
-                    schemas = schemastore.yaml.schemas(),
-                },
-            },
-            zls = {
-                enable_inlay_hints = true,
-                inlay_hints_show_builtin = true,
-                inlay_hints_exclude_single_argument = true,
-                inlay_hints_hide_redundant_param_names = false,
-                inlay_hints_hide_redundant_param_names_last_token = false,
-            },
-            basedpyright = {},
-            pylsp = {},
-            kotlin_language_server = {
-                settings = {
-                    kotlin = {
-                        hints = {
-                            typeHints = true,
-                            parameterHints = true,
-                            chaineHints = true,
-                        },
-                    },
-                },
-            },
-            cssls = {},
+        local ensure_installed = {
+            "basedpyright",
+            "bashls",
+            "cssls",
+            "denols",
+            "dockerls",
+            "eslint",
+            "golangci_lint_ls",
+            "gopls",
+            "html",
+            "jsonls",
+            "kotlin_language_server",
+            "lua_ls",
+            "marksman",
+            "rust_analyzer",
+            "taplo",
+            "terraformls",
+            "tflint",
+            "vtsls",
+            "typos_lsp",
+            "yamlls",
+            "zls",
         }
 
         if vim.env.WSL_DISTRO_NAME == "NixOS" then
-            servers["nil_ls"] = {}
+            table.insert(ensure_installed, "nil_ls")
         end
 
-        local function get_server_config(server_name)
-            local config = servers[server_name]
-            if config == nil then
-                print("Failed to find config for " .. server_name)
-                config = {}
-            else
-                config.on_attach = on_attach
-            end
-            return config
-        end
-
-        local function get_server_setup_fun(server_name)
-            local server = lspconfig[server_name]
-            return server.setup
-        end
-
-        local function setup_server(server_name)
-            local config = get_server_config(server_name)
-            local setup_fun = get_server_setup_fun(server_name)
-            if not config.disabled then
-                setup_fun(config)
-            end
-        end
-
-        local configs = require("lspconfig.configs")
-        if not configs.nushell_lsp then
-            configs.nushell_lsp = {
-                default_config = {
-                    cmd = { "nu", "--lsp" },
-                    root_dir = lspconfig.util.root_pattern(".git"),
-                    filetypes = { "nu" },
-                    on_attach = on_attach,
+        vim.lsp.config.vtsls = {
+            root_markers = { "package.json" },
+            workspace_required = true,
+            settings = {
+                typescript = {
+                    inlayHints = {
+                        parameterNames = { enabled = "all" },
+                        parameterTypes = { enabled = true },
+                        variableTypes = { enabled = true },
+                        propertyDeclarationTypes = { enabled = true },
+                        functionLikeReturnTypes = { enabled = true },
+                        enumMemberValues = { enabled = true },
+                    },
                 },
-            }
-        end
-        lspconfig.nushell_lsp.setup({})
+            },
+        }
 
-        mason_lspconfig.setup({
-            automatic_enable = true,
-            ensure_installed = vim.tbl_keys(servers),
-            automatic_installation = true,
-        })
-        mason_lspconfig.setup_handlers({ setup_server })
+        vim.lsp.config.denols = {
+            root_markers = { "deno.json" },
+            workspace_required = true,
+            settings = {
+                deno = {
+                    inlayHints = {
+                        parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = true },
+                        parameterTypes = { enabled = true },
+                        variableTypes = { enabled = true, suppressWhenTypeMatchesName = true },
+                        propertyDeclarationTypes = { enabled = true },
+                        functionLikeReturnTypes = { enable = true },
+                        enumMemberValues = { enabled = true },
+                    },
+                },
+            },
+        }
 
-        require("inlay-hints").setup({
-            commands = { enable = true }, -- Enable InlayHints commands, include `InlayHintsToggle`, `InlayHintsEnable` and `InlayHintsDisable`
-            autocmd = { enable = true }, -- Enable the inlay hints on `LspAttach` event
+        vim.lsp.config.gopls = {
+            settings = {
+                gopls = {
+                    hints = {
+                        rangeVariableTypes = true,
+                        parameterNames = true,
+                        constantValues = true,
+                        assignVariableTypes = true,
+                        compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
+                        functionTypeParameters = true,
+                    },
+                },
+            },
+        }
+
+        vim.lsp.config.jsonls = {
+            settings = {
+                json = {
+                    schemas = require("schemastore").json.schemas(),
+                    validate = { enable = true },
+                },
+            },
+        }
+
+        vim.lsp.config.yamlls = {
+            settings = {
+                yaml = {
+                    schemaStore = {
+                        -- You must disable built-in schemaStore support if you want to use
+                        -- this plugin and its advanced options like `ignore`.
+                        enable = false,
+                        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                        url = "",
+                    },
+                    schemas = require("schemastore").yaml.schemas(),
+                },
+            },
+        }
+
+        vim.lsp.config.lua_ls = {
+            settings = {
+                Lua = {
+                    hint = {
+                        enable = true,
+                    },
+                },
+            },
+        }
+
+        vim.lsp.config.kotlin_language_server = {
+            settings = {
+                kotlin = {
+                    hints = {
+                        typeHints = true,
+                        parameterHints = true,
+                        chaineHints = true,
+                    },
+                },
+            },
+        }
+
+        vim.lsp.config.basedpyright = {
+            settings = {
+                basedpyright = {
+                    analysis = {
+                        autoSearchPaths = true,
+                        diagnosticMode = "openFilesOnly",
+                        useLibraryCodeForTypes = true,
+                    },
+                },
+            },
+        }
+
+        vim.lsp.config.zls = {
+            settings = {
+                zls = {
+                    enable_inlay_hints = true,
+                    inlay_hints_show_builtin = true,
+                    inlay_hints_exclude_single_argument = true,
+                    inlay_hints_hide_redundant_param_names = false,
+                    inlay_hints_hide_redundant_param_names_last_token = false,
+                },
+            },
+        }
+
+        require("mason-lspconfig").setup({
+            ensure_installed = ensure_installed,
+            automatic_enable = {
+                exclude = {
+                    "rust_analyzer",
+                },
+            },
         })
+
+        require("inlay-hints").setup()
     end,
 }
+
+-- local function on_attach(client, bufnr)
+--     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true, buffer = bufnr })
+--     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr })
+--     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = bufnr })
+--     vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
+--     vim.keymap.set(
+--         "n",
+--         "<leader>k",
+--         vim.lsp.buf.hover,
+--         { noremap = true, silent = true, buffer = bufnr, desc = "Show docs under cursor" }
+--     )
+--     vim.keymap.set(
+--         "n",
+--         "<leader>r",
+--         vim.lsp.buf.rename,
+--         { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
+--     )
+--     vim.keymap.set(
+--         "n",
+--         "<leader>a",
+--         vim.lsp.buf.code_action,
+--         { noremap = true, silent = true, buffer = bufnr, desc = "Perform code action" }
+--     )
+--     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = bufnr })
+--     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr })
+--
+--     if client.server_capabilities.inlayHintProvider then
+--         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+--     end
+-- end

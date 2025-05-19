@@ -2,7 +2,6 @@
 ---@type LazySpec
 return {
     "backdround/improved-search.nvim",
-    cond = not vim.g.vscode,
     event = "VeryLazy",
     config = function()
         local search = require("improved-search")

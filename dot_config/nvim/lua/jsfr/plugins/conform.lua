@@ -3,7 +3,6 @@
 return {
     {
         "LittleEndianRoot/mason-conform",
-        cond = not vim.g.vscode,
         lazy = true,
         dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
         opts = {
@@ -22,7 +21,6 @@ return {
     },
     {
         "stevearc/conform.nvim",
-        cond = not vim.g.vscode,
         dependencies = {
             "LittleEndianRoot/mason-conform",
         },

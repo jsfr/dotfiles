@@ -2,7 +2,6 @@
 ---@type LazySpec
 return {
     "nvim-treesitter/nvim-treesitter",
-    cond = not vim.g.vscode,
     main = "nvim-treesitter.configs",
     dependencies = { "windwp/nvim-ts-autotag", "nushell/tree-sitter-nu" },
     build = ":TSUpdate",
