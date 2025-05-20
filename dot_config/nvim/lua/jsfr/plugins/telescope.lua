@@ -38,7 +38,7 @@ return {
         vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Open file picker" })
         vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Open buffer picker" })
         vim.keymap.set("n", "<leader>o", builtin.oldfiles, { desc = "Open oldfiles picker" })
-        vim.keymap.set("n", "<leader>.", function()
+        vim.keymap.set("n", "<leader>c", function()
             builtin.git_files({ cwd = vim.fn.expand("$HOME/.local/share/chezmoi") })
         end, { desc = "Open chezmoi picker" })
     end,

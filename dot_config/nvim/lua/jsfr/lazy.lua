@@ -30,11 +30,14 @@ require("lazy").setup({
         end,
     },
     {
-        "ahmedkhalf/project.nvim",
+        "echasnovski/mini.misc",
         priority = 990,
         lazy = false,
-        main = "project_nvim",
-        opts = { "detection_methods", { "pattern" } },
+        config = function()
+            local misc = require("mini.misc")
+            misc.setup()
+            misc.setup_auto_root()
+        end,
     },
     {
         "mong8se/actually.nvim",
@@ -57,45 +60,10 @@ require("lazy").setup({
         opts = {},
     },
 
-    -- LSP
-    {
-        "mrcjkb/rustaceanvim",
-        dependencies = { "williamboman/mason-lspconfig.nvim" },
-        version = "^6",
-        lazy = false,
-        ft = { "rust" },
-    },
-
-    -- Search and Replace
-    {
-        "nvimdev/hlsearch.nvim",
-        opts = {},
-        event = "BufRead",
-    },
-
     -- Misc
-    --
-    {
-        "stevearc/dressing.nvim",
-        opts = {},
-    },
-    {
-        "MagicDuck/grug-far.nvim",
-        cmd = { "GrugFar" },
-        opts = {},
-    },
     {
         "nmac427/guess-indent.nvim",
         opts = {},
-    },
-    {
-        "folke/ts-comments.nvim",
-        opts = {
-            lang = {
-                nu = "# %s",
-            },
-        },
-        event = "VeryLazy",
     },
 }, {
     install = { colorscheme = { "tokyonight-storm" } },

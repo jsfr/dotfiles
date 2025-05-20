@@ -56,5 +56,3 @@ return {
         },
     },
 }
-
---https://dev.azure.com/cur8/TheRigg/_git/APIBackend?path=/.git-blame-ignore-revs&version=GBmaster&line=8&lineEnd=8&lineStartColumn=1&lineEndColumn=41&lineStyle=plain&_a=contents
