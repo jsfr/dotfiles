@@ -3,7 +3,7 @@ general:
   # script or launching another application.
   # Example: The below command launches Zebar.
   startup_commands:
-    - "shell-exec zebar"
+    # - "shell-exec zebar"
     - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
     - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe"
     # - "shell-exec --hide-window C:\\Users\\JensFredskov\\scoop\\shims\\kanata.exe"
@@ -11,7 +11,7 @@ general:
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
   shutdown_commands:
-    - "shell-exec --hide-window taskkill /IM zebar.exe /F"
+    # - "shell-exec --hide-window taskkill /IM zebar.exe /F"
     - "shell-exec --hide-window taskkill /IM glazewm-listener.exe /F"
     # - "shell-exec --hide-window taskkill /IM kanata.exe /F"
 
@@ -56,7 +56,7 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: "10px"
+    top: "5px"
     right: "10px"
     bottom: "10px"
     left: "10px"
@@ -156,6 +156,7 @@ window_rules:
   - commands: ["move --workspace 2", "focus --workspace 2"]
     match:
       - window_process: { equals: "rider64" }
+      - window_process: { equals: "Code" }
 
   - commands: ["move --workspace 3", "focus --workspace 3"]
     match:
