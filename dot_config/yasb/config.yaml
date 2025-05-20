@@ -1,0 +1,224 @@
+# This is default and very simple configuration file for Yasb.
+# For more information about configuration options, please visit the Wiki https://github.com/amnweb/yasb/wiki
+watch_stylesheet: true
+watch_config: true
+debug: false
+bars:
+  primary-bar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: true
+    animation:
+      enabled: false
+      duration: 1000
+    # blur_effect:
+    #   enabled: false
+    #   acrylic: false
+    #   dark_mode: false
+    #   round_corners: false
+    #   round_corners_type: "normal"
+    #   border_color: "System"
+    blur_effect:
+      enabled: true
+      acrylic: true
+      dark_mode: true
+      round_corners: false
+      border_color: None
+    window_flags:
+      always_on_top: false
+      windows_app_bar: true
+    dimensions:
+      width: "100%"
+      height: 32
+    padding:
+      top: 0
+      left: 0
+      bottom: 0
+      right: 0
+    widgets:
+      left: [
+        "home",
+        "glazewm_workspaces",
+        "glazewm_binding_mode",
+        "active_window"
+      ]
+      center: [
+        "clock"
+      ]
+      right: [
+        "microphone",
+        "volume",
+        "bluetooth",
+        "wifi",
+        "battery",
+        # "systray",
+        "notifications"
+        ]
+widgets:
+  home:
+    type: "yasb.home.HomeWidget"
+    options:
+      label: "<span>\udb80\udf5c</span>"
+      menu_list:
+        - { title: "Home", path: "~" }
+        - { title: "Repos", path: "~\\Repos" }
+        - { title: "Downloads", path: "~\\Downloads"}
+        - { title: "Documents", path: "~\\Documents"}
+        - { title: "Pictures", path: "~\\Pictures"}
+        - { title: "Videos", path: "~\\Videos"}
+      system_menu: true
+      power_menu: false
+      blur: true
+      round_corners: true
+      round_corners_type: "small"
+      border_color: "#7aa2f7"
+      alignment: "left"
+      offset_left: 4
+      offset_top: 0
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]}"
+      label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 14
+      max_length: 56
+      max_length_ellipsis: "..."
+      monitor_exclusive: true
+
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "{%a, %d %b %H:%M}"
+      label_alt: "{%A, %d %B %Y %H:%M}"
+      timezones: []
+      callbacks:
+        on_left: "toggle_label"
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      tooltip: false
+      volume_icons:
+        - "\ueee8"
+        - "\uf026"
+        - "\uf027"
+        - "\uf027"
+        - "\uf028"
+      callbacks:
+        on_left: "toggle_mute"
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+  microphone:
+    type: "yasb.microphone.MicrophoneWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "<span>{icon}</span> {level}%"
+      icons:
+        normal: "\udb80\udf6c"
+        muted: "\udb80\udf6d"
+      callbacks:
+        on_left: "toggle_mute"
+        on_middle: "toggle_label"
+        on_right: "exec cmd.exe /c start ms-settings:sound"
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>\uf476</span> {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true
+      tooltip: false
+      callbacks:
+        on_left: "toggle_notification"
+        on_right: "do_nothing"
+        on_middle: "toggle_label"
+  glazewm_workspaces:
+    type: "glazewm.workspaces.GlazewmWorkspacesWidget"
+    options:
+      offline_label: "GlazeWM Offline"
+      hide_empty_workspaces: true
+      hide_if_offline: false
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  glazewm_binding_mode:
+      type: "glazewm.binding_mode.GlazewmBindingModeWidget"
+      options:
+        hide_if_no_active: true
+        container_padding:
+          top: 0
+          left: 0
+          bottom: 0
+          right: 0
+        callbacks:
+          on_left: "do_nothing"
+          on_middle: "do_nothing"
+          on_right: "do_nothing"
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span> {wifi_strength}%"
+      label_alt: "<span>{wifi_icon}</span> {wifi_name} {wifi_strength}%"
+      ethernet_label: "<span>{wifi_icon}</span>"
+      ethernet_label_alt: "<span>{wifi_icon}</span> {wifi_name}"
+      ethernet_icon: "\uf108"
+      update_interval: 5000
+      callbacks:
+        on_left: "exec explorer.exe ms-actioncenter:controlcenter/wifi"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      wifi_icons: [
+        "\udb82\udd2e",  # Icon for 0% strength
+        "\udb82\udd1f",  # Icon for 1-20% strength
+        "\udb82\udd22",  # Icon for 21-40% strength
+        "\udb82\udd25",  # Icon for 41-80% strength
+        "\udb82\udd28"   # Icon for 81-100% strength
+      ]
+  systray:
+    type: "yasb.systray.SystrayWidget"
+    options:
+      class_name: "systray"
+      label_collapsed: "★"
+      label_expanded: "★"
+      label_position: "left" # Can be "left" or "right"
+      icon_size: 16 # Can be any integer between 8 and 64
+      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
+      show_unpinned: false
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: false
+      container_padding:
+          left: 0
+          top: 0
+          right: 0
+          bottom: 0
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
+    options:
+      label: "<span>{icon}</span>"
+      label_alt: "{device_name}"
+      icons:
+        bluetooth_on: "\udb80\udcaf"
+        bluetooth_off: "\udb80\udcb2"
+        bluetooth_connected: "\udb80\udcb1"
+      callbacks:
+        on_right: "toggle_label"
+        on_middle: "do_nothing"
+        on_left: "exec explorer.exe ms-actioncenter:controlcenter/bluetooth"
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "<span>{icon}</span>{percent}%"
+      label_alt: "<span>{icon}</span> {percent}% | time: {time_remaining}"
+      charging_options:
+        icon_format: "{charging_icon}"
+      callbacks:
+        on_right: "toggle_label"
+        on_left: "do_nothing"
