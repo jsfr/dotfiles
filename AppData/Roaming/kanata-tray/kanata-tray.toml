@@ -11,8 +11,7 @@ defaults.tcp_port = 5829
 
 [defaults.layer_icons]
 
-
 [presets.'Default Preset']
 kanata_executable = '~/scoop/apps/kanata/current/kanata.exe'
 kanata_config = '~/AppData/Roaming/kanata/kanata.kbd'
-autorun = false
+autorun = true

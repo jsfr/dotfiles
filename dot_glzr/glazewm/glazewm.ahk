@@ -59,7 +59,7 @@ CapsLock & q:: {
     Run("C:\Users\JensFredskov\repos\github.com\jsfr\glazewm-listener\glazewm-listener.exe update", , "Hide")
 }
 
-CapsLock & d:: {
+CapsLock & d::{
     Send("^+!d")
 }
 
