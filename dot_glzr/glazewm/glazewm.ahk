@@ -29,7 +29,7 @@ CapsLock & t:: {
     DetectHiddenWindows(false)
 }
 
-CapsLock & o:: {
+CapsLock & l:: {
     ActivateOrRun("ahk_exe Logseq.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
 }
 
@@ -52,7 +52,11 @@ CapsLock & a:: {
 }
 
 CapsLock & r:: {
-    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files (x86)\JetBrains\JetBrains Rider 2025.1\bin\rider64.exe")
+    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files\JetBrains\JetBrains Rider 2025.1.2\bin\rider64.exe")
+}
+
+CapsLock & v:: {
+    ActivateOrRun("ahk_exe Code.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
 }
 
 CapsLock & q:: {
