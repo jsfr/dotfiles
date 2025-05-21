@@ -13,14 +13,6 @@ bars:
       center: true
     animation:
       enabled: false
-      duration: 1000
-    # blur_effect:
-    #   enabled: false
-    #   acrylic: false
-    #   dark_mode: false
-    #   round_corners: false
-    #   round_corners_type: "normal"
-    #   border_color: "System"
     blur_effect:
       enabled: true
       acrylic: true
@@ -39,24 +31,20 @@ bars:
       bottom: 0
       right: 0
     widgets:
-      left: [
-        "home",
-        "glazewm_workspaces",
-        "glazewm_binding_mode",
-        "active_window"
-      ]
-      center: [
-        "clock"
-      ]
-      right: [
-        "microphone",
-        "volume",
-        "bluetooth",
-        "wifi",
-        "battery",
-        # "systray",
-        "notifications"
-        ]
+      left:
+        - "home"
+        - "glazewm_workspaces"
+        - "glazewm_binding_mode"
+        - "active_window"
+      center:
+        - "clock"
+      right:
+        - "microphone"
+        - "volume"
+        - "bluetooth"
+        - "wifi"
+        - "battery"
+        - "notifications"
 widgets:
   home:
     type: "yasb.home.HomeWidget"
@@ -65,10 +53,10 @@ widgets:
       menu_list:
         - { title: "Home", path: "~" }
         - { title: "Repos", path: "~\\Repos" }
-        - { title: "Downloads", path: "~\\Downloads"}
-        - { title: "Documents", path: "~\\Documents"}
-        - { title: "Pictures", path: "~\\Pictures"}
-        - { title: "Videos", path: "~\\Videos"}
+        - { title: "Downloads", path: "~\\Downloads" }
+        - { title: "Documents", path: "~\\Documents" }
+        - { title: "Pictures", path: "~\\Pictures" }
+        - { title: "Videos", path: "~\\Videos" }
       system_menu: true
       power_menu: false
       blur: true
@@ -148,18 +136,18 @@ widgets:
         bottom: 0
         right: 8
   glazewm_binding_mode:
-      type: "glazewm.binding_mode.GlazewmBindingModeWidget"
-      options:
-        hide_if_no_active: true
-        container_padding:
-          top: 0
-          left: 0
-          bottom: 0
-          right: 0
-        callbacks:
-          on_left: "do_nothing"
-          on_middle: "do_nothing"
-          on_right: "do_nothing"
+    type: "glazewm.binding_mode.GlazewmBindingModeWidget"
+    options:
+      hide_if_no_active: true
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+      callbacks:
+        on_left: "do_nothing"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
   wifi:
     type: "yasb.wifi.WifiWidget"
     options:
@@ -174,12 +162,12 @@ widgets:
         on_middle: "do_nothing"
         on_right: "toggle_label"
       wifi_icons: [
-        "\udb82\udd2e",  # Icon for 0% strength
-        "\udb82\udd1f",  # Icon for 1-20% strength
-        "\udb82\udd22",  # Icon for 21-40% strength
-        "\udb82\udd25",  # Icon for 41-80% strength
-        "\udb82\udd28"   # Icon for 81-100% strength
-      ]
+          "\udb82\udd2e", # Icon for 0% strength
+          "\udb82\udd1f", # Icon for 1-20% strength
+          "\udb82\udd22", # Icon for 21-40% strength
+          "\udb82\udd25", # Icon for 41-80% strength
+          "\udb82\udd28", # Icon for 81-100% strength
+        ]
   systray:
     type: "yasb.systray.SystrayWidget"
     options:
@@ -195,10 +183,10 @@ widgets:
       show_volume: false
       show_network: false
       container_padding:
-          left: 0
-          top: 0
-          right: 0
-          bottom: 0
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
