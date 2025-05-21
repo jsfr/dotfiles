@@ -1,0 +1,22 @@
+{
+  "workbench.colorTheme": "Tokyo Storm AltSynt",
+  "extensions.ignoreRecommendations": true,
+  "resharper.build.restorePackagesOnBuild": true,
+  "editor.cursorBlinking": "solid",
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontSize": 14,
+  "vim.useSystemClipboard": true,
+  "files.autoSave": "onWindowChange",
+  "files.autoSaveWorkspaceFilesOnly": true,
+  "editor.formatOnSave": true,
+  "terminal.integrated.profiles.windows": {
+    /* other profiles */
+    "Nu": {
+      "path": "C:\\Users\\JensFredskov\\AppData\\Local\\Programs\\nu\\bin\\nu.exe"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Nu",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
