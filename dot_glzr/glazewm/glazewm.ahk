@@ -44,7 +44,7 @@ CapsLock & c:: {
 CapsLock & a:: {
     DetectHiddenWindows(true)
     if (WinActive("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1")) {
-        ActivateOrRun("ahk_exe Beeper.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\beeper\Beeper.exe")
+        ActivateOrRun("ahk_exe Beeper.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\BeeperTexts\Beeper.exe")
     } else {
         ActivateOrRun("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\signal-desktop\Signal.exe")
     }

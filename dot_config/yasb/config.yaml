@@ -38,13 +38,13 @@ bars:
         - "active_window"
       center:
         - "clock"
+        - "notifications"
       right:
         - "microphone"
         - "volume"
         - "bluetooth"
         - "wifi"
         - "battery"
-        - "notifications"
 widgets:
   home:
     type: "yasb.home.HomeWidget"
@@ -77,7 +77,6 @@ widgets:
       max_length: 56
       max_length_ellipsis: "..."
       monitor_exclusive: true
-
   clock:
     type: "yasb.clock.ClockWidget"
     options:
@@ -168,25 +167,6 @@ widgets:
           "\udb82\udd25", # Icon for 41-80% strength
           "\udb82\udd28", # Icon for 81-100% strength
         ]
-  systray:
-    type: "yasb.systray.SystrayWidget"
-    options:
-      class_name: "systray"
-      label_collapsed: "★"
-      label_expanded: "★"
-      label_position: "left" # Can be "left" or "right"
-      icon_size: 16 # Can be any integer between 8 and 64
-      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
-      show_unpinned: false
-      show_unpinned_button: true
-      show_battery: false
-      show_volume: false
-      show_network: false
-      container_padding:
-        left: 0
-        top: 0
-        right: 0
-        bottom: 0
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
