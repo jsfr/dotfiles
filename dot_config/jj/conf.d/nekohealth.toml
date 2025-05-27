@@ -1,0 +1,4 @@
+--when.repositories = ["~/repos/ssh.dev.azure.com"]
+
+[user]
+email = "jens.fredskov@nekohealth.com"
