@@ -12,6 +12,7 @@ return {
         local ensure_installed = {
             "basedpyright",
             "bashls",
+            "bicep",
             "cssls",
             "denols",
             "dockerls",
@@ -21,8 +22,10 @@ return {
             "html",
             "jsonls",
             "kotlin_language_server",
+            "ltex_plus",
             "lua_ls",
             "marksman",
+            "nim_langserver",
             "powershell_es",
             "rust_analyzer",
             "taplo",
@@ -168,36 +171,59 @@ return {
         })
 
         require("inlay-hints").setup()
+
+        local augroup = require("jsfr.utils.augroup")
+        augroup("OnLspAttach", function(autocmd)
+            autocmd("LspAttach", {
+                pattern = "*",
+                callback = function(args)
+                    local bufnr = args.buf
+
+                    vim.keymap.set(
+                        "n",
+                        "gD",
+                        vim.lsp.buf.declaration,
+                        { noremap = true, silent = true, buffer = bufnr }
+                    )
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr })
+                    vim.keymap.set(
+                        "n",
+                        "gi",
+                        vim.lsp.buf.implementation,
+                        { noremap = true, silent = true, buffer = bufnr }
+                    )
+                    vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
+                    vim.keymap.set(
+                        "n",
+                        "<leader>k",
+                        vim.lsp.buf.hover,
+                        { noremap = true, silent = true, buffer = bufnr, desc = "Show docs under cursor" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>r",
+                        vim.lsp.buf.rename,
+                        { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>a",
+                        vim.lsp.buf.code_action,
+                        { noremap = true, silent = true, buffer = bufnr, desc = "Perform code action" }
+                    )
+                    vim.keymap.set("n", "[d", function()
+                        vim.diagnostic.jump({ count = 1, float = true })
+                    end, { noremap = true, silent = true, buffer = bufnr })
+                    vim.keymap.set("n", "]d", function()
+                        vim.diagnostic.jump({ count = -1, float = true })
+                    end, { noremap = true, silent = true, buffer = bufnr })
+
+                    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+                    if client.server_capabilities.inlayHintProvider then
+                        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+                    end
+                end,
+            })
+        end)
     end,
 }
-
--- local function on_attach(client, bufnr)
---     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { noremap = true, silent = true, buffer = bufnr })
---     vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr })
---     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { noremap = true, silent = true, buffer = bufnr })
---     vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
---     vim.keymap.set(
---         "n",
---         "<leader>k",
---         vim.lsp.buf.hover,
---         { noremap = true, silent = true, buffer = bufnr, desc = "Show docs under cursor" }
---     )
---     vim.keymap.set(
---         "n",
---         "<leader>r",
---         vim.lsp.buf.rename,
---         { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
---     )
---     vim.keymap.set(
---         "n",
---         "<leader>a",
---         vim.lsp.buf.code_action,
---         { noremap = true, silent = true, buffer = bufnr, desc = "Perform code action" }
---     )
---     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true, buffer = bufnr })
---     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true, buffer = bufnr })
---
---     if client.server_capabilities.inlayHintProvider then
---         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
---     end
--- end
