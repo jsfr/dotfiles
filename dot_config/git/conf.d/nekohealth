@@ -1,0 +1,4 @@
+# vim: set syntax=gitconfig :
+
+[user]
+    email = jens.fredskov@nekohealth.com

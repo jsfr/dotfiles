@@ -127,3 +127,6 @@
 [credential]
     helper = cache
 {{- end -}}
+
+[includeIf "gitdir:~/repos/ssh.dev.azure.com/"]
+	path = conf.d/nekohealth
