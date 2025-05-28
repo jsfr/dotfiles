@@ -12,7 +12,6 @@ email = "jsfr@users.noreply.github.com"
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 re = ["restore"]
 rb = ["rebase"]
-g = ["git"]
 f = ["git", "fetch"]
 p = ["git", "push", "--allow-new"]
 s = ["st"]
@@ -20,11 +19,26 @@ e = ["edit"]
 d = ["diff"]
 n = ["new"]
 nt = ["new", "-r", "trunk()"]
+rbt = ["rebase", "-b", "closest_bookmark(@)", "-d", "trunk()"]
 
 [ui]
 default-command = "log"
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 
 [git]
 auto-local-bookmark = true
-# Prevent pushing work in progress or anything explicitly labeled "private"
-private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
+# Prevent pushing work in progress
+private-commits = "description(glob:'wip:*')"
+
+# disable pagination for `jj status`, use `delta` for `jj diff` and `jj show`
+[[--scope]]
+--when.commands = ["status"]
+[--scope.ui]
+paginate = "never"
+
+[[--scope]]
+--when.commands = ["diff", "show"]
+[--scope.ui]
+pager = "delta"
+[--scope.ui.diff]
+format = "git"
