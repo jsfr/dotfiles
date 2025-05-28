@@ -42,11 +42,10 @@ blocks:
         style: plain
       - type: git
         properties:
-          # branch_icon: "\ue725 "
+          branch_icon: "\ue725 "
           fetch_status: true
-          fetch_upstream_icon: true
-        # template: ({{ .HEAD}})
-        template: "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}"
+        template: "{{ .HEAD}} {{ if gt .StashCount 0 }}\uf0c7 {{ .StashCount }} {{ end }}"
+        # template: "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}"
         foreground: p:light-sky-blue
         style: plain
         foreground_templates:
