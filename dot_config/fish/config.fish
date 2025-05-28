@@ -87,5 +87,5 @@ if command -q jj
 end
 
 if command -q oh-my-posh
-    bkt --ttl 1day -- oh-my-posh init fish --config ~/.config/oh-my-posh.toml | source
+    bkt --ttl 1day -- oh-my-posh init fish --config ~/.config/oh-my-posh.yaml | source
 end
