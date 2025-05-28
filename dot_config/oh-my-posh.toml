@@ -103,13 +103,19 @@ type = 'julia'
 style = 'plain'
 
 [[blocks.segments]]
-template = ' {{ .Full}}'
+template = ' {{ .Full }}'
 foreground = 'p:terminal-red'
 type = 'ruby'
 style = 'plain'
 
 [[blocks.segments]]
-template = 'ﳑ {{ .Full}}'
+type = "dotnet"
+style = "plain"
+foreground = "p:terminal-green"
+template = " {{ .Full }}"
+
+[[blocks.segments]]
+template = '󰟓 {{ .Full}}'
 foreground = 'p:light-sky-blue'
 type = 'go'
 style = 'plain'
@@ -129,7 +135,7 @@ alignment = 'left'
 newline = true
 
 [[blocks.segments]]
-template = '▶'
+template = '󰘧'
 foreground = 'p:pistachio-green'
 type = 'text'
 style = 'plain'
