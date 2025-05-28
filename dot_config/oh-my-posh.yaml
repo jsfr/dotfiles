@@ -42,9 +42,11 @@ blocks:
         style: plain
       - type: git
         properties:
-          branch_icon: "\ue725 "
+          # branch_icon: "\ue725 "
           fetch_status: true
-        template: ({{ .HEAD}})
+          fetch_upstream_icon: true
+        # template: ({{ .HEAD}})
+        template: "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}"
         foreground: p:light-sky-blue
         style: plain
         foreground_templates:
@@ -112,7 +114,9 @@ blocks:
         properties:
           mapped_shell_names:
             nu: "\uf105"
-            fish: "\uee41"
+            fish: "󰘧"
+            sh: "\ue691"
+            bash: "󱆃"
         foreground: p:pistachio-green
         style: plain
     newline: true
