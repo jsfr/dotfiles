@@ -2,9 +2,8 @@ export-env {
     $env.BROWSER = 'C:\Program Files\Mozilla Firefox\firefox.exe'
     $env.path ++= [
         'C:\Program Files\Git\bin',
-        # 'C:\Program Files\Git\usr\bin',
     ]
-    $env.GIT_EDITOR = 'hx'
+    $env.GIT_EDITOR = 'nvim'
 
     $env.HOME = $env.USERPROFILE
 }

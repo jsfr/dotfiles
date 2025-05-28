@@ -6,21 +6,12 @@ mkdir ($nu.data-dir | path join vendor autoload)
 
 # Enable zoxide
 zoxide init nushell --cmd cd | save -f (get-dir "zoxide")
-# zoxide init nushell | save -f (get-dir "zoxide")
 
 # Enable atuin
 atuin init nu | save -f (get-dir "atuin")
 
-{{- if .is_wsl }}
-export def --wrapped sfsu [...args] {
-  /mnt/c/Users/JensFredskov/scoop/shims/sfsu.exe ...$args
-}
 # Enable sfsu
 sfsu hook --shell nu | save -f (get-dir "sfsu")
-{{- else if .is_windows }}
-# Enable sfsu
-sfsu hook --shell nu | save -f (get-dir "sfsu")
-{{- end }}
 
-# Enable starship
-starship init nu | save -f (get-dir "starship")
+# Enable oh-my-posh
+oh-my-posh init nu --config ~/.config/oh-my-posh.yaml | save -f (get-dir "oh-my-posh")

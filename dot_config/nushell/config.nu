@@ -1,10 +1,6 @@
 use std/util "path add"
 
-{{- if .is_wsl }}
-use modules/wsl *
-{{- else if .is_windows }}
 use modules/windows *
-{{- end }}
 
 # Config
 $env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://github.com/nushell/nushell/issues/5585
@@ -69,6 +65,10 @@ def --wrapped hx [...args] {
 
 def --env cdg [] {
     cd (git root)
+}
+
+def --env cdj [] {
+    cd (jj root)
 }
 
 # Source custom modules
