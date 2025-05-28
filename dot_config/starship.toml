@@ -70,15 +70,5 @@ jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 -
 '
 '''
 
-[git_branch]
-disabled = true
-
-[git_commit]
-disabled = true
-
-[git_state]
-disabled = true
-
 [git_status]
-disabled = true
 windows_starship = '/mnt/c/Users/JensFredskov/scoop/apps/starship/current/starship.exe'

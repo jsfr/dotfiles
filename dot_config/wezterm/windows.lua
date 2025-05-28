@@ -23,7 +23,6 @@ end)
 
 return {
     font_size = 11.0,
-    font = wezterm.font("JetBrainsMono Nerd Font Mono"),
     default_domain = "WSL:NixOS",
     tab_max_width = 20,
     keys = {
