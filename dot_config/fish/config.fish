@@ -43,13 +43,13 @@ function fish_user_key_bindings
 end
 
 # enable starship
-if command -q starship
-    function starship_transient_prompt_func
-        starship module character
-    end
-    bkt --ttl 1day -- starship init fish | source
-    enable_transience
-end
+# if command -q starship
+#     function starship_transient_prompt_func
+#         starship module character
+#     end
+#     bkt --ttl 1day -- starship init fish | source
+#     enable_transience
+# end
 
 # enable mise
 if command -q mise
@@ -84,4 +84,8 @@ end
 if command -q jj
     # bkt --ttl 1day -- jj util completion fish | source
     COMPLETE=fish jj | source
+end
+
+if command -q oh-my-posh
+    bkt --ttl 1day -- oh-my-posh init fish | source
 end
