@@ -14,4 +14,4 @@ atuin init nu | save -f (get-dir "atuin")
 sfsu hook --shell nu | save -f (get-dir "sfsu")
 
 # Enable oh-my-posh
-oh-my-posh init nu --config ~/.config/oh-my-posh.yaml | save -f (get-dir "oh-my-posh")
+oh-my-posh init nu --print --config ~/.config/oh-my-posh.yaml | save -f (get-dir "oh-my-posh")

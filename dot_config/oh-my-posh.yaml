@@ -107,8 +107,12 @@ blocks:
         foreground: p:terminal-red
         template: <b>(root)</b>
         style: plain
-      - type: text
-        template: 󰘧
+      - type: shell
+        template: "{{ .Name }}"
+        properties:
+          mapped_shell_names:
+            nu: "\uf105"
+            fish: "\uee41"
         foreground: p:pistachio-green
         style: plain
     newline: true
