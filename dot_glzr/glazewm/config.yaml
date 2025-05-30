@@ -3,21 +3,19 @@ general:
   # script or launching another application.
   # Example: The below command launches Zebar.
   startup_commands:
-    # - "shell-exec zebar"
     - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
     - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe"
-    # - "shell-exec --hide-window C:\\Users\\JensFredskov\\scoop\\shims\\kanata.exe"
+    - "shell-exec --hide-window syncthingtray-1.7.7-x86_64-w64-mingw32.exe --single-instance"
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
   shutdown_commands:
-    # - "shell-exec --hide-window taskkill /IM zebar.exe /F"
     - "shell-exec --hide-window taskkill /IM glazewm-listener.exe /F"
-    # - "shell-exec --hide-window taskkill /IM kanata.exe /F"
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands:
     - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
+    - "shell-exec --hide-window syncthingtray-1.7.7-x86_64-w64-mingw32.exe --single-instance"
 
   # Whether to automatically focus windows underneath the cursor.
   focus_follows_cursor: false
@@ -39,7 +37,7 @@ general:
   # - 'cloak': Recommended. Hides windows with no animation.
   # - 'hide': Legacy method (v3.5 and earlier) that has a brief animation,
   # but has stability issues with some apps.
-  hide_method: 'cloak'
+  hide_method: "cloak"
 
   # Affects which windows get shown in the native Windows taskbar. Has no
   # effect if `hide_method: 'hide'`.

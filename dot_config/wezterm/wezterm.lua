@@ -14,6 +14,7 @@ config.window_decorations = "RESIZE"
 
 -- Tab bar
 config.use_fancy_tab_bar = false
+config.tab_max_width = 50
 config.window_frame = {
     font_size = 11.0,
 }
