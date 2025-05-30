@@ -65,6 +65,15 @@ require("lazy").setup({
         "nmac427/guess-indent.nvim",
         opts = {},
     },
+    {
+        "nvim-tree/nvim-web-devicons",
+        lazy = true,
+        opts = {
+            override = {
+                css = { icon = "", color = "#663399", cterm_color = "91", name = "Css" },
+            },
+        },
+    },
 }, {
     install = { colorscheme = { "tokyonight-storm" } },
     performance = { reset_packpath = true },
