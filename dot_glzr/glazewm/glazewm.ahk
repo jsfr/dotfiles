@@ -55,9 +55,9 @@ CapsLock & r:: {
     ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files\JetBrains\JetBrains Rider 2025.1.2\bin\rider64.exe")
 }
 
-CapsLock & v:: {
-    ActivateOrRun("ahk_exe Code.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
-}
+; CapsLock & v:: {
+;     ActivateOrRun("ahk_exe Code.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
+; }
 
 CapsLock & q:: {
     Run("C:\Users\JensFredskov\repos\github.com\jsfr\glazewm-listener\glazewm-listener.exe update", , "Hide")
