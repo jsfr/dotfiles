@@ -25,7 +25,7 @@ transient_prompt:
   template: "➜ "
   foreground: p:terminal-blue
   background: p:t-background
-console_title_template: " {{ .Folder }} :: {{if .Root}}Admin{{end}}"
+console_title_template: "{{if .Root}}(root) :: {{end}}{{ .Folder }}"
 terminal_background: p:t-background
 blocks:
   - type: prompt

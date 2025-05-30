@@ -2,8 +2,8 @@ local wezterm = require("wezterm")
 
 -- local WIN_LOGO = wezterm.nerdfonts.md_microsoft
 -- local NIX_LOGO = wezterm.nerdfonts.md_nix
-local WIN_LOGO = "🪟 "
-local NIX_LOGO = "🐧 "
+local WIN_LOGO = " "
+local NIX_LOGO = " "
 
 wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
     local active_pane = tab.active_pane
