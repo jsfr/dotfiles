@@ -33,7 +33,7 @@ blocks:
     segments:
       - type: os
         style: plain
-        template: "{{.Icon}} "
+        template: "{{.Icon}}  "
       - type: path
         properties:
           style: unique
