@@ -118,7 +118,8 @@ blocks:
             nu: "\uf105"
             fish: "󰘧"
             sh: "\ue691"
-            bash: "󱆃"
+            bash: "\uf292"
+            pwsh: "\uf155"
         foreground: p:pistachio-green
         style: plain
     newline: true
