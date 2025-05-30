@@ -195,12 +195,6 @@ return {
                     vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
                     vim.keymap.set(
                         "n",
-                        "<leader>k",
-                        vim.lsp.buf.hover,
-                        { noremap = true, silent = true, buffer = bufnr, desc = "Show docs under cursor" }
-                    )
-                    vim.keymap.set(
-                        "n",
                         "<leader>r",
                         vim.lsp.buf.rename,
                         { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
@@ -209,7 +203,7 @@ return {
                         "n",
                         "<leader>a",
                         vim.lsp.buf.code_action,
-                        { noremap = true, silent = true, buffer = bufnr, desc = "Perform code action" }
+                        { noremap = true, silent = true, buffer = bufnr, desc = "Code action" }
                     )
                     vim.keymap.set("n", "[d", function()
                         vim.diagnostic.jump({ count = 1, float = true })

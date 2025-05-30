@@ -2,11 +2,15 @@
 ---@type LazySpec
 return {
     "folke/todo-comments.nvim",
-    dependencies = {
-        "folke/trouble.nvim",
-        "nvim-telescope/telescope.nvim",
-        "nvim-lua/plenary.nvim",
-    },
     opts = {},
-    cmd = { "TodoTrouble" },
+    event = "VeryLazy",
+    keys = {
+        {
+            "<leader>T",
+            function()
+                Snacks.picker.todo_comments()
+            end,
+            desc = "Todo",
+        },
+    },
 }
