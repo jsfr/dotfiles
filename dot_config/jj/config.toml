@@ -83,3 +83,4 @@ paginate = "never"
 pager = "delta"
 [--scope.ui.diff]
 format = "git"
+# tool = ["difft", "--color=always", "$left", "$right"]
