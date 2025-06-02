@@ -13,14 +13,17 @@ ActivateOrRun(window, path) {
     DetectHiddenWindows(false)
 }
 
+F18 & s::
 CapsLock & s:: {
     Run("SnippingTool.exe")
 }
 
+F18 & e::
 CapsLock & e:: {
     ActivateOrRun("ahk_exe firefox.exe ahk_class MozillaWindowClass", "C:\Program Files\Mozilla Firefox\firefox.exe")
 }
 
+F18 & t::
 CapsLock & t:: {
     DetectHiddenWindows(true)
     Run("ms-teams.exe")
@@ -29,18 +32,22 @@ CapsLock & t:: {
     DetectHiddenWindows(false)
 }
 
+F18 & l::
 CapsLock & l:: {
     ActivateOrRun("ahk_exe Logseq.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
 }
 
+F18 & w::
 CapsLock & w:: {
     ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Program Files\WezTerm\wezterm-gui.exe")
 }
 
+F18 & c::
 CapsLock & c:: {
     ActivateOrRun("ahk_exe olk.exe ahk_class Olk Host", "olk.exe")
 }
 
+F18 & a::
 CapsLock & a:: {
     DetectHiddenWindows(true)
     if (WinActive("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1")) {
@@ -51,18 +58,22 @@ CapsLock & a:: {
     DetectHiddenWindows(false)
 }
 
+F18 & r::
 CapsLock & r:: {
     ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files\JetBrains\JetBrains Rider 2025.1.2\bin\rider64.exe")
 }
 
+; F18 & v::
 ; CapsLock & v:: {
 ;     ActivateOrRun("ahk_exe Code.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
 ; }
 
+F18 & q::
 CapsLock & q:: {
     Run("C:\Users\JensFredskov\repos\github.com\jsfr\glazewm-listener\glazewm-listener.exe update", , "Hide")
 }
 
+F18 & d::
 CapsLock & d::{
     Send("^+!d")
 }
@@ -81,8 +92,8 @@ CapsLock & d::{
 :?*:;o::ø
 
 ; Email autocompletion
-:?*:;mp::jensfredskov@gmail.com
-:?*:;mw::jens.fredskov@nekohealth.com
+:?*:;jm::jensfredskov@gmail.com
+:?*:;nm::jens.fredskov@nekohealth.com
 
 ; Other hotstrings
 :?*:;td::{

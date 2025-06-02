@@ -72,7 +72,7 @@ def --env cdj [] {
 }
 
 # Source custom modules
-use modules/completions
+# use modules/completions
 use modules/neko
 
 # Eliminate duplicated path entries
