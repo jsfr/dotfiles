@@ -18,4 +18,4 @@ sfsu hook --shell nu | save -f (get-dir "sfsu")
 carapace _carapace nushell | save -f (get-dir "carapace")
 
 # Enable oh-my-posh
-oh-my-posh init nu --print --config ~/.config/oh-my-posh.yaml | save -f (get-dir "oh-my-posh")
+oh-my-posh init nu --config ~/.config/oh-my-posh.yaml
