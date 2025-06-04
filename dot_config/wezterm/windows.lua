@@ -21,6 +21,15 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
     return " " .. title .. " "
 end)
 
+wezterm.on("gui-startup", function(cmd)
+    local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+    pane:split({
+        direction = "Right",
+        domain = { DomainName = "local" },
+        args = { "nu.exe" },
+    })
+end)
+
 return {
     font_size = 11.0,
     default_domain = "WSL:NixOS",
@@ -67,8 +76,8 @@ return {
                 local dimensions = pane:get_dimensions()
 
                 pane:split({
-                    domain = { DomainName = "local" },
                     direction = dimensions.pixel_width > dimensions.pixel_height and "Right" or "Bottom",
+                    domain = { DomainName = "local" },
                     args = { "nu.exe" },
                 })
             end),
