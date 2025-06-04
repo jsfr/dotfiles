@@ -90,6 +90,8 @@ CapsLock & d::{
 :?*:;a::å
 :?*:;e::æ
 :?*:;o::ø
+:?*:;m::—
+:?*:;n::–
 
 ; Email autocompletion
 :?*:;jm::jensfredskov@gmail.com
