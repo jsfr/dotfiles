@@ -17,6 +17,7 @@ return {
             "denols",
             "dockerls",
             "eslint",
+            "fennel_ls",
             "golangci_lint_ls",
             "gopls",
             "html",
