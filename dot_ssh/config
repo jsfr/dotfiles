@@ -7,5 +7,8 @@ Host pico.sh
 Host pgs.sh
   IdentityFile ~/.ssh/personal
 
+Host tuns.sh
+  IdentityFile ~/.ssh/personal
+
 Host ssh.dev.azure.com
   IdentityFile ~/.ssh/nekohealth

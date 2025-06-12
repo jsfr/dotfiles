@@ -13,10 +13,10 @@ ActivateOrRun(window, path) {
     DetectHiddenWindows(false)
 }
 
-F18 & s::
-CapsLock & s:: {
-    Run("SnippingTool.exe")
-}
+; F18 & s::
+; CapsLock & s:: {
+;     Run("SnippingTool.exe")
+; }
 
 F18 & e::
 CapsLock & e:: {
@@ -25,11 +25,12 @@ CapsLock & e:: {
 
 F18 & t::
 CapsLock & t:: {
-    DetectHiddenWindows(true)
-    Run("ms-teams.exe")
-    WinWait("ahk_exe ms-teams.exe")
-    WinActivate("ahk_exe ms-teams.exe")
-    DetectHiddenWindows(false)
+    ActivateOrRun("Microsoft Teams ahk_exe ms-teams.exe ahk_class TeamsWebView", "ms-teams.exe")
+    ; DetectHiddenWindows(true)
+    ; Run("ms-teams.exe")
+    ; WinWait("ahk_exe ms-teams.exe")
+    ; WinActivate("ahk_exe ms-teams.exe")
+    ; DetectHiddenWindows(false)
 }
 
 F18 & l::
@@ -62,11 +63,6 @@ F18 & r::
 CapsLock & r:: {
     ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files\JetBrains\JetBrains Rider 2025.1.2\bin\rider64.exe")
 }
-
-; F18 & v::
-; CapsLock & v:: {
-;     ActivateOrRun("ahk_exe Code.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\Microsoft VS Code\Code.exe")
-; }
 
 F18 & q::
 CapsLock & q:: {
@@ -102,3 +98,8 @@ CapsLock & d::{
     Send(FormatTime(,"'TODO: ('yyyy-MM-dd' - jens)'"))
 }
 :?*:;jf::jensfredskov
+
+#HotIf WinActive("Microsoft Teams ahk_exe ms-teams.exe ahk_class TeamsWebView")
+    Enter::Send("+{Enter}")
+    ^Enter::Send("{Enter}")
+#HotIf

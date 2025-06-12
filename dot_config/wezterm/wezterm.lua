@@ -22,6 +22,8 @@ config.window_frame = {
 -- Quick-select
 config.quick_select_patterns = {
     [[[a-zA-Z]:\\(?:[\w\s\.]+\\)*[\w\s\.]*]],
+    -- Windows paths
+    [[(?:\w:)?(?:[.\w\-@~]+)?(?:\\+[.\w\-@]+)+]],
 }
 
 -- Theme
