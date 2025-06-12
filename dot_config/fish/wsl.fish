@@ -9,7 +9,6 @@ fish_add_path -aP \
 
 alias rebuild="sudo nixos-rebuild switch"
 alias search=nix-search
-alias dn=dotnet
 alias wg=winget.exe
 alias wcopy="win32yank.exe -i"
 alias wpaste="win32yank.exe -o"

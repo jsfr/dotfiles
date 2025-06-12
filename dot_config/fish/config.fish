@@ -14,6 +14,7 @@ alias tf=terraform
 alias lg=lazygit
 alias g=git
 alias j=jj
+alias dn=dotnet
 
 # define abbreviations
 abbr zap "brew uninstall --force --zap"
