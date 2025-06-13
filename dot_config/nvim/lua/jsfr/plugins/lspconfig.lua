@@ -10,7 +10,7 @@ return {
     },
     config = function()
         local ensure_installed = {
-            "basedpyright",
+            "pyrefly",
             "bashls",
             "bicep",
             "cssls",
@@ -133,18 +133,6 @@ return {
                         typeHints = true,
                         parameterHints = true,
                         chaineHints = true,
-                    },
-                },
-            },
-        }
-
-        vim.lsp.config.basedpyright = {
-            settings = {
-                basedpyright = {
-                    analysis = {
-                        autoSearchPaths = true,
-                        diagnosticMode = "openFilesOnly",
-                        useLibraryCodeForTypes = true,
                     },
                 },
             },
