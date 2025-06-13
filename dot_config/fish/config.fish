@@ -43,15 +43,6 @@ function fish_user_key_bindings
     bind \eb backward-word
 end
 
-# enable starship
-# if command -q starship
-#     function starship_transient_prompt_func
-#         starship module character
-#     end
-#     bkt --ttl 1day -- starship init fish | source
-#     enable_transience
-# end
-
 # enable mise
 if command -q mise
     bkt --ttl 1day -- mise activate fish | source
