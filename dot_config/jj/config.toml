@@ -24,52 +24,51 @@ l = ["log", "-T", "builtin_log_compact"]
 
 [ui]
 default-command = "log"
-diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 
 [git]
 auto-local-bookmark = true
 # Prevent pushing work in progress
 private-commits = "description(glob:'wip:*')"
 
-# [template-aliases]
-# "format_timestamp(timestamp)" = "timestamp.ago()"
+[template-aliases]
+"format_timestamp(timestamp)" = "timestamp.ago()"
 
-[templates]
-log_node = '''
-  label("node",
-    coalesce(
-      if(!self, label("elided", "~")),
-      if(current_working_copy, label("working_copy", "@")),
-      if(conflict, label("conflict", "×")),
-      if(immutable, label("immutable", "*")),
-      label("normal", "·")
-    )
-  )
-'''
-log = '''
-  if(root,
-    format_root_commit(self),
-    label(if(current_working_copy, "working_copy"),
-      concat(
-        separate(" ",
-          format_short_change_id_with_hidden_and_divergent_info(self),
-          if(empty, label("empty", "(empty)")),
-          if(description,
-            description.first_line(),
-            label(if(empty, "empty"), description_placeholder),
-          ),
-          bookmarks,
-          tags,
-          working_copies,
-          if(git_head, label("git_head", "HEAD")),
-          if(conflict, label("conflict", "conflict")),
-          if(config("ui.show-cryptographic-signatures").as_boolean(),
-            format_short_cryptographic_signature(signature)),
-        ) ++ "\n",
-      ),
-    )
-  )
-'''
+# [templates]
+# log_node = '''
+#   label("node",
+#     coalesce(
+#       if(!self, label("elided", "~")),
+#       if(current_working_copy, label("working_copy", "@")),
+#       if(conflict, label("conflict", "×")),
+#       if(immutable, label("immutable", "*")),
+#       label("normal", "·")
+#     )
+#   )
+# '''
+# log = '''
+#   if(root,
+#     format_root_commit(self),
+#     label(if(current_working_copy, "working_copy"),
+#       concat(
+#         separate(" ",
+#           format_short_change_id_with_hidden_and_divergent_info(self),
+#           if(empty, label("empty", "(empty)")),
+#           if(description,
+#             description.first_line(),
+#             label(if(empty, "empty"), description_placeholder),
+#           ),
+#           bookmarks,
+#           tags,
+#           working_copies,
+#           if(git_head, label("git_head", "HEAD")),
+#           if(conflict, label("conflict", "conflict")),
+#           if(config("ui.show-cryptographic-signatures").as_boolean(),
+#             format_short_cryptographic_signature(signature)),
+#         ) ++ "\n",
+#       ),
+#     )
+#   )
+# '''
 
 # disable pagination for `jj status`, use `delta` for `jj diff` and `jj show`
 [[--scope]]
@@ -81,6 +80,4 @@ paginate = "never"
 --when.commands = ["diff", "show"]
 [--scope.ui]
 pager = "delta"
-[--scope.ui.diff]
-format = "git"
-# tool = ["difft", "--color=always", "$left", "$right"]
+diff-formatter = ":git"

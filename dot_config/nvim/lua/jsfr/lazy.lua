@@ -68,11 +68,7 @@ require("lazy").setup({
     {
         "nvim-tree/nvim-web-devicons",
         lazy = true,
-        opts = {
-            -- override = {
-            --     css = { icon = "", color = "#663399", cterm_color = "91", name = "Css" },
-            -- },
-        },
+        opts = {},
     },
 }, {
     install = { colorscheme = { "tokyonight-storm" } },
