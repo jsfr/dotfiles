@@ -1,6 +1,5 @@
 [tools]
 bun = "latest"
-nodejs = "latest"
 deno = "latest"
 dotnet = "9"
 usage = "latest"
