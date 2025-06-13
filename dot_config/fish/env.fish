@@ -1,5 +1,4 @@
 # path
-fish_add_path -P /opt/homebrew/bin
 fish_add_path -P ~/.local/bin
 
 set -gx SHELL (which fish)
@@ -34,4 +33,7 @@ set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 fish_add_path -P ~/.dotnet/tools
 
 # mise
-fish_add_path -P $XDG_DATA_HOME/mise/shims
+if command -q mise
+    fish_add_path -P $XDG_DATA_HOME/mise/shims
+    bkt --ttl 1day -- mise activate fish | source
+end

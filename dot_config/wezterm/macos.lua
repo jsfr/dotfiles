@@ -1,8 +1,15 @@
 local wezterm = require("wezterm")
 
 return {
-    font_size = 13.0,
+    font_size = 14.0,
     default_prog = { "/opt/homebrew/bin/fish" },
+    font = wezterm.font({
+        family = "JetBrains Mono",
+        weight = "Medium",
+    }),
+    -- Hotfix for https://github.com/wez/wezterm/issues/3774
+    freetype_load_target = "Light",
+    cell_width = 0.9,
     keys = {
         {
             key = "k",
@@ -30,8 +37,4 @@ return {
             end),
         },
     },
-    -- Hotfix for https://github.com/wez/wezterm/issues/3774
-    freetype_load_target = "Light",
-    -- freetype_render_target = "HorizontalLcd",
-    cell_width = 0.9,
 }

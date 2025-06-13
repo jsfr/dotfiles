@@ -1,10 +1,13 @@
-# source environment vars
-source ~/.config/fish/env.fish
-
-# WSL
-if uname -a | grep -q WSL2
+if uname -a | grep -q Darwin
+    # MacOS
+    source ~/.config/fish/macos.fish
+else if uname -a | grep -q WSL2
+    # WSL
     source ~/.config/fish/wsl.fish
 end
+
+# source environment vars
+source ~/.config/fish/env.fish
 
 # define aliases
 alias ls="eza -1 -F"
@@ -29,9 +32,9 @@ abbr --command cm s status
 abbr --command cm e "edit --apply"
 abbr --command cm u update
 
-function hx -w hx
-    env PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin" command hx $argv
-end
+# function hx -w hx
+#     env PATH="$PATH:$XDG_DATA_HOME/nvim/mason/bin" command hx $argv
+# end
 
 # define custom keybindings
 function fish_user_key_bindings
@@ -43,9 +46,18 @@ function fish_user_key_bindings
     bind \eb backward-word
 end
 
-# enable mise
-if command -q mise
-    bkt --ttl 1day -- mise activate fish | source
+# completions
+if command -q just
+    bkt --ttl 1day -- just --completions fish | source
+end
+if command -q wezterm
+    bkt --ttl 1day -- wezterm shell-completion --shell fish | source
+end
+if command -q gs
+    bkt --ttl 1day -- gs shell completion fish | source
+end
+if command -q jj
+    COMPLETE=fish jj | source
 end
 
 # enable zoxide
@@ -63,21 +75,7 @@ if command -q direnv
     bkt --ttl 1day -- direnv hook fish | source
 end
 
-# completions
-if command -q just
-    bkt --ttl 1day -- just --completions fish | source
-end
-if command -q wezterm
-    bkt --ttl 1day -- wezterm shell-completion --shell fish | source
-end
-if command -q gs
-    bkt --ttl 1day -- gs shell completion fish | source
-end
-if command -q jj
-    # bkt --ttl 1day -- jj util completion fish | source
-    COMPLETE=fish jj | source
-end
-
+# enable oh-my-posh
 if command -q oh-my-posh
     bkt --ttl 1day -- oh-my-posh init fish --config ~/.config/oh-my-posh.yaml | source
 end
