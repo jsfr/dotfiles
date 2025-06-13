@@ -1,3 +1,2 @@
 # path
-fish_add_path -P /opt/homebrew/bin
-fish_add_path -P /opt/homebrew/lib
+fish_add_path -aP /opt/homebrew/bin
