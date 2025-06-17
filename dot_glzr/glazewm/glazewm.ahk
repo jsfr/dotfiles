@@ -13,11 +13,6 @@ ActivateOrRun(window, path) {
     DetectHiddenWindows(false)
 }
 
-; F18 & s::
-; CapsLock & s:: {
-;     Run("SnippingTool.exe")
-; }
-
 F18 & e::
 CapsLock & e:: {
     ActivateOrRun("ahk_exe firefox.exe ahk_class MozillaWindowClass", "C:\Program Files\Mozilla Firefox\firefox.exe")
@@ -25,12 +20,14 @@ CapsLock & e:: {
 
 F18 & t::
 CapsLock & t:: {
-    ActivateOrRun("Microsoft Teams ahk_exe ms-teams.exe ahk_class TeamsWebView", "ms-teams.exe")
-    ; DetectHiddenWindows(true)
-    ; Run("ms-teams.exe")
-    ; WinWait("ahk_exe ms-teams.exe")
-    ; WinActivate("ahk_exe ms-teams.exe")
-    ; DetectHiddenWindows(false)
+    DetectHiddenWindows(true)
+    Id := WinWait("ahk_exe ms-teams.exe", , 0.25)
+    if Id {
+        WinActivate("ahk_exe ms-teams.exe")
+    } else {
+        Run("ms-teams.exe")
+    }
+    DetectHiddenWindows(false)
 }
 
 F18 & l::
@@ -61,7 +58,7 @@ CapsLock & a:: {
 
 F18 & r::
 CapsLock & r:: {
-    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files\JetBrains\JetBrains Rider 2025.1.2\bin\rider64.exe")
+    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files (x86)\JetBrains\JetBrains Rider 2025.1.3\bin\rider64.exe")
 }
 
 F18 & q::
