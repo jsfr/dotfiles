@@ -52,29 +52,36 @@ blocks:
           - "{{ if and (gt .Ahead 0) (gt .Behind 0)}}p:light-sky-blue {{ end }}"
           - "{{ if gt .Ahead 0 }}p:terminal-blue{{ end }}"
           - "{{ if gt .Behind 0 }}p:celeste-blue{{ end }}"
-      - type: jujutsu
-        style: plain
-        foreground: p:light-sky-blue
-        template: "󰠬 {{.ChangeID}}{{if .Working.Changed}} \uf044 {{ .Working.String }}{{ end }}"
-        properties:
-          fetch_status: true
-          native_fallback: true
-      # - type: command
+      # - type: jujutsu
       #   style: plain
-      #   template: "󰠬 "
+      #   foreground: p:light-sky-blue
+      #   template: "󰠬 {{.ChangeID}}{{if .Working.Changed}} \uf044 {{ .Working.String }}{{ end }}"
       #   properties:
-      #     shell: sh
-      #     command: >
-      #       jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
-      #         separate(" ", change_id.shortest(4), bookmarks, "|",
-      #           concat(if(conflict, "💥"), if(divergent, "🚧"), if(hidden, "👻"), if(immutable, "🔒")),
-      #           raw_escape_sequence("\x1b[1;32m") ++ if(empty, "(empty)"),
-      #           raw_escape_sequence("\x1b[1;32m") ++ coalesce(
-      #             truncate_end(29, description.first_line(), "…"),
-      #             "(no description set)",
-      #           ) ++ raw_escape_sequence("\x1b[0m"),
-      #         )
-      #       '
+      #     fetch_status: true
+      - type: command
+        style: plain
+        alias: Jujutsu
+        template: "󰠬 {{.Output}}"
+        foreground: p:light-sky-blue
+        properties:
+          shell: sh
+          command: >
+            jj log --revisions @ --no-graph --ignore-working-copy --color never --limit 1 --template '
+              separate(" ",
+                change_id.shortest(),
+                bookmarks,
+                "|",
+                concat(if(conflict, "󰞇"), if(divergent, "󰃻"), if(hidden, "󰊠"), if(immutable, "󰌾")),
+                if(empty, "(empty)"),
+                coalesce(truncate_end(29, description.first_line(), "…"), "(no description set)"),
+              )
+            '
+        # separate("",
+        #   if(diff.files().filter(|f| f.status() == "added"), "+" ++ diff.files().filter(|f| f.status() == "added").len()),
+        #   if(diff.files().filter(|f| f.status() == "modified"), "~" ++ diff.files().filter(|f| f.status() == "modified").len()),
+        #   if(diff.files().filter(|f| f.status() == "removed"), "-" ++ diff.files().filter(|f| f.status() == "removed").len()),
+        #   if(diff.files().filter(|f| f.status() == "renamed"), ">" ++ diff.files().filter(|f| f.status() == "renamed").len())
+        # ),
       - type: status
         template: " \uf00d"
         foreground: p:terminal-red
