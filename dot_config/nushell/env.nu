@@ -15,7 +15,7 @@ atuin init nu | save -f (get-dir "atuin")
 sfsu hook --shell nu | save -f (get-dir "sfsu")
 
 # Enable carapace
-carapace _carapace nushell | save -f (get-dir "carapace")
+# carapace _carapace nushell | save -f (get-dir "carapace")
 
 # Enable oh-my-posh
 oh-my-posh init nu --config ~/.config/oh-my-posh.yaml

@@ -2,63 +2,60 @@
 
 SetCapsLockState("AlwaysOff")
 
-ActivateOrRun(window, path) {
-    DetectHiddenWindows(true)
-    Id := WinExist(window)
-    if Id {
-        WinActivate(Id)
-    } else {
-        Run(path)
-    }
-    DetectHiddenWindows(false)
+LocalAppData := EnvGet("LocalAppData")
+
+; ActivateOrRun(window, path) {
+;     DetectHiddenWindows(true)
+;     Id := WinExist(window)
+;     if Id {
+;         WinActivate(Id)
+;     } else {
+;         Run(path)
+;     }
+;     DetectHiddenWindows(false)
+; }
+
+ActivateOrRun(ProcessName, AppPath) {
+    Run("nu activate-or-run.nu " . ProcessName . ' "' . AppPath . '"', , "Hide")
 }
 
 F18 & e::
 CapsLock & e:: {
-    ActivateOrRun("ahk_exe firefox.exe ahk_class MozillaWindowClass", "C:\Program Files\Mozilla Firefox\firefox.exe")
+    ActivateOrRun("firefox", A_ProgramFiles . "\Mozilla Firefox\firefox")
 }
 
 F18 & t::
 CapsLock & t:: {
-    DetectHiddenWindows(true)
-    Id := WinWait("ahk_exe ms-teams.exe", , 0.25)
-    if Id {
-        WinActivate("ahk_exe ms-teams.exe")
-    } else {
-        Run("ms-teams.exe")
-    }
-    DetectHiddenWindows(false)
+    ActivateOrRun("ms-teams", "ms-teams")
 }
 
 F18 & l::
 CapsLock & l:: {
-    ActivateOrRun("ahk_exe Logseq.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Logseq\Logseq.exe")
+    ActivateOrRun("Logseq", LocalAppData . "\Logseq\Logseq")
 }
 
 F18 & w::
 CapsLock & w:: {
-    ActivateOrRun("ahk_exe wezterm-gui.exe ahk_class org.wezfurlong.wezterm", "C:\Program Files\WezTerm\wezterm-gui.exe")
+    ActivateOrRun("wezterm-gui", A_ProgramFiles . "\WezTerm\wezterm-gui")
 }
 
 F18 & c::
 CapsLock & c:: {
-    ActivateOrRun("ahk_exe olk.exe ahk_class Olk Host", "olk.exe")
+    ActivateOrRun("olk", "olk")
 }
 
 F18 & a::
 CapsLock & a:: {
-    DetectHiddenWindows(true)
     if (WinActive("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1")) {
-        ActivateOrRun("ahk_exe Beeper.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\BeeperTexts\Beeper.exe")
+        ActivateOrRun("Beeper", LocalAppData . "\Programs\BeeperTexts\Beeper")
     } else {
-        ActivateOrRun("ahk_exe Signal.exe ahk_class Chrome_WidgetWin_1", "C:\Users\JensFredskov\AppData\Local\Programs\signal-desktop\Signal.exe")
+        ActivateOrRun("Signal", LocalAppData . "\Programs\signal-desktop\Signal.exe")
     }
-    DetectHiddenWindows(false)
 }
 
 F18 & r::
 CapsLock & r:: {
-    ActivateOrRun("ahk_exe rider64.exe ahk_class SunAwtFrame", "C:\Program Files (x86)\JetBrains\JetBrains Rider 2025.1.3\bin\rider64.exe")
+    ActivateOrRun("rider64", "C:\Program Files (x86)\JetBrains\JetBrains Rider 2025.1.3\bin\rider64")
 }
 
 F18 & q::
