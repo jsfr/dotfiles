@@ -10,7 +10,6 @@ return {
     },
     config = function()
         local ensure_installed = {
-            "pyrefly",
             "bashls",
             "bicep",
             "cssls",
@@ -28,6 +27,7 @@ return {
             "marksman",
             "nim_langserver",
             "powershell_es",
+            "pyrefly",
             "rust_analyzer",
             "taplo",
             "terraformls",
