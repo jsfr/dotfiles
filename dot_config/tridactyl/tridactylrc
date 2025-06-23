@@ -3,8 +3,9 @@
 
 " General Settings
 set theme auto
-set hintfiltermode simple
+set hintfiltermode vimperator-reflow
 set hintnames short
+set hintchars 546213879
 set hintdelay 100
 set incsearch true
 set tabclosepinned false

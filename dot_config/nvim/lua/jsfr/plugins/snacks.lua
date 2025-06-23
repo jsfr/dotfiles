@@ -87,7 +87,7 @@ return {
         },
 
         {
-            "<leader>u",
+            "U",
             function()
                 Snacks.picker.undo()
             end,
