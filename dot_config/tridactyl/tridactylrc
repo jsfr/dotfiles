@@ -3,12 +3,14 @@
 
 " General Settings
 set theme auto
-set hintfiltermode vimperator-reflow
+set hintfiltermode simple
 set hintnames short
-set hintchars 546213879
 set hintdelay 100
 set incsearch true
 set tabclosepinned false
+set profiledir C:\Users\JensFredskov\AppData\Roaming\Mozilla\Firefox\Profiles\etezp978.default-release-1741787209360
+set newtab about:blank
+set autocontainmode strict
 
 " Binds
 unbindurl inoreader.com j

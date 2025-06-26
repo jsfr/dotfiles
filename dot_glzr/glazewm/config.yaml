@@ -3,19 +3,19 @@ general:
   # script or launching another application.
   # Example: The below command launches Zebar.
   startup_commands:
-    - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe"
+    # - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe"
     - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
     - "shell-exec --hide-window syncthingtray-1.7.8-x86_64-w64-mingw32.exe --single-instance"
-    - "shell-exec --hide-window gat-gwm"
+    # - "shell-exec --hide-window gat-gwm"
 
   # Commands to run just before the WM is shutdown.
   # Example: The below command kills Zebar.
-  shutdown_commands:
-    - "shell-exec --hide-window taskkill /IM glazewm-listener.exe /F"
+  shutdown_commands: []
+    # - "shell-exec --hide-window taskkill /IM glazewm-listener.exe /F"
 
   # Commands to run after the WM config is reloaded.
   config_reload_commands:
-    - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe update"
+    # - "shell-exec --hide-window C:\\Users\\JensFredskov\\repos\\github.com\\jsfr\\glazewm-listener\\glazewm-listener.exe update"
     - "shell-exec --hide-window autohotkey C:\\Users\\JensFredskov\\.glzr\\glazewm\\glazewm.ahk"
     - "shell-exec --hide-window syncthingtray-1.7.8-x86_64-w64-mingw32.exe --single-instance"
 
