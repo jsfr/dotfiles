@@ -8,6 +8,7 @@ return {
             autohotkey = "; %s",
             fish = "# %s",
             just = "# %s",
+            janet = "# %s",
         },
     },
     event = "VeryLazy",

@@ -47,7 +47,9 @@ alias la = ls -a
 alias n = nvim
 alias tf = terraform
 alias lg = lazygit
-alias j = jj
+def --wrapped j [...args] {
+    ^jj ...$args
+}
 
 # Chezmoi alias
 alias cm = chezmoi

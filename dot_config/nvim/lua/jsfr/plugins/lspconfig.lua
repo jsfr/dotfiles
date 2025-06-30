@@ -19,6 +19,7 @@ return {
             "fennel_ls",
             "golangci_lint_ls",
             "gopls",
+            "harper_ls",
             "html",
             "jsonls",
             "kotlin_language_server",

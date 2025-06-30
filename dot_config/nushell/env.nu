@@ -14,6 +14,9 @@ atuin init nu | save -f (get-dir "atuin")
 # Enable sfsu
 sfsu hook --shell nu | save -f (get-dir "sfsu")
 
+# Add jujutsu completions
+jj util completion nushell | save -f (get-dir "jujutsu")
+
 # Enable carapace
 # carapace _carapace nushell | save -f (get-dir "carapace")
 

@@ -3,6 +3,7 @@
 return {
     {
         "stevearc/conform.nvim",
+        commit = "efae91ec798734f4b6bce728d5ca0ddca95c8a2c",
         dependencies = {
             {
                 "LittleEndianRoot/mason-conform",
