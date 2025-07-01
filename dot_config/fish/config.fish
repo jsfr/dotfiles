@@ -13,6 +13,7 @@ source ~/.config/fish/env.fish
 alias ls="eza -1 -F"
 alias n=nvim
 alias k=kubectl
+alias kx=kubectx
 alias tf=terraform
 alias lg=lazygit
 alias g=git
