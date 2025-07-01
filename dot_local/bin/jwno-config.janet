@@ -9,7 +9,6 @@
 # their preferences:
 #
 #   * mod-key
-#   * keyboard-layout
 #
 # Depending on your mod-key setting, You can press
 # `Win + Shift + /` (the slash key) or `Alt + Shift + /` to
@@ -31,25 +30,6 @@
 #     (See the "Using Hooks" section.)
 #   * Some demo code showcasing custom commands.
 #     (See the "Custom Commands" section.)
-#
-# Some quirks of this example config that may surprise you:
-#
-#   * It ignores all windows coming from a virtual desktop named "Desktop 2".
-#     (See the user-window-filter function.)
-#   * It sets an alpha value to Emacs, Windows Terminal, and console windows,
-#     making them transparent. (See the :window-created hook below.)
-#   * It treats an application from a certain French game company specially.
-#     (See the user-forced-window-filter function.)
-#   * When mod-key is set to "Win" (the default), it binds all ui-hint features
-#     to the `RAlt` key, but your keyboard may have an `AltGr` key on the right
-#     instead. In that case, you need to change the hint-key variable manually
-#     to choose another leading key.
-#   * It sometimes grants you infinite lives. Please don't take it seriously
-#     and do anything dangerous.
-#
-# To try out this example config, download this file, make adjustments as
-# needed, then drag-n-drop it to jwno.exe.
-#
 
 
 #===========#
@@ -74,22 +54,6 @@
 (import jwno/log)
 
 (use jw32/_uiautomation) # For UIA_* constants
-(use jw32/_dwmapi)
-
-
-#==========#
-#          #
-#  Basics  #
-#          #
-#==========#
-
-#
-# One may call (log/<level> "format string" arg0 arg1 ...) to generate logs.
-# To see the logs in a console, run Jwno with the `--log-level <level>` flag.
-# Supported levels are: debug, info, warning, error, quiet.
-# Jwno will start with the log level set to "quiet" by default.
-#
-(log/info "++++++++ HELLO THERE ++++++++")
 
 
 #======================#
@@ -113,66 +77,16 @@
 (unless (find |(= $ (string/ascii-lower mod-key)) ["win" "alt"])
   (errorf "unsupported mod key: %n" mod-key))
 
-#
-# A convenience provided by this config to set the navigation keys
-# according to the keyboard layout. Check dir-keys below for layouts
-# supported here.
-#
-(def keyboard-layout :qwerty)
+(def dir-keys {:left  "H"
+               :down  "J"
+               :up    "K"
+               :right "L"})
 
-(def dir-keys
-  (case keyboard-layout
-    :qwerty
-    (case (string/ascii-lower mod-key)
-      "win"
-      # Sorry, no HJKL for QWERTY, when mod-key is set to "Win", since
-      # `Win + L` means "Lock the Screen", and it cannot be overridden.
-      # If you really want to use `Win + L`, check out
-      # https://agent-kilo.github.io/jwno/cookbook/bind-win-l-to-something-else.html
-      {:left  "Y"
-       :down  "U"
-       :up    "I"
-       :right "O"}
+(def hint-key "RWin")
 
-      "alt"
-      {:left  "H"
-       :down  "J"
-       :up    "K"
-       :right "L"})
+(def hint-key-list "fjdksleiwocmxz")
 
-    :colemak
-    {:left  "H"
-     :down  "N"
-     :up    "E"
-     :right "I"}
-
-    :colemak-dh
-    {:left  "M"
-     :down  "N"
-     :up    "E"
-     :right "I"}
-
-    :dvorak
-    {:left  "D"
-     :down  "H"
-     :up    "T"
-     :right "N"}
-
-    (errorf "unsupported layout: %n" keyboard-layout)))
-
-(def hint-key
-  (case (string/ascii-lower mod-key)
-    "win" "RAlt"
-    "alt" "RWin"))
-
-(def hint-key-list
-  (case keyboard-layout
-    :qwerty     "fjdksleiwocmxz"
-    :colemak    "tnserifuwyvmcx"
-    :colemak-dh "tnserifuwydhcx"
-    :dvorak     "uhetoncrjmqvdi"
-    # default
-    (errorf "unsupported layout: %n" keyboard-layout)))
+(def meh-key "Ctrl + Alt + Shift")
 
 #
 # Most of Jwno's APIs are exported as methods in these "manager" objects.
@@ -196,6 +110,7 @@
   ~(->> ,str
         (peg/replace-all "${MOD}"  ,mod-key)
         (peg/replace-all "${HINT}" ,hint-key)
+        (peg/replace-all "${MEH}"  ,meh-key)
         (string)))
 
 #
@@ -234,15 +149,6 @@
 (put current-frame-area :alpha 64)       # Opaqueness, 255 = fully opaque, 0 = fully transparent. Defaults to 64.
 (:enable current-frame-area)
 
-#
-# And if you prefer the old behavior, which shows a simple tooltip for
-# every activated frame instead, use the current-frame-tooltip object:
-#
-#(def current-frame-tooltip
-#  (indicator/current-frame-tooltip jwno/context))
-#(:enable current-frame-tooltip)
-
-#
 # The ui-hint module provides support for the :ui-hint command, which
 # is a powerful way to interact with GUIs using your keyboard. See
 # the UI Hint Keys section in Key Bindings below.
@@ -314,21 +220,6 @@
   (let [keymap (:new-keymap key-man)]
     (each dir [:down :up :left :right]
       (k (in dir-keys dir) [:move-window dir]))
-
-    (k "Enter" :pop-keymap)
-    (k "Esc"   :pop-keymap)
-
-    keymap))
-
-#
-# A transient keymap for adjusting transparency for the
-# current window. See the definition for `${MOD} + A` key
-# binding below.
-#
-(def alpha-mode-keymap
-  (let [keymap (:new-keymap key-man)]
-    (k (in dir-keys :down) [:change-window-alpha -25])
-    (k (in dir-keys :up)   [:change-window-alpha 25])
 
     (k "Enter" :pop-keymap)
     (k "Esc"   :pop-keymap)
@@ -417,13 +308,11 @@
 
     (k "${MOD} + P" :cascade-windows-in-frame)
 
-    (k (string "${MOD} + " (in dir-keys :up))  [:enum-frame :next])
-    (k (string "${MOD} + " (in dir-keys :down))    [:enum-frame :prev])
-    (k (string "${MOD} + " (in dir-keys :left))  [:enum-window-in-frame :prev])
-    (k (string "${MOD} + " (in dir-keys :right)) [:enum-window-in-frame :next])
+    (k (string "${MOD} + I") [:enum-window-in-frame :prev])
+    (k (string "${MOD} + U") [:enum-window-in-frame :next])
 
     (each dir [:down :up :left :right]
-      (k (string "${MOD} + Ctrl + "  (in dir-keys dir)) [:adjacent-frame dir])
+      (k (string "${MOD} + "  (in dir-keys dir)) [:adjacent-frame dir])
       (k (string "${MOD} + Shift + " (in dir-keys dir)) [:move-window dir]))
 
     (k "${MOD} + S" [:push-keymap resize-mode-keymap]
@@ -432,9 +321,6 @@
        "Yank mode")
 
     (k "${MOD} + Shift + S" :frame-to-window-size)
-
-    (k "${MOD} + A" [:push-keymap alpha-mode-keymap]
-       "Alpha mode")
 
     #
     # Below are less frequently used commands, grouped by prefix keys
@@ -489,23 +375,11 @@
     # The :nop command does... nothing. It's usually used to cancel a
     # multi-level keymap.
     #
-    (k "${MOD} + Enter  Esc" :nop
-       "Cancel")
-    (k "${MOD} + Enter  Enter" :nop
-       "Cancel")
-
-    (k "${MOD} + Enter  W" [:summon (match-exe-name "wezterm-gui.exe") false "wezterm-gui.exe"]
-       "Summon Terminal")
-
-    (def firefox-cmd
-      ["pwsh.exe" "-NoProfile" "-Command" "Start-Process firefox.exe"])
-    (k "${MOD} + Enter  E" [:summon (match-exe-name "firefox.exe") false ;firefox-cmd]
-       "Summon Firefox")
-
-    (k "${MOD} + Enter  T" [:summon (match-exe-name "ms-teams.exe") false "ms-teams.exe"]
-       "Summon Terminal")
-
-    (k "${MOD} + Enter  R" [:summon (match-exe-name "rider64.exe") false "C:\\Program Files (x86)\\JetBrains\\JetBrains Rider 2025.1.3\\bin\\rider64.exe"])
+    (def firefox-cmd ["pwsh.exe" "-NoProfile" "-Command" "Start-Process firefox.exe"])
+    (k "${MEH} + W" [:summon (match-exe-name "wezterm-gui.exe") false "wezterm-gui.exe"] "Summon Terminal")
+    (k "${MEH} + E" [:summon (match-exe-name "firefox.exe")     false ;firefox-cmd]      "Summon Firefox")
+    (k "${MEH} + T" [:summon (match-exe-name "ms-teams.exe")    false "ms-teams.exe"]    "Summon Teams")
+    (k "${MEH} + R" [:summon (match-exe-name "rider64.exe")     false "C:\\Program Files (x86)\\JetBrains\\JetBrains Rider 2025.1.3\\bin\\rider64.exe"] "Summon Rider")
 
     #--------------------#
     #  Scratch Pad Keys  #
@@ -520,36 +394,26 @@
     # scratch pad's :command-name method here to get the unique command
     # for manipulating this specific scratch pad instance.
     #
-    (k "${MOD} + Enter  N" [(:command-name scratch-pad :summon-to)
+    (k "${MOD} + Enter  E" [(:command-name scratch-pad :summon-to)
                             (fn [_hwnd _uia exe]
-                              (string/has-suffix? "\\notepad.exe" (string/ascii-lower exe)))
+                              (string/has-suffix? "\\neovide.exe" (string/ascii-lower exe)))
                             10
-                            "notepad.exe"]
-       "Summon Notepad to scratch_ pad")
+                            "neovide.exe"]
+       "Summon Neovide to scratch pad")
 
     #
     # More key bindings for scratch-pad
     #
-    (k "${MOD} + Enter  H"    (:command-name scratch-pad :hide)
-       "Hide scratch pad")
-    (k "${MOD} + Enter  S  S" (:command-name scratch-pad :show)
-       "Show scratch pad")
-    (k "${MOD} + Enter  S  N" [(:command-name scratch-pad :show) :next]
-       "Next window in scratch pad")
-    (k "${MOD} + Enter  S  P" [(:command-name scratch-pad :show) :prev]
-       "Previous window in scratch pad")
-    (k "${MOD} + Enter  S  H" (:command-name scratch-pad :hide)
-       "Hide scratch pad")
-    (k "${MOD} + Enter  S  T" (:command-name scratch-pad :toggle)
-       "Toggle scratch pad")
-    (k "${MOD} + Enter  S  A" (:command-name scratch-pad :add-to)
-       "Add current window to scratch pad")
-    (k "${MOD} + Enter  S  R" (:command-name scratch-pad :remove-from)
-       "Remove the first window from scratch pad")
-    (k "${MOD} + Enter  S  Shift + R" (:command-name scratch-pad :remove-all-from)
-       "Remove all windows from scratch pad")
-    (k "${MOD} + Enter  S  Esc"   :nop "Cancel")
-    (k "${MOD} + Enter  S  Enter" :nop "Cancel")
+    (k "${MOD} + Enter  H"          (:command-name scratch-pad :hide) "Hide scratch pad")
+    (k "${MOD} + Enter  S"          (:command-name scratch-pad :show) "Show scratch pad")
+    (k "${MOD} + Enter  N"         [(:command-name scratch-pad :show) :next] "Next window in scratch pad")
+    (k "${MOD} + Enter  P"         [(:command-name scratch-pad :show) :prev] "Previous window in scratch pad")
+    (k "${MOD} + Enter  T"          (:command-name scratch-pad :toggle) "Toggle scratch pad")
+    (k "${MOD} + Enter  A"          (:command-name scratch-pad :add-to) "Add current window to scratch pad")
+    (k "${MOD} + Enter  R"          (:command-name scratch-pad :remove-from) "Remove the first window from scratch pad")
+    (k "${MOD} + Enter  Shift + R"  (:command-name scratch-pad :remove-all-from) "Remove all windows from scratch pad")
+    (k "${MOD} + Enter  Esc"         :nop "Cancel")
+    (k "${MOD} + Enter  Enter"       :nop "Cancel")
 
     #----------------#
     #  UI Hint Keys  #
@@ -664,7 +528,7 @@
 
     #
     # We can also display hints for other entities besides UI Automation
-    # elements. Here we use a differen hinter (ui-hint/frame-hinter) to
+    # elements. Here we use a different hinter (ui-hint/frame-hinter) to
     # show all (leaf) frames, and activate the selected one.
     #
     (k "${HINT}  N"
@@ -776,22 +640,6 @@
 
      (def class-name (:get_CachedClassName uia-win))
      (cond
-       #
-       # Here we make some windows transparent, filtering by their
-       # class names. You can see a window's class name using the
-       # `${MOD} + W  D` key binding (if you are using this example
-       # config, see the key binding for :describe-window command
-       # above).
-       #
-       (find |(= $ class-name)
-             [# The OS that lacks a decent text editor
-              "Emacs"
-              # The good old console window (cmd.exe and Jwno's REPL window, etc.)
-              "ConsoleWindowClass"
-              # Windows Terminal (wt.exe)
-              "CASCADIA_HOSTING_WINDOW_CLASS"])
-       (:set-alpha win (math/floor (* 256 0.9)))
-
        (= "#32770" class-name) # Dialog window class
        #
        # Tell Jwno to NOT expand these dialog windows, so that
