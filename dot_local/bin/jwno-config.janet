@@ -200,7 +200,7 @@
     (k (in dir-keys :left)  [:resize-frame -100 0])
     (k (in dir-keys :right) [:resize-frame 100 0])
 
-    (k "="         :balance-frames)
+    (k "/"         :balance-frames)
     (k ";"         [:zoom-in 0.7])
     (k "Shift + ;" [:zoom-in 0.3])
     #
