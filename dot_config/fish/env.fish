@@ -30,6 +30,7 @@ set -gx BKT_CACHE_DIR $XDG_CACHE_HOME
 set -gx NUGET_CREDENTIALPROVIDER_MSAL_ENABLED true
 set -gx NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO true
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
+set -gx DYLD_LIBRARY_PATH /opt/homebrew/lib
 fish_add_path -P ~/.dotnet/tools
 
 # mise

@@ -1,7 +1,6 @@
 [tools]
 bun = "latest"
 deno = "latest"
-dotnet = "9"
 usage = "latest"
 
 [settings]
