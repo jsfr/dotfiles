@@ -82,7 +82,7 @@
                :up    "K"
                :right "L"})
 
-(def hint-key "RWin")
+(def hint-key "Ctrl + Alt + Shift + F")
 
 (def hint-key-list "fjdksleiwocmxz")
 
@@ -287,7 +287,7 @@
     #-----------------#
 
     (k "${MOD} + Shift + /" :show-root-keymap)
-    (k "${MOD} + Shift + Q" :quit)
+    # (k "${MOD} + Shift + Q" :quit)
     (k "${MOD} + R"         :retile)
 
     #-------------------------------#
@@ -301,7 +301,7 @@
        "Split current frame horizontally")
     (k "${MOD} + ." [:split-frame :vertical   2 [0.5] move-window-after-split]
        "Split current frame vertically")
-    (k "${MOD} + =" :balance-frames)
+    (k "${MOD} + /" :balance-frames)
     (k "${MOD} + ;"         [:zoom-in 0.7])
     (k "${MOD} + Shift + ;" [:zoom-in 0.3])
     (k "${MOD} + F" :fill-monitor)
@@ -375,11 +375,15 @@
     # The :nop command does... nothing. It's usually used to cancel a
     # multi-level keymap.
     #
-    (def firefox-cmd ["pwsh.exe" "-NoProfile" "-Command" "Start-Process firefox.exe"])
+    (def firefox-cmd
+      ["pwsh.exe" "-NoProfile" "-Command" "Start-Process firefox.exe"])
+    (def rider-cmd
+      ["pwsh.exe" "-NoProfile" "-Command" "Start-Process \"C:\\Program Files (x86)\\JetBrains\\JetBrains Rider 2025.1.4\\bin\\rider64.exe\""])
     (k "${MEH} + W" [:summon (match-exe-name "wezterm-gui.exe") false "wezterm-gui.exe"] "Summon Terminal")
     (k "${MEH} + E" [:summon (match-exe-name "firefox.exe")     false ;firefox-cmd]      "Summon Firefox")
     (k "${MEH} + T" [:summon (match-exe-name "ms-teams.exe")    false "ms-teams.exe"]    "Summon Teams")
-    (k "${MEH} + R" [:summon (match-exe-name "rider64.exe")     false "C:\\Program Files (x86)\\JetBrains\\JetBrains Rider 2025.1.3\\bin\\rider64.exe"] "Summon Rider")
+    (k "${MEH} + R" [:summon (match-exe-name "rider64.exe")     false ;rider-cmd] "Summon Rider")
+
 
     #--------------------#
     #  Scratch Pad Keys  #
@@ -422,9 +426,9 @@
     #
     # The default :ui-hint command shows all interactable UI elements
     #
-    (k "${HINT}  ${HINT}"
-       [:ui-hint hint-key-list]
-       "Show all interactable elements")
+    # (k "${HINT}  ${HINT}"
+    #    [:ui-hint hint-key-list]
+    #    "Show all interactable elements")
 
     #
     # You can pass simple rules to match properties
@@ -484,12 +488,12 @@
          :action :focus)]
        "Show all focusable elements, and set input focus to the selected one")
 
-    (k "${HINT}  I"
-       [:ui-hint
-        hint-key-list
-        (ui-hint/uia-hinter
-         :condition [:property UIA_ControlTypePropertyId UIA_ListItemControlTypeId])]
-       "Show all list item elements")
+    # (k "${HINT}  I"
+    #    [:ui-hint
+    #     hint-key-list
+    #     (ui-hint/uia-hinter
+    #      :condition [:property UIA_ControlTypePropertyId UIA_ListItemControlTypeId])]
+    #    "Show all list item elements")
 
     (k "${HINT}  L"
        [:ui-hint
@@ -498,12 +502,12 @@
          :condition [:property UIA_ControlTypePropertyId UIA_HyperlinkControlTypeId])]
        "Show all hyperlinks")
 
-    (k "${HINT}  M"
-       [:ui-hint
-        hint-key-list
-        (ui-hint/uia-hinter
-         :action :middle-click)]
-       "Show all interactable elements, and middle-click on the selected one")
+    # (k "${HINT}  M"
+    #    [:ui-hint
+    #     hint-key-list
+    #     (ui-hint/uia-hinter
+    #      :action :middle-click)]
+    #    "Show all interactable elements, and middle-click on the selected one")
 
     (k "${HINT}  Shift + M"
        [:ui-hint
@@ -519,23 +523,23 @@
          :action :right-click)]
        "Show all interactable elements, and right-click on the selected one")
 
-    (k "${HINT}  T"
-       [:ui-hint
-        hint-key-list
-        (ui-hint/uia-hinter
-         :condition [:property UIA_ControlTypePropertyId UIA_TreeItemControlTypeId])]
-       "Show all tree item elements")
+    # (k "${HINT}  T"
+    #    [:ui-hint
+    #     hint-key-list
+    #     (ui-hint/uia-hinter
+    #      :condition [:property UIA_ControlTypePropertyId UIA_TreeItemControlTypeId])]
+    #    "Show all tree item elements")
 
     #
     # We can also display hints for other entities besides UI Automation
     # elements. Here we use a different hinter (ui-hint/frame-hinter) to
     # show all (leaf) frames, and activate the selected one.
     #
-    (k "${HINT}  N"
-       [:ui-hint
-        hint-key-list
-        (ui-hint/frame-hinter)]
-       "Show all frames")
+    # (k "${HINT}  N"
+    #    [:ui-hint
+    #     hint-key-list
+    #     (ui-hint/frame-hinter)]
+    #    "Show all frames")
 
     #
     # Different hinters allow different sets of customization options.
@@ -544,19 +548,19 @@
     # with all the windows inside. And we give the labels a bright orange
     # color, to indicate this is a potentially dangerous operation.
     #
-    (k "${HINT}  Shift + N"
-       [:ui-hint
-        hint-key-list
-        (ui-hint/frame-hinter
-         :action-fn (fn [fr]
-                      (def wm (:get-window-manager fr))
-                      (each w (in fr :children)
-                        (:close w))
-                      (:close fr)
-                      (:retile wm (in fr :parent)))
-         # The label color, 0xBBGGRR
-         :color 0x00a1ff)]
-       "Show all frames, and close the selected one")
+    # (k "${HINT}  Shift + N"
+    #    [:ui-hint
+    #     hint-key-list
+    #     (ui-hint/frame-hinter
+    #      :action-fn (fn [fr]
+    #                   (def wm (:get-window-manager fr))
+    #                   (each w (in fr :children)
+    #                     (:close w))
+    #                   (:close fr)
+    #                   (:retile wm (in fr :parent)))
+    #      # The label color, 0xBBGGRR
+    #      :color 0x00a1ff)]
+    #    "Show all frames, and close the selected one")
 
     (k "${HINT}  G"
        [:ui-hint

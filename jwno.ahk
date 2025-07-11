@@ -7,13 +7,13 @@ SetCapsLockState("AlwaysOff")
 global CapsLockUsed := false
 
 ; When Caps Lock is pressed down
-~*CapsLock::{
+~*CapsLock:: {
     global CapsLockUsed
     CapsLockUsed := false
 }
 
 ; When Caps Lock is released
-~*CapsLock Up::{
+~*CapsLock Up:: {
     global CapsLockUsed
 
     ; If no other key was pressed, send Escape
@@ -49,6 +49,11 @@ CapsLockCombo(ThisHotkey) {
     Send("{RControl up}")
 }
 
+!^+S:: {
+    Send("{Blind}{Shift Up}{Control Up}{Alt Up}")
+    Send("+#S")
+}
+
 ; Simple hotstrings for Danish letters
 :?*:;a::å
 :?*:;e::æ
@@ -61,7 +66,7 @@ CapsLockCombo(ThisHotkey) {
 :?*:;nm::jens.fredskov@nekohealth.com
 
 ; Other hotstrings
-:?*:;td::{
+:?*:;td:: {
     Send(FormatTime(,"'TODO: ('yyyy-MM-dd' - jens)'"))
 }
 :?*:;jf::jensfredskov

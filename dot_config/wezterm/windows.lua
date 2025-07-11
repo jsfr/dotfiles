@@ -21,32 +21,30 @@ wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
     return " " .. title .. " "
 end)
 
-wezterm.on("gui-startup", function(cmd)
-    local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
-    pane:split({
-        direction = "Right",
-        domain = { DomainName = "local" },
-        args = { "nu.exe" },
-    })
-end)
+-- wezterm.on("gui-startup", function(cmd)
+--     local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+--     pane:split({
+--         direction = "Right",
+--         domain = { DomainName = "local" },
+--         args = { "nu.exe" },
+--     })
+-- end)
 
 return {
     font_size = 11.0,
-    default_domain = "WSL:NixOS",
+    -- default_domain = "WSL:NixOS",
+    default_prog = { "nu.exe" },
     tab_max_width = 20,
     keys = {
         {
             key = "t",
             mods = "CTRL",
-            action = wezterm.action.SpawnTab("DefaultDomain"),
+            action = wezterm.action.SpawnTab({ DomainName = "WSL:NixOS" }),
         },
         {
             key = "T",
             mods = "CTRL|SHIFT",
-            action = wezterm.action.SpawnCommandInNewTab({
-                args = { "nu.exe" },
-                domain = { DomainName = "local" },
-            }),
+            action = wezterm.action.SpawnTab("DefaultDomain"),
         },
         {
             key = "K",
@@ -66,6 +64,7 @@ return {
 
                 pane:split({
                     direction = dimensions.pixel_width > dimensions.pixel_height and "Right" or "Bottom",
+                    domain = { DomainName = "WSL:NixOS" },
                 })
             end),
         },
@@ -77,8 +76,6 @@ return {
 
                 pane:split({
                     direction = dimensions.pixel_width > dimensions.pixel_height and "Right" or "Bottom",
-                    domain = { DomainName = "local" },
-                    args = { "nu.exe" },
                 })
             end),
         },
