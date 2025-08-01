@@ -383,6 +383,7 @@
     (k "${MEH} + E" [:summon (match-exe-name "firefox.exe")     false ;firefox-cmd]      "Summon Firefox")
     (k "${MEH} + T" [:summon (match-exe-name "ms-teams.exe")    false "ms-teams.exe"]    "Summon Teams")
     (k "${MEH} + R" [:summon (match-exe-name "rider64.exe")     false ;rider-cmd] "Summon Rider")
+    (k "${MEH} + V" [:summon (match-exe-name "Code.exe")        false "code.cmd"] "Summon VSCode")
 
 
     #--------------------#

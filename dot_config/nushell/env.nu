@@ -12,13 +12,13 @@ zoxide init nushell --cmd cd | save -f (get-dir "zoxide")
 atuin init nu | save -f (get-dir "atuin")
 
 # Enable sfsu
-sfsu hook --shell nu | save -f (get-dir "sfsu")
+# sfsu hook --shell nu | save -f (get-dir "sfsu")
 
 # Add jujutsu completions
 jj util completion nushell | save -f (get-dir "jujutsu")
 
 # Enable carapace
-# carapace _carapace nushell | save -f (get-dir "carapace")
+carapace _carapace nushell | save -f (get-dir "carapace")
 
 # Enable oh-my-posh
 oh-my-posh init nu --config ~/.config/oh-my-posh.yaml
