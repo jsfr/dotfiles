@@ -14,38 +14,25 @@ matches:
     replace: "æ"
     propagate_case: true
 
-  - trigger: ";tyk"
-    replace: "to your knowledge"
-    propagate_case: true
-    word: true
+  - trigger: ";m"
+    replace: "—"
 
-  - trigger: ";tmk"
-    replace: "to my knowledge"
-    propagate_case: true
-    word: true
+  - trigger: ";n"
+    replace: "–"
 
-  - trigger: ";today"
-    replace: "{{mytime}}"
+  - trigger: ";jf"
+    replace: "jensfredskov"
+
+  - trigger: ";jm"
+    replace: "jensfredskov@gmail.com"
+
+  - trigger: ";nm"
+    replace: "jens.fredskov@nekohealth.com"
+
+  - trigger: ";td"
+    replace: "TODO: ({{today}} - jens)"
     vars:
-      - name: mytime
+      - name: today
         type: date
         params:
           format: "%F"
-
-  - trigger: ";tomorrow"
-    replace: "{{mytime}}"
-    vars:
-      - name: mytime
-        type: date
-        params:
-          format: "%F"
-          offset: 86400
-
-  - trigger: ":yesterday"
-    replace: "{{mytime}}"
-    vars:
-      - name: mytime
-        type: date
-        params:
-          format: "%F"
-          offset: -86400

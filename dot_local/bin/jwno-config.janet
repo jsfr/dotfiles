@@ -294,7 +294,7 @@
     #  Window And Frame Operations  #
     #-------------------------------#
 
-    (k "${MOD} + Shift + C" :close-window-or-frame)
+    (k "${MOD} + Shift + Q" :close-window-or-frame)
     (k "${MOD} + Shift + F" :close-frame)
 
     (k "${MOD} + ," [:split-frame :horizontal 2 [0.5] move-window-after-split]
@@ -383,7 +383,7 @@
     (k "${MEH} + E" [:summon (match-exe-name "firefox.exe")     false ;firefox-cmd]      "Summon Firefox")
     (k "${MEH} + T" [:summon (match-exe-name "ms-teams.exe")    false "ms-teams.exe"]    "Summon Teams")
     (k "${MEH} + R" [:summon (match-exe-name "rider64.exe")     false ;rider-cmd] "Summon Rider")
-    (k "${MEH} + V" [:summon (match-exe-name "Code.exe")        false "code.cmd"] "Summon VSCode")
+    (k "${MEH} + C" [:summon (match-exe-name "Code.exe")        false "code.cmd"] "Summon VSCode")
 
 
     #--------------------#
