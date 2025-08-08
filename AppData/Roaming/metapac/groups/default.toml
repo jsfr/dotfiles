@@ -100,5 +100,5 @@ scoop = [
   "main/yq",
   "nerd-fonts/JetBrainsMono-NF-Mono",
   "nerd-fonts/JetBrainsMono-NF-Propo",
-  "nerd-fonts/NerdFontsSymbolsOnly",
+  "nerd-fonts/NerdFontsSymbolsOnly", "main/glow",
 ]
