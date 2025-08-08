@@ -1,22 +1,32 @@
 {
-  "workbench.colorTheme": "Tokyo Storm AltSynt",
-  "extensions.ignoreRecommendations": true,
-  "resharper.build.restorePackagesOnBuild": true,
-  "editor.cursorBlinking": "solid",
-  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
-  "editor.fontSize": 14,
-  "vim.useSystemClipboard": true,
-  "files.autoSave": "onWindowChange",
-  "files.autoSaveWorkspaceFilesOnly": true,
-  "editor.formatOnSave": true,
-  "terminal.integrated.profiles.windows": {
-    /* other profiles */
-    "Nu": {
-      "path": "C:\\Users\\JensFredskov\\AppData\\Local\\Programs\\nu\\bin\\nu.exe"
-    }
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
   },
-  "terminal.integrated.defaultProfile.windows": "Nu",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "autoHide.autoHideSideBar": false,
+  "azdoPullRequests.orgUrl": "https://dev.azure.com/cur8",
+  "azdoPullRequests.projectName": "Engineering",
+  "editor.cursorBlinking": "solid",
+  "editor.defaultFormatter": "csharpier.csharpier-vscode",
+  "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "ltex.additionalRules.motherTongue": "da-DK",
+  "vim.handleKeys": {
+    "<C-w>": false
+  },
+  "vim.incsearch": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["-"],
+      "commands": ["workbench.files.action.showActiveFileInExplorer"]
+    }
+  ],
+  "vim.sneak": true,
+  "vim.useSystemClipboard": true,
+  "files.autoSave": "afterDelay",
+  "remote.autoForwardPortsSource": "hybrid",
+  "vim.sneakReplacesF": true,
 }
