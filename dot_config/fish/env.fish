@@ -27,11 +27,13 @@ set -gx RUST_SRC_PATH (rustc --print sysroot)/lib/rustlib/src/rust/src
 set -gx BKT_CACHE_DIR $XDG_CACHE_HOME
 
 # dotnet
+set -gx DOTNET_ROOT ~/.dotnet
 set -gx NUGET_CREDENTIALPROVIDER_MSAL_ENABLED true
 set -gx NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO true
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
-set -gx DYLD_LIBRARY_PATH /opt/homebrew/lib
-fish_add_path -P ~/.dotnet/tools
+# set -gx DYLD_LIBRARY_PATH /opt/homebrew/lib
+fish_add_path -P $DOTNET_ROOT
+fish_add_path -P $DOTNET_ROOT/tools
 
 # mise
 if command -q mise

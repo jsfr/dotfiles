@@ -1,0 +1,6 @@
+cargo = ["metapac"]
+npm = [
+    "corepack",
+    "npm",
+]
+
