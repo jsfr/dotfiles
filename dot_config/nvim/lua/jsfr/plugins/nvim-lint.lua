@@ -21,14 +21,13 @@ return {
                 },
             },
         },
-        ft = { "dockerfile", "fennel", "fish", "ghaction", "html", "css" },
+        ft = { "dockerfile", "fish", "ghaction", "html", "css" },
         config = function()
             local augroup = require("jsfr.utils.augroup")
             local lint = require("lint")
 
             lint.linters_by_ft = {
                 dockerfile = { "hadolint" },
-                fennel = { "fennel" },
                 fish = { "fish" },
                 ghaction = { "actionlint" },
                 html = { "htmlhint" },
