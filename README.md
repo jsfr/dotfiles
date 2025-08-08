@@ -1,6 +1,6 @@
 # 🏠 Dotfiles
 
-Personal dotfiles and configuration files managed with [chezmoi](https://www.chezmoi.io/). This repository contains my cross-platform development environment setup for Windows, MacOS, and Linux.
+Personal dotfiles and configuration files managed with [chezmoi](https://www.chezmoi.io/). This repository contains my cross-platform development environment setup for Windows, macOS, and Linux.
 
 ## 🚀 Installation
 
@@ -24,8 +24,8 @@ Personal dotfiles and configuration files managed with [chezmoi](https://www.che
 
 ### 🖥️ Terminal & Shell
 
-- **Fish** - Modern shell with intelligent autocompletions
-- **Nushell** - Data-driven shell for cross-platform scripting
+- **Fish** - Modern shell with intelligent auto completions
+- **Nushell** - Data-driven shell for cross-platform scripting (good alternative to PowerShell on Windows)
 - **PowerShell** - Windows PowerShell profile
 - **Starship** - Cross-shell prompt
 - **Oh My Posh** - Prompt theme engine
@@ -40,7 +40,8 @@ Personal dotfiles and configuration files managed with [chezmoi](https://www.che
 ### 🪟 Window Management
 
 - **AeroSpace** - macOS tiling window manager
-- **GlazeWM** - Windows tiling window manager
+- **JWNO** - Windows tiling window manager
+- **GlazeWM** - Alternative Windows tiling window manager
 - **Hammerspoon** - macOS automation
 - **Yabai** - Alternative macOS window manager
 - **AutoHotkey** - Windows automation scripts
@@ -137,4 +138,3 @@ This setup is highly modular. To customize:
 ---
 
 _Managed with ❤️ using [chezmoi](https://www.chezmoi.io/)_
-
