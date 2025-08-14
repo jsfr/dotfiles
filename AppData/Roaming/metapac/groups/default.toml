@@ -40,7 +40,7 @@ winget = [
   "flux.flux",
   "topgrade-rs.topgrade",
   "wez.wezterm",
-  "xanderfrangos.twinkletray",
+  "xanderfrangos.twinkletray", "rsteube.Carapace", "Codeium.Windsurf",
 ]
 
 scoop = [
