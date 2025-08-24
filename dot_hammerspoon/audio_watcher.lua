@@ -15,13 +15,14 @@ local function outputCallback(event)
     local deviceNames = {
         "External Headphones",
         "Dark Star",
+        "Wavell 4 Pro",
         "WF-1000XM5",
         "Ear (2)",
         "Nothing Ear",
         "OpenFit by Shokz",
         "Aeropex by AfterShokz",
         "FiiO UTWS5",
-        "FiiO BTR5"
+        "FiiO BTR5",
     }
     if event == "dev#" then
         for _, name in ipairs(deviceNames) do
@@ -47,5 +48,5 @@ return {
     init = function()
         hs.audiodevice.watcher.setCallback(callback)
         hs.audiodevice.watcher.start()
-    end
+    end,
 }
