@@ -16,12 +16,15 @@ return {
                         "hadolint",
                         "actionlint",
                         "htmlhint",
+                        "write_good",
+                        "proselint",
+                        "vale",
                     },
                     automatic_installation = false,
                 },
             },
         },
-        ft = { "dockerfile", "fish", "ghaction", "html", "css" },
+        ft = { "dockerfile", "fish", "ghaction", "html", "css", "markdown" },
         config = function()
             local augroup = require("jsfr.utils.augroup")
             local lint = require("lint")
@@ -31,6 +34,7 @@ return {
                 fish = { "fish" },
                 ghaction = { "actionlint" },
                 html = { "htmlhint" },
+                markdown = { "write_good", "proselint", "vale" },
             }
 
             vim.filetype.add({

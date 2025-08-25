@@ -94,7 +94,14 @@ return {
             desc = "Undo history",
         },
         {
-            "<leader>D",
+            "<leader>x",
+            function()
+                Snacks.picker.diagnostics_buffer()
+            end,
+            desc = "Buffer diagnostics",
+        },
+        {
+            "<leader>X",
             function()
                 Snacks.picker.diagnostics()
             end,
@@ -112,9 +119,12 @@ return {
             end,
             desc = "Chezmoi",
         },
+        {
+            "<leader>dd",
+            function()
+                Snacks.bufdelete()
+            end,
+            desc = "Delete buffer",
+        },
     },
 }
-
--- vim.keymap.set("n", "<leader>c", function()
---     builtin.git_files({ cwd = vim.fn.expand("$HOME/.local/share/chezmoi") })
--- end, { desc = "Open chezmoi picker" })

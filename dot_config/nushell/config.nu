@@ -7,7 +7,8 @@ $env.config.shell_integration.osc133 = false # Disable OSC133 to fix https://git
 $env.config.buffer_editor = 'nvim' # Set editor
 $env.config.show_banner = false # Disable banner
 
-# $env.PAGER = 'moar'
+$env.PAGER = 'moor'
+$env.MOOR = '-quit-if-one-screen'
 $env.EDITOR = $env.config.buffer_editor
 $env.LOCAL_BIN_PATH = $env.HOME | path join .local bin; path add $env.LOCAL_BIN_PATH
 

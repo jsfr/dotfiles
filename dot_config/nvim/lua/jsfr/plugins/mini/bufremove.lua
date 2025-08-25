@@ -17,6 +17,7 @@ end
 return {
     "echasnovski/mini.bufremove",
     opts = {},
+    cond = false,
     keys = {
         { "<Leader>d", delete_buffer, desc = "Close buffer" },
         -- { "<Leader>wD", delete_buffer_simple, desc = "Close buffer + window" },

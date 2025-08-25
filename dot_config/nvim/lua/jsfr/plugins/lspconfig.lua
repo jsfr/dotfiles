@@ -22,7 +22,6 @@ return {
             "html",
             "jsonls",
             "kotlin_language_server",
-            "ltex_plus",
             "lua_ls",
             "marksman",
             "nim_langserver",
