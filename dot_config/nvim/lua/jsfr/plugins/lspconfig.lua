@@ -12,6 +12,7 @@ return {
         local ensure_installed = {
             "bashls",
             "bicep",
+            "codebook",
             "cssls",
             "denols",
             "dockerls",
@@ -32,6 +33,7 @@ return {
             "terraformls",
             "tflint",
             "typos_lsp",
+            "vale_ls",
             "vtsls",
             "yamlls",
             "zls",
@@ -167,38 +169,38 @@ return {
                 callback = function(args)
                     local bufnr = args.buf
 
-                    vim.keymap.set(
-                        "n",
-                        "gD",
-                        vim.lsp.buf.declaration,
-                        { noremap = true, silent = true, buffer = bufnr }
-                    )
-                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr })
-                    vim.keymap.set(
-                        "n",
-                        "gi",
-                        vim.lsp.buf.implementation,
-                        { noremap = true, silent = true, buffer = bufnr }
-                    )
-                    vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
-                    vim.keymap.set(
-                        "n",
-                        "<leader>r",
-                        vim.lsp.buf.rename,
-                        { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
-                    )
+                    -- vim.keymap.set(
+                    --     "n",
+                    --     "gD",
+                    --     vim.lsp.buf.declaration,
+                    --     { noremap = true, silent = true, buffer = bufnr }
+                    -- )
+                    -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { noremap = true, silent = true, buffer = bufnr })
+                    -- vim.keymap.set(
+                    --     "n",
+                    --     "gi",
+                    --     vim.lsp.buf.implementation,
+                    --     { noremap = true, silent = true, buffer = bufnr }
+                    -- )
+                    -- vim.keymap.set("n", "gr", vim.lsp.buf.references, { noremap = true, silent = true, buffer = bufnr })
+                    -- vim.keymap.set(
+                    --     "n",
+                    --     "<leader>r",
+                    --     vim.lsp.buf.rename,
+                    --     { noremap = true, silent = true, buffer = bufnr, desc = "Rename symbol" }
+                    -- )
                     vim.keymap.set(
                         "n",
                         "<leader>a",
                         vim.lsp.buf.code_action,
                         { noremap = true, silent = true, buffer = bufnr, desc = "Code action" }
                     )
-                    vim.keymap.set("n", "[d", function()
-                        vim.diagnostic.jump({ count = 1, float = true })
-                    end, { noremap = true, silent = true, buffer = bufnr })
-                    vim.keymap.set("n", "]d", function()
-                        vim.diagnostic.jump({ count = -1, float = true })
-                    end, { noremap = true, silent = true, buffer = bufnr })
+                    -- vim.keymap.set("n", "[d", function()
+                    --     vim.diagnostic.jump({ count = 1, float = true })
+                    -- end, { noremap = true, silent = true, buffer = bufnr })
+                    -- vim.keymap.set("n", "]d", function()
+                    --     vim.diagnostic.jump({ count = -1, float = true })
+                    -- end, { noremap = true, silent = true, buffer = bufnr })
 
                     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
                     if client.server_capabilities.inlayHintProvider then

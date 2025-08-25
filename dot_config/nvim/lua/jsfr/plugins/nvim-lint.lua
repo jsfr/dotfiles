@@ -16,9 +16,6 @@ return {
                         "hadolint",
                         "actionlint",
                         "htmlhint",
-                        "write_good",
-                        "proselint",
-                        "vale",
                     },
                     automatic_installation = false,
                 },
@@ -34,7 +31,6 @@ return {
                 fish = { "fish" },
                 ghaction = { "actionlint" },
                 html = { "htmlhint" },
-                markdown = { "write_good", "proselint", "vale" },
             }
 
             vim.filetype.add({

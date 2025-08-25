@@ -2,8 +2,8 @@
 ---@type LazySpec
 return {
     "folke/trouble.nvim",
-    -- optional = true,
-    event = "VeryLazy",
+    opts = {},
+    cmd = "Trouble",
     specs = {
         "folke/snacks.nvim",
         opts = function(_, opts)

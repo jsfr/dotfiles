@@ -1,5 +1,5 @@
 ---@module "lazy"
----@type LazySpec
+
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -9,7 +9,6 @@ return {
         bigfile = { enabled = true },
         quickfile = { enabled = true },
         indent = { enabled = true },
-        scratch = { enabled = true },
         picker = {
             enabled = true,
             win = {
@@ -23,18 +22,11 @@ return {
     },
     keys = {
         {
-            "<leader>.",
+            "<leader><space>",
             function()
-                Snacks.scratch()
+                Snacks.picker.smart()
             end,
-            desc = "Toggle scratch buffer",
-        },
-        {
-            "<leader>s",
-            function()
-                Snacks.scratch.select()
-            end,
-            desc = "Select scratch buffer",
+            desc = "Smart Find Files",
         },
         {
             "<leader>/",
@@ -42,13 +34,6 @@ return {
                 Snacks.picker.grep()
             end,
             desc = "Live grep",
-        },
-        {
-            "<leader>t",
-            function()
-                Snacks.picker.treesitter()
-            end,
-            desc = "Treesitter symbols",
         },
         {
             "<leader>g",
@@ -85,13 +70,41 @@ return {
             end,
             desc = "Recent files",
         },
-
+        {
+            "<leader>c",
+            function()
+                Snacks.picker.files({
+                    hidden = true,
+                    dirs = {
+                        vim.fn.expand("$HOME/.local/share/chezmoi"),
+                    },
+                })
+            end,
+            desc = "Chezmoi",
+        },
+        -- Undo
         {
             "U",
             function()
                 Snacks.picker.undo()
             end,
             desc = "Undo history",
+        },
+        -- Buffers
+        {
+            "<leader>d",
+            function()
+                Snacks.bufdelete()
+            end,
+            desc = "Delete buffer",
+        },
+        -- LSP, lint, and diagnostics
+        {
+            "<leader>t",
+            function()
+                Snacks.picker.treesitter()
+            end,
+            desc = "Treesitter symbols",
         },
         {
             "<leader>x",
@@ -108,23 +121,54 @@ return {
             desc = "Diagnostics",
         },
         {
-            "<leader>c",
+            "gd",
             function()
-                Snacks.picker.files({
-                    hidden = true,
-                    dirs = {
-                        vim.fn.expand("$HOME/.local/share/chezmoi"),
-                    },
-                })
+                Snacks.picker.lsp_definitions()
             end,
-            desc = "Chezmoi",
+            desc = "Goto Definition",
         },
         {
-            "<leader>dd",
+            "gD",
             function()
-                Snacks.bufdelete()
+                Snacks.picker.lsp_declarations()
             end,
-            desc = "Delete buffer",
+            desc = "Goto Declaration",
+        },
+        {
+            "gr",
+            function()
+                Snacks.picker.lsp_references()
+            end,
+            nowait = true,
+            desc = "References",
+        },
+        {
+            "gI",
+            function()
+                Snacks.picker.lsp_implementations()
+            end,
+            desc = "Goto Implementation",
+        },
+        {
+            "gy",
+            function()
+                Snacks.picker.lsp_type_definitions()
+            end,
+            desc = "Goto T[y]pe Definition",
+        },
+        {
+            "<leader>ss",
+            function()
+                Snacks.picker.lsp_symbols()
+            end,
+            desc = "LSP Symbols",
+        },
+        {
+            "<leader>sS",
+            function()
+                Snacks.picker.lsp_workspace_symbols()
+            end,
+            desc = "LSP Workspace Symbols",
         },
     },
 }
