@@ -378,7 +378,7 @@
     (def firefox-cmd
       ["pwsh.exe" "-NoProfile" "-Command" "Start-Process firefox.exe"])
     (def rider-cmd
-      ["pwsh.exe" "-NoProfile" "-Command" "Start-Process \"C:\\Program Files (x86)\\JetBrains\\JetBrains Rider 2025.1.5\\bin\\rider64.exe\""])
+      ["pwsh.exe" "-NoProfile" "-Command" "Start-Process rider.exe"])
     (k "${MEH} + W" [:summon (match-exe-name "wezterm-gui.exe") false "wezterm-gui.exe"] "Summon Terminal")
     (k "${MEH} + E" [:summon (match-exe-name "firefox.exe")     false ;firefox-cmd]      "Summon Firefox")
     (k "${MEH} + T" [:summon (match-exe-name "ms-teams.exe")    false "ms-teams.exe"]    "Summon Teams")

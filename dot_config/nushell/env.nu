@@ -13,5 +13,8 @@ atuin init nu | save -f (get-dir "atuin")
 # Add jujutsu completions
 jj util completion nushell | save -f (get-dir "jujutsu")
 
+# Add carapace
+carapace _carapace nushell | save -f (get-dir "carapace")
+
 # Enable oh-my-posh
 oh-my-posh init nu --config ~/.config/oh-my-posh.yaml

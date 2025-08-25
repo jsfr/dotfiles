@@ -1,15 +1,16 @@
 cargo = ["atuin", "bacon", "bkt", "cargo-update", "metapac"]
 winget = [
-  "9NP355QT2SQB",                           # Azure VPN Client
+  # Azure VPN Client
+  "9NP355QT2SQB",
   "AgileBits.1Password",
   "ArminOsaj.AutoDarkMode",
   "AutoHotkey.AutoHotkey",
   "Beeper.Beeper",
+  "Codeium.Windsurf",
   "Docker.DockerDesktop",
   "Doist.Todoist",
   "Git.Git",
   "JanetLang.Janet",
-  "JetBrains.Rider",
   "Logseq.Logseq",
   "Martchus.syncthingtray",
   "Microsoft.AppInstaller",
@@ -38,9 +39,10 @@ winget = [
   "Rustlang.Rustup",
   "ajeetdsouza.zoxide",
   "flux.flux",
+  "rsteube.Carapace",
   "topgrade-rs.topgrade",
   "wez.wezterm",
-  "xanderfrangos.twinkletray", "rsteube.Carapace", "Codeium.Windsurf",
+  "xanderfrangos.twinkletray",
 ]
 
 scoop = [
@@ -49,7 +51,9 @@ scoop = [
   "extras/bulk-crap-uninstaller",
   "extras/copyq",
   "extras/lazygit",
+  "extras/moor",
   "extras/neovide",
+  "extras/rider",
   "extras/riff",
   "extras/spotify",
   "extras/xan",
@@ -73,6 +77,7 @@ scoop = [
   "main/gawk",
   "main/gcc",
   "main/gh",
+  "main/glow",
   "main/go",
   "main/golangci-lint",
   "main/gzip",
@@ -100,5 +105,5 @@ scoop = [
   "main/yq",
   "nerd-fonts/JetBrainsMono-NF-Mono",
   "nerd-fonts/JetBrainsMono-NF-Propo",
-  "nerd-fonts/NerdFontsSymbolsOnly", "main/glow",
+  "nerd-fonts/NerdFontsSymbolsOnly",
 ]
