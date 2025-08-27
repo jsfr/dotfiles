@@ -8,7 +8,12 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons", "mfussenegger/nvim-lint", "linrongbin16/lsp-progress.nvim" },
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "mfussenegger/nvim-lint",
+            "linrongbin16/lsp-progress.nvim",
+            "bwpge/lualine-pretty-path",
+        },
         config = function()
             local lualine = require("lualine")
 
@@ -27,7 +32,7 @@ return {
                 options = { theme = "tokyonight" },
                 sections = {
                     lualine_b = { "branch", "diff", "diagnostics", lint_progress },
-                    lualine_c = { lsp_progress },
+                    lualine_c = { "pretty_path", lsp_progress },
                 },
             })
 
