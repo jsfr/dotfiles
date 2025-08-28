@@ -1,8 +1,6 @@
 # Taps
 tap "FelixKratz/formulae" # borders
 tap "buo/cask-upgrade" # cask upgrade tool, used by topgrade
-tap "homebrew/bundle" # brew bundle
-tap "homebrew/services"
 tap "nikitabobko/tap" # aerospace
 
 # Brews
@@ -66,6 +64,7 @@ cask "bartender"
 cask "beeper"
 cask "betterdisplay"
 cask "bluesnooze"
+cask "calibre"
 cask "docker-desktop"
 cask "dotnet-sdk"
 cask "elgato-wave-link"
@@ -78,6 +77,7 @@ cask "keymapp"
 cask "linearmouse"
 cask "logseq"
 cask "maccy"
+cask "notion"
 cask "pocket-casts"
 cask "raycast"
 cask "shortcat"
