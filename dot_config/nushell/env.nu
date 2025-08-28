@@ -11,7 +11,7 @@ zoxide init nushell --cmd cd | save -f (get-dir "zoxide")
 atuin init nu | save -f (get-dir "atuin")
 
 # Add jujutsu completions
-jj util completion nushell | save -f (get-dir "jujutsu")
+# jj util completion nushell | save -f (get-dir "jujutsu")
 
 # Add carapace
 carapace _carapace nushell | save -f (get-dir "carapace")

@@ -45,9 +45,7 @@ alias la = ls -a
 alias n = nvim
 alias tf = terraform
 alias lg = lazygit
-def --wrapped j [...args] {
-    ^jj ...$args
-}
+alias j = jj
 
 # Chezmoi alias
 alias cm = chezmoi
@@ -57,11 +55,6 @@ alias "cm d" = chezmoi diff
 alias "cm s" = chezmoi status
 alias "cm e" = chezmoi edit --apply
 alias "cm u" = chezmoi update
-
-def --wrapped hx [...args] {
-    path add ($env.XDG_DATA_HOME | path join nvim mason bin)
-    ^hx ...$args
-}
 
 def --env cdg [] {
     cd (git root)
@@ -74,6 +67,9 @@ def --env cdj [] {
 # Source custom modules
 use modules/neko
 alias "apicli" = dotnet ./artifacts/bin/Api.Client.Cli/debug/Api.Client.Cli.dll
+
+# Direnv equivalent
+use modules/direnv
 
 # Eliminate duplicated path entries
 $env.PATH = $env.PATH | path parse | path join | uniq
