@@ -5,5 +5,5 @@ CURRENT_WORKSPACE=$(aerospace list-workspaces --focused)
 FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE
 
 if [[ -n "$PIP_WIN" ]]; then
-  aerospace move-node-to-workspace --window-id "$PIP_WIN" "$CURRENT_WORKSPACE"
+	aerospace move-node-to-workspace --window-id "$PIP_WIN" "$CURRENT_WORKSPACE"
 fi
