@@ -29,4 +29,8 @@
   "files.autoSave": "afterDelay",
   "remote.autoForwardPortsSource": "hybrid",
   "vim.sneakReplacesF": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "markdown.extension.toc.slugifyMode": "azureDevops"
 }
