@@ -2,11 +2,7 @@ after-login-command = []
 after-startup-command = [
   'exec-and-forget /opt/homebrew/bin/borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
 ]
-exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'pgrep -fi swiftbar && open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
+exec-on-workspace-change = ['/Users/jens/.local/bin/pip-all-workspace.sh']
 
 start-at-login = true
 
