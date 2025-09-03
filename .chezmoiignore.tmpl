@@ -5,16 +5,17 @@ README.md
 .editorconfig
 
 {{ if not .is_windows }}
-.glzr/**
+.config/nushell/**
+.config/tacky-borders/**
+.tridactylrc
 AppData/**
 Documents/**
-keymapper.conf
-.tridactylrc
 jwno.ahk
+kanata.kbd
 {{ end }}
 
 {{ if .is_windows }}
-.glzr/zebar/default/node_modules/**
+.config/fish/**
 {{ end }}
 
 {{ if not .is_macos }}
@@ -22,6 +23,7 @@ jwno.ahk
 .aerospace.toml
 .config/1Password/**
 .config/karabiner/**
+.config/mise/**
 .config/swiftbar/**
 .hammerspoon/**
 Brewfile
