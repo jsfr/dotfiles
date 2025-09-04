@@ -13,7 +13,7 @@ return {
     keys = {
         {
             key = "k",
-            mods = "SUPER",
+            mods = "CTRL",
             action = wezterm.action.ActivateCommandPalette,
         },
         {
@@ -23,7 +23,7 @@ return {
         },
         {
             key = "/",
-            mods = "SUPER",
+            mods = "CTRL",
             action = wezterm.action_callback(function(_, pane)
                 local dimensions = pane:get_dimensions()
                 local cols = dimensions.pixel_width
