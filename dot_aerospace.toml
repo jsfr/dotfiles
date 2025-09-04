@@ -130,7 +130,7 @@ k = ['join-with up', 'mode main']
 l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'im.beeper'
+if.app-id = 'com.automattic.beeper.desktop'
 run = ['move-node-to-workspace 8']
 
 [[on-window-detected]]
