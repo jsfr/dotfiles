@@ -64,6 +64,7 @@ return {
                 nix = { "nixfmt" },
                 fish = { "fish_indent" },
                 python = { "ruff", lsp_format = "first" },
+                razor = { lsp_format = "prefer" },
                 ["_"] = { "trim_newlines", "trim_whitespace" },
             },
         },

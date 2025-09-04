@@ -24,4 +24,11 @@ return {
             })
         end,
     },
+    keys = {
+        {
+            "<leader>z",
+            "<Cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+            desc = "Buffer Diagnostics (Trouble)",
+        },
+    },
 }

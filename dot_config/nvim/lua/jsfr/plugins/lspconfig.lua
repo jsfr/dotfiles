@@ -7,6 +7,7 @@ return {
         "neovim/nvim-lspconfig",
         "b0o/schemastore.nvim",
         "MysticalDevil/inlay-hints.nvim",
+        "folke/snacks.nvim",
     },
     config = function()
         local ensure_installed = {
@@ -172,11 +173,33 @@ return {
                     { noremap = true, silent = true, buffer = args.buf, desc = "Code action" }
                 )
 
-                -- vim.keymap.del("n", "gra", { buffer = bufnr })
-                -- vim.keymap.del("n", "gri", { buffer = bufnr })
-                -- vim.keymap.del("n", "grn", { buffer = bufnr })
-                -- vim.keymap.del("n", "grr", { buffer = bufnr })
-                -- vim.keymap.del("n", "grt", { buffer = bufnr })
+                vim.keymap.set(
+                    "n",
+                    "<leader>rn",
+                    vim.lsp.buf.rename,
+                    { noremap = true, silent = true, buffer = args.buf, desc = "Rename symbol" }
+                )
+
+                vim.keymap.set("n", "gd", function()
+                    Snacks.picker.lsp_definitions()
+                end, { noremap = true, silent = true, buffer = args.buf, desc = "Goto Definition" })
+
+                vim.keymap.set("n", "gr", function()
+                    Snacks.picker.lsp_references()
+                end, { noremap = true, silent = true, buffer = args.buf, desc = "References" })
+
+                vim.keymap.set("n", "gi", function()
+                    Snacks.picker.lsp_implementations()
+                end, { noremap = true, silent = true, buffer = args.buf, desc = "Goto Implementation" })
+
+                vim.keymap.set("n", "gy", function()
+                    Snacks.picker.lsp_type_definitions()
+                end, {
+                    noremap = true,
+                    silent = true,
+                    buffer = args.buf,
+                    desc = "Goto T[y]pe Definition",
+                })
 
                 local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
