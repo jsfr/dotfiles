@@ -32,8 +32,10 @@ cmd-h = []
 
 ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-browser Firefox'
 ctrl-alt-shift-w = 'exec-and-forget open -a Wezterm'
-ctrl-alt-shift-a = 'exec-and-forget open -a Beeper && open -a Signal'
+ctrl-alt-shift-u = 'exec-and-forget open -a "Beeper Desktop"'
+ctrl-alt-shift-i = 'exec-and-forget open -a Signal'
 ctrl-alt-shift-o = 'exec-and-forget open -a Logseq'
+ctrl-alt-shift-t = 'exec-and-forget open -a "Microsoft Teams"'
 cmd-esc = 'exec-and-forget open -a "Mission Control"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
