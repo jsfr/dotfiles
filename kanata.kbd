@@ -10,7 +10,7 @@
   process-unmapped-keys yes
 )
 (defsrc
-  caps a   s   d   f   v   h   j   k   l   ;   n
+  caps a   s   d   f   v   h   j   k   l   ;   n spc
 )
 (defvar
   ;; Note: consider using different time values for your different fingers.
@@ -31,19 +31,21 @@
   )
 )
 (deflayer base
-  @caps @a  @s  @d  @f  @v  h   @j  @k  @l  @;  @n
+  esc @a  @s  @d  @f  @v  h   @j  @k  @l  @;  @n @spc
 )
 
 (deflayer nomods
-  _ a   s   d   f   v   h   j   k   l   ;   n
+  _ a   s   d   f   v   h   j   k   l   ;   n spc
 )
 
 (deflayer arrows
-  _    _   _   _   _   _   left down up  right _   _
+  _    _   _   _   _   _   left down up  right _   _ _
 )
+
 (deffakekeys
   to-base (layer-switch base)
 )
+
 (defalias
  tap (switch
    (lsft rsft) XX break ;;
@@ -53,17 +55,17 @@
       ) break
    )
 
-  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lctl $left-hand-keys)
+  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lmet $left-hand-keys)
   s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lalt $left-hand-keys)
-  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lctl $left-hand-keys)
-  f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lsft $left-hand-keys)
-  j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rsft $right-hand-keys)
-  k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rctl $right-hand-keys)
+  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lsft $left-hand-keys)
+  f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lctl $left-hand-keys)
+  j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rctl $right-hand-keys)
+  k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rsft $right-hand-keys)
   l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) ralt $right-hand-keys)
-  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rctl $right-hand-keys)
+  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rmet $right-hand-keys)
 
   v (tap-hold-release-keys $tap-time $hold-time (multi v @tap) (multi lctl lalt lsft) $left-hand-keys)
   n (tap-hold-release-keys $tap-time $hold-time (multi n @tap) (multi lctl lalt lsft) $right-hand-keys)
 
-  caps (tap-hold $tap-time $hold-time esc (layer-while-held arrows))
+  spc (tap-hold $tap-time $hold-time spc (layer-while-held arrows))
 )
