@@ -12,8 +12,13 @@ return {
     cell_width = 0.9,
     keys = {
         {
-            key = "k",
+            key = "t",
             mods = "CTRL",
+            action = wezterm.action.SpawnTab("CurrentPaneDomain"),
+        },
+        {
+            key = "K",
+            mods = "CTRL|SHIFT",
             action = wezterm.action.ActivateCommandPalette,
         },
         {

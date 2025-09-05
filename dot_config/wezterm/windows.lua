@@ -52,7 +52,7 @@ return {
             action = wezterm.action.ActivateCommandPalette,
         },
         {
-            key = "O",
+            key = "o",
             mods = "CTRL",
             action = wezterm.action.OpenLinkAtMouseCursor,
         },
