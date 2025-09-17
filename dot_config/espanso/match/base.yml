@@ -23,10 +23,10 @@ matches:
   - trigger: ";jf"
     replace: "jensfredskov"
 
-  - trigger: ";jm"
+  - trigger: ";p"
     replace: "jensfredskov@gmail.com"
 
-  - trigger: ";nm"
+  - trigger: ";w"
     replace: "jens.fredskov@nekohealth.com"
 
   - trigger: ";td"

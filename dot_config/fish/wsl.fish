@@ -1,4 +1,4 @@
-fish_add_path -aP \
+fish_add_path \
     "/mnt/c/Program Files/glzr.io/GlazeWM/cli" \
     /mnt/c/Users/JensFredskov/AppData/Local/Microsoft/WindowsApps \
     /mnt/c/Users/JensFredskov/scoop/shims \

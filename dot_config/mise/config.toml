@@ -2,6 +2,7 @@
 bun = "latest"
 deno = "latest"
 usage = "latest"
+nodejs = "latest"
 
 [settings]
 not_found_auto_install = true
