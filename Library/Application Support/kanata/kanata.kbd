@@ -1,91 +1,115 @@
-;; Home row mods QWERTY example with more complexity.
-;; Some of the changes from the basic example:
-;; - when a home row mod activates tap, the home row mods are disabled
-;;   while continuing to type rapidly
-;; - tap-hold-release helps make the hold action more responsive
-;; - pressing another key on the same half of the keyboard
-;;   as the home row mod will activate an early tap action
-
-(defcfg
-  process-unmapped-keys yes
-  concurrent-tap-hold yes
-)
-
-(defsrc
-  w e
-  caps a s d f h j k l ;
-  v n
-  spc
-)
-
+;; Timing variables for tap-hold effects.
 (defvar
-  ;; Note: consider using different time values for your different fingers.
-  ;; For example, your pinkies might be slower to release keys and index
-  ;; fingers faster.
-  tap-time 200
-  hold-time 180
-
-  left-hand-keys (
-    q w e r t
-            g
-    z x c v b
-  )
-  right-hand-keys (
-    y u i o p
-    h
-    n m , . /
-  )
+  TAP 200 ;; The key must be pressed twice in 200ms to enable repetitions.
+  LONG_HOLD 300 ;; Slightly higher value for typing keys, to prevent unexpected hold effect.
+  tot 220 ;; tot=time out tap
+  LTAP 220 ;; Long tap
 )
 
-(defchordsv2
-  (w e) esc 50 first-release ()
+(defsrc )
+
+(deflayermap (base)
+ ;; define home row mods (they act as typing-layer triggers, too )
+ f (t! homerowmod $tot $LTAP f lsft)
+ j (t! homerowmod $tot $LTAP j rsft)
+ d (t! homerowmod $tot $LTAP d lctl)
+ k (t! homerowmod $tot $LTAP k rctl)
+ s (t! homerowmod $tot $LTAP s lalt)
+ l (t! homerowmod $tot $LTAP l ralt)
+ a (t! homerowmod $tot $LTAP a lmet)
+ ; (t! homerowmod $tot $LTAP ; rmet)
+
+ c (t! homerowmod $tot $LTAP c (multi lsft lctl lalt))
+ n (t! homerowmod $tot $LTAP n (multi rsft rctl ralt))
+
+ caps (t! homerowmod $tot $LTAP esc (layer-while-held nav))
+
+ ;; define each letter as typing-layer trigger
+ q (multi q @.tp)
+ w (multi w @.tp)
+ e (multi e @.tp)
+ r (multi r @.tp)
+ t (multi t @.tp)
+ y (multi y @.tp)
+ u (multi u @.tp)
+ i (multi i @.tp)
+ o (multi o @.tp)
+ p (multi p @.tp)
+ g (multi g @.tp)
+ h (multi h @.tp)
+ z (multi z @.tp)
+ x (multi x @.tp)
+ v (multi v @.tp)
+ b (multi b @.tp)
+ m (multi m @.tp)
+ spc @.spc-typing
+
+ fn (layer-while-held fnl)
+ f1 brdn
+ f2 brup
+ f3 f3
+ f4 f4
+ f5 f5
+ f6 f6
+ f7 prev
+ f8 pp
+ f9 next
+ f10 mute
+ f11 vold
+ f12 volu
 )
 
-(deflayer base
-  w e
-  esc @a @s @d @f h @j @k @l @;
-  @v @n
-  @spc
+(deflayermap (nav)
+ h left
+ j down
+ k up
+ l right
 )
 
-(deflayer nomods
- w e
- esc a s d f h j k l ;
- v n
- spc
+(deflayermap (fnl)
+ f1 f1
+ f2 f2
+ f3 f3
+ f4 f4
+ f5 f5
+ f6 f6
+ f7 f7
+ f8 f8
+ f9 f9
+ f10 f10
+ f11 f11
+ f12 f12
 )
 
-(deflayer arrows
-  w e
-  esc a s d f left down up right ;
-  v n
-  spc
+;;-----------------------------------------------------------------------------
+
+(defvirtualkeys
+    fast    (layer-while-held typing)
 )
 
-(deffakekeys
-  to-base (layer-switch base)
+;; https://github.com/jtroo/kanata/discussions/1656
+(deftemplate homerowmod (timeouttap timeouthold keytap keyhold)
+	(tap-hold $timeouttap $timeouthold
+		(multi $keytap @.tp)
+		$keyhold
+	)
 )
 
 (defalias
- tap (switch
-   (lsft rsft) XX break ;;
-   () (multi
-       (layer-switch nomods)
-       (on-idle-fakekey to-base tap 20)
-      ) break
-   )
+  ;; call @.tp whenever you want to enter fast typing-layer
+  .tp (hold-for-duration 55 fast)  ;; timeouts from 30 to 100 are wide spread
+  .spc-typing   (multi (on-press release-vkey fast) spc) ;; expilcitly leave typing-layer when hitting `space` - this allows experimenting with higher idle timeouts
+)
 
-  a (tap-hold-release-keys $tap-time $hold-time (multi a @tap) lmet $left-hand-keys)
-  s (tap-hold-release-keys $tap-time $hold-time (multi s @tap) lalt $left-hand-keys)
-  d (tap-hold-release-keys $tap-time $hold-time (multi d @tap) lsft $left-hand-keys)
-  f (tap-hold-release-keys $tap-time $hold-time (multi f @tap) lctl $left-hand-keys)
-  j (tap-hold-release-keys $tap-time $hold-time (multi j @tap) rctl $right-hand-keys)
-  k (tap-hold-release-keys $tap-time $hold-time (multi k @tap) rsft $right-hand-keys)
-  l (tap-hold-release-keys $tap-time $hold-time (multi l @tap) ralt $right-hand-keys)
-  ; (tap-hold-release-keys $tap-time $hold-time (multi ; @tap) rmet $right-hand-keys)
+(deflayermap (typing)
+ a a b b c c d d e e f f g g h h i i j j k k l l m m n n o o p p q q r r s s t t u u v v w w x x y y z z
+ caps XX ;; key deactivations of caps,... are optional
+)
 
-  v (tap-hold-release-keys $tap-time $hold-time (multi v @tap) (multi lctl lalt lsft) $left-hand-keys)
-  n (tap-hold-release-keys $tap-time $hold-time (multi n @tap) (multi lctl lalt lsft) $right-hand-keys)
+;;-----------------------------------------------------------------------------
+;; Extra configuration
 
-  spc (tap-hold $tap-time $hold-time spc (layer-while-held arrows))
+(defcfg
+  process-unmapped-keys yes
+  macos-dev-names-exclude ()
 )
