@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 
 PIP_WIN=$(aerospace list-windows --all | grep -E "Picture-in-Picture" | awk '{print $1}')
 CURRENT_WORKSPACE=$(aerospace list-workspaces --focused)

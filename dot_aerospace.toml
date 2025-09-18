@@ -1,8 +1,8 @@
 after-login-command = []
 after-startup-command = [
-  'exec-and-forget /opt/homebrew/bin/borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
+  'exec-and-forget borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
 ]
-exec-on-workspace-change = ['/Users/jens/.local/bin/pip-all-workspace.sh']
+exec-on-workspace-change = ['~/.local/bin/,pip-all-workspaces']
 
 start-at-login = true
 
@@ -13,10 +13,12 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 30
 
 # Possible values: tiles|accordion
-default-root-container-layout = 'tiles'
+default-root-container-layout = 'accordion'
 default-root-container-orientation = 'auto'
 
 key-mapping.preset = 'qwerty'
+
+automatically-unhide-macos-hidden-apps = true
 
 [gaps]
 inner.horizontal = 9
@@ -27,13 +29,10 @@ outer.top = 8
 outer.right = 8
 
 [mode.main.binding]
-# Disable annoying hide keybindings
-cmd-h = []
-
-ctrl-alt-shift-e = 'exec-and-forget /Users/jens/.local/bin/,open-or-focus-browser Firefox'
+ctrl-alt-shift-e = 'exec-and-forget ~/.local/bin/,open-or-focus-browser Firefox'
 ctrl-alt-shift-w = 'exec-and-forget open -a Wezterm'
-ctrl-alt-shift-u = 'exec-and-forget open -a "Beeper Desktop"'
-ctrl-alt-shift-i = 'exec-and-forget open -a Signal'
+ctrl-alt-shift-b = 'exec-and-forget open -a "Beeper Desktop"'
+ctrl-alt-shift-s = 'exec-and-forget open -a Signal'
 ctrl-alt-shift-o = 'exec-and-forget open -a Logseq'
 ctrl-alt-shift-t = 'exec-and-forget open -a "Microsoft Teams"'
 cmd-esc = 'exec-and-forget open -a "Mission Control"'
@@ -47,6 +46,8 @@ alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
+alt-u = 'focus left'
+alt-i = 'focus right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
@@ -59,60 +60,30 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 ctrl-shift-equal = 'balance-sizes'
 
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-0 = 'workspace 10'
+# alt-1 = 'workspace 1'
+# alt-2 = 'workspace 2'
+# alt-3 = 'workspace 3'
+# alt-4 = 'workspace 4'
+# alt-5 = 'workspace 5'
+# alt-6 = 'workspace 6'
+# alt-7 = 'workspace 7'
+# alt-8 = 'workspace 8'
+# alt-9 = 'workspace 9'
+# alt-0 = 'workspace 10'
 
-alt-shift-1 = [
-  'move-node-to-workspace 1',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-2 = [
-  'move-node-to-workspace 2',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-3 = [
-  'move-node-to-workspace 3',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-4 = [
-  'move-node-to-workspace 4',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-5 = [
-  'move-node-to-workspace 5',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-6 = [
-  'move-node-to-workspace 6',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-7 = [
-  'move-node-to-workspace 7',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-8 = [
-  'move-node-to-workspace 8',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-9 = [
-  'move-node-to-workspace 9',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
-alt-shift-0 = [
-  'move-node-to-workspace 10',
-  'exec-and-forget open -g "swiftbar://refreshplugin?name=aerospace-workspaces"',
-]
+# alt-shift-1 = 'move-node-to-workspace 1'
+# alt-shift-2 = 'move-node-to-workspace 2'
+# alt-shift-3 = 'move-node-to-workspace 3'
+# alt-shift-4 = 'move-node-to-workspace 4'
+# alt-shift-5 = 'move-node-to-workspace 5'
+# alt-shift-6 = 'move-node-to-workspace 6'
+# alt-shift-7 = 'move-node-to-workspace 7'
+# alt-shift-8 = 'move-node-to-workspace 8'
+# alt-shift-9 = 'move-node-to-workspace 9'
+# alt-shift-0 = 'move-node-to-workspace 10'
 
-alt-tab = 'workspace-back-and-forth'
-alt-backtick = 'workspace-back-and-forth'
+# alt-tab = 'workspace-back-and-forth'
+# alt-backtick = 'workspace-back-and-forth'
 
 alt-semicolon = 'mode service'
 
@@ -121,7 +92,7 @@ esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main']
 f = ['layout floating tiling', 'mode main']
 b = [
-  'exec-and-forget /opt/homebrew/bin/borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
+  'exec-and-forget borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
   'mode main',
 ]
 h = ['join-with left', 'mode main']
@@ -129,30 +100,30 @@ j = ['join-with down', 'mode main']
 k = ['join-with up', 'mode main']
 l = ['join-with right', 'mode main']
 
-[[on-window-detected]]
-if.app-id = 'com.automattic.beeper.desktop'
-run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-id = 'org.whispersystems.signal-desktop'
-run = ['move-node-to-workspace 8']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.iCal'
-run = ['move-node-to-workspace 9']
-
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-run = ['move-node-to-workspace 10']
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.teams2'
-run = ['move-node-to-workspace 10']
-
+# [[on-window-detected]]
+# if.app-id = 'com.automattic.beeper.desktop'
+# run = ['move-node-to-workspace 8']
+#
+# [[on-window-detected]]
+# if.app-id = 'org.whispersystems.signal-desktop'
+# run = ['move-node-to-workspace 8']
+#
+# [[on-window-detected]]
+# if.app-id = 'com.apple.iCal'
+# run = ['move-node-to-workspace 9']
+#
+# [[on-window-detected]]
+# if.app-id = 'com.tinyspeck.slackmacgap'
+# run = ['move-node-to-workspace 10']
+#
+# [[on-window-detected]]
+# if.app-id = 'com.microsoft.teams2'
+# run = ['move-node-to-workspace 10']
+#
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefoxdeveloperedition'
 if.window-title-regex-substring = 'Picture-in-Picture'
 run = ['layout floating']
-
-[workspace-to-monitor-force-assignment]
-10 = 'built-in'
+#
+# [workspace-to-monitor-force-assignment]
+# 10 = 'built-in'
