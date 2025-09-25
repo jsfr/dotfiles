@@ -36,3 +36,6 @@ matches:
         type: date
         params:
           format: "%F"
+
+  - trigger: "=>;"
+    replace: "⇒"
