@@ -67,6 +67,7 @@ def --env cdj [] {
 # Source custom modules
 use modules/neko
 alias "apicli" = dotnet ./artifacts/bin/Api.Client.Cli/debug/Api.Client.Cli.dll
+alias "dbcli" = ./tools/DeviceBackend.CLI/bin/Debug/net9.0/DeviceBackend.CLI.exe
 
 # Direnv equivalent
 use modules/direnv
