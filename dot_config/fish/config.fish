@@ -7,6 +7,7 @@ else if uname -a | grep -q WSL2
     source ~/.config/fish/wsl.fish
 end
 source ~/.config/fish/env.fish
+source ~/.config/fish/neko.fish
 
 export fish_user_paths
 
