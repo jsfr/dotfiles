@@ -13,17 +13,17 @@ return {
         local ensure_installed = {
             "bashls",
             "bicep",
-            -- "codebook",
             "cssls",
             "denols",
             "dockerls",
             "eslint",
+            "fish_lsp",
             "golangci_lint_ls",
             "gopls",
-            -- "harper_ls",
             "html",
             "jsonls",
             "kotlin_language_server",
+            "ltex_plus",
             "lua_ls",
             "marksman",
             "nim_langserver",
@@ -38,7 +38,6 @@ return {
             "vtsls",
             "yamlls",
             "zls",
-            "ltex_plus",
         }
 
         if vim.env.WSL_DISTRO_NAME == "NixOS" then

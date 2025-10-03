@@ -3,6 +3,7 @@
 return {
     "max397574/better-escape.nvim",
     main = "better_escape",
+    enabled = false,
     opts = {
         default_mappings = false,
         mappings = {
