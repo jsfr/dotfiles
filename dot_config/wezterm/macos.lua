@@ -12,6 +12,12 @@ return {
     cell_width = 0.9,
     keys = {
         {
+            -- Claude config
+            key = "Enter",
+            mods = "SHIFT",
+            action = wezterm.action({ SendString = "\x1b\r" }),
+        },
+        {
             key = "t",
             mods = "CTRL",
             action = wezterm.action.SpawnTab("CurrentPaneDomain"),
