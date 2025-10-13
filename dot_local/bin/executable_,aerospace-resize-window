@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+PERCENTAGE="$1"
+MONITOR=$(aerospace list-monitors --focused --format '%{monitor-name}')
+MONITOR_WIDTH=$(~/Repos/github.com/jsfr/screen-size/target/release/screen-size | grep "$MONITOR" | cut -d '|' -f 2)
+WINDOW_WIDTH=$(echo "($MONITOR_WIDTH * $PERCENTAGE) / 1" | bc)
+
+aerospace resize width $WINDOW_WIDTH

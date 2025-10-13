@@ -1,6 +1,6 @@
 after-login-command = []
 after-startup-command = [
-  'exec-and-forget borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
+  'exec-and-forget borders style=round width=5 active_color=0xff618a57 inactive_color=0x00000000',
 ]
 exec-on-workspace-change = ['~/.local/bin/,pip-all-workspaces']
 
@@ -20,6 +20,8 @@ key-mapping.preset = 'qwerty'
 
 automatically-unhide-macos-hidden-apps = true
 
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
 [gaps]
 inner.horizontal = 9
 inner.vertical = 9
@@ -36,11 +38,12 @@ ctrl-alt-shift-s = 'exec-and-forget open -a Signal'
 ctrl-alt-shift-o = 'exec-and-forget open -a Logseq'
 ctrl-alt-shift-t = 'exec-and-forget open -a "Microsoft Teams"'
 ctrl-alt-shift-c = 'exec-and-forget open -a "Visual Studio Code"'
+ctrl-alt-shift-r = 'exec-and-forget open -a Rider'
 cmd-esc = 'exec-and-forget open -a "Mission Control"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'layout tiles horizontal vertical'
-alt-comma = 'layout accordion horizontal vertical'
+alt-period = 'layout tiles horizontal vertical'
+alt-comma = 'layout v_accordion'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left --boundaries all-monitors-outer-frame'
@@ -48,8 +51,8 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right --boundaries all-monitors-outer-frame'
 
-alt-u = 'focus down'
-alt-i = 'focus up'
+alt-u = 'focus down --boundaries-action wrap-around-the-workspace'
+alt-i = 'focus up --boundaries-action wrap-around-the-workspace'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left --boundaries all-monitors-outer-frame'
@@ -57,30 +60,30 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right --boundaries all-monitors-outer-frame'
 
+ctrl-shift-h = ['join-with left']
+ctrl-shift-j = ['join-with down']
+ctrl-shift-k = ['join-with up']
+ctrl-shift-l = ['join-with right']
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-alt-shift-minus = 'resize smart -50'
-alt-shift-equal = 'resize smart +50'
-ctrl-shift-equal = 'balance-sizes'
+alt-semicolon = 'exec-and-forget ~/.local/bin/,aerospace-resize-window "0.70"'
+alt-shift-semicolon = 'exec-and-forget ~/.local/bin/,aerospace-resize-window "0.30"'
+alt-slash = 'balance-sizes'
 
-alt-semicolon = 'mode service'
+# alt-semicolon = 'mode service'
+# [mode.service.binding]
+# esc = ['reload-config', 'mode main']
+# r = ['flatten-workspace-tree', 'mode main']
+# f = ['layout floating tiling', 'mode main']
+# b = [
+#   'exec-and-forget borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
+#   'mode main',
+# ]
 
-[mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main']
-f = ['layout floating tiling', 'mode main']
-b = [
-  'exec-and-forget borders style=round width=5 hidpi=off active_color=0xff618a57 inactive_color=0x00000000',
-  'mode main',
-]
-h = ['join-with left', 'mode main']
-j = ['join-with down', 'mode main']
-k = ['join-with up', 'mode main']
-l = ['join-with right', 'mode main']
-
-[[on-window-detected]]
-if.app-id = 'org.mozilla.firefoxdeveloperedition'
-if.window-title-regex-substring = 'Picture-in-Picture'
-run = ['layout floating']
+# [[on-window-detected]]
+# if.app-id = 'org.mozilla.firefoxdeveloperedition'
+# if.window-title-regex-substring = 'Picture-in-Picture'
+# run = ['layout floating']
 #
-[workspace-to-monitor-force-assignment]
-1 = 'built-in'
+# [workspace-to-monitor-force-assignment]
+# 1 = 'built-in'
