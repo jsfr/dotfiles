@@ -32,6 +32,22 @@ config.color_scheme = "tokyonight_storm"
 -- Scrollback
 config.scrollback_lines = 10000
 
+-- Mouse bindings - disable opening on click, enable on Shift+click
+config.mouse_bindings = {
+    -- Disable the default click behavior for file:// links
+    {
+        event = { Up = { streak = 1, button = "Left" } },
+        mods = "NONE",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+    -- Enable opening with Shift+click
+    {
+        event = { Up = { streak = 1, button = "Left" } },
+        mods = "CTRL",
+        action = wezterm.action.OpenLinkAtMouseCursor,
+    },
+}
+
 -- smart-splits.nvim setup
 local ss = require("smart-splits")
 local function append_table(src_tbl, dst_tbl)

@@ -21,6 +21,12 @@ sq = ["squash"]
 nt = ["new", "-r", "trunk()"]
 rebase-trunk = ["rebase", "-b", "closest_bookmark(@)", "-d", "trunk()"]
 lc = ["log", "-T", "builtin_log_compact"]
+ai = [
+  "util",
+  "exec",
+  "--",
+  "/Users/jens/Repos/github.com/jsfr/jj-ai/build/jj-ai",
+]
 
 [ui]
 default-command = "log"
