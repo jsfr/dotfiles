@@ -27,6 +27,27 @@ ai = [
   "--",
   "/Users/jens/Repos/github.com/jsfr/jj-ai/build/jj-ai",
 ]
+wip = ["util", "exec", "--", "bash", "-c", """
+#!/usr/bin/env bash
+# Toggle “WIP: ” prefix on the checked‑out jujutsu commit message.
+set -euo pipefail
+ 
+prefix='🚧: '
+ 
+desc=$(jj log -r @ -T 'description' --no-graph)
+ 
+first=${desc%%$'\n'*}
+rest=${desc#"$first"}
+[[ "$rest" != "$desc" ]] && rest=${rest#$'\n'}
+if [[ "$first" == "$prefix"* ]]; then
+  first=${first#"$prefix"}
+else
+  first="${prefix}${first}"
+fi
+ 
+[[ -n "$rest" ]] && new_desc="$first"$'\n'"$rest" || new_desc="$first"
+jj describe -m "$new_desc"
+""", ""]
 
 [ui]
 default-command = "log"
@@ -34,7 +55,7 @@ default-command = "log"
 [git]
 auto-local-bookmark = true
 # Prevent pushing work in progress
-private-commits = "description(glob:'wip:*')"
+private-commits = "description(regex:'^(wip|(🚧)): .*')"
 
 [template-aliases]
 "format_timestamp(timestamp)" = "timestamp.ago()"
