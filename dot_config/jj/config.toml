@@ -48,6 +48,7 @@ fi
 [[ -n "$rest" ]] && new_desc="$first"$'\n'"$rest" || new_desc="$first"
 jj describe -m "$new_desc"
 """, ""]
+mergiraf = ["resolve", "--tool", "mergiraf"]
 
 [ui]
 default-command = "log"

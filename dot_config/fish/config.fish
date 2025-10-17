@@ -67,7 +67,8 @@ if status is-interactive
 
     # enable atuin
     if command -q atuin
-        bkt --ttl 1day -- atuin init fish | source
+        # TODO: Fix until https://github.com/atuinsh/atuin/issues/2803 is fixed
+        bkt --ttl 1day -- atuin init fish | sed 's/-k up/up/' | source
     end
 
     # enable direnv
