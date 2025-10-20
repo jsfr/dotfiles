@@ -49,6 +49,14 @@ fi
 jj describe -m "$new_desc"
 """, ""]
 mergiraf = ["resolve", "--tool", "mergiraf"]
+fnt = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj git fetch && jj new -r 'trunk()'",
+]
 
 [ui]
 default-command = "log"
