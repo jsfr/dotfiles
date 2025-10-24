@@ -1,8 +1,17 @@
 "$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
 
 [user]
-name = "Jens Fredskov"
+name = "Jens Ejbye Fredskov"
+
+[[--scope]]
+--when.repositories = ["~/Repos/github.com"]
+[--scope.user]
 email = "jsfr@users.noreply.github.com"
+
+[[--scope]]
+--when.repositories = ["~/Repos/ssh.dev.azure.com"]
+[--scope.user]
+email = "jens.fredskov@nekohealth.com"
 
 [revset-aliases]
 "closest_bookmark(to)" = 'heads(::to & (bookmarks() ~ (bookmarks(exact:"main") | bookmarks(exact:"master"))))'
@@ -13,41 +22,16 @@ tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 tug-trunk = ["bookmark", "move", "--from", "trunk()", "--to", "@-"]
 f = ["git", "fetch"]
 p = ["git", "push", "--allow-new"]
+init = ["git", "init", "--colocate"]
 s = ["status"]
 e = ["edit"]
 d = ["diff"]
 n = ["new"]
-sq = ["squash"]
 nt = ["new", "-r", "trunk()"]
 rebase-trunk = ["rebase", "-b", "closest_bookmark(@)", "-d", "trunk()"]
 lc = ["log", "-T", "builtin_log_compact"]
-ai = [
-  "util",
-  "exec",
-  "--",
-  "/Users/jens/Repos/github.com/jsfr/jj-ai/build/jj-ai",
-]
-wip = ["util", "exec", "--", "bash", "-c", """
-#!/usr/bin/env bash
-# Toggle “WIP: ” prefix on the checked‑out jujutsu commit message.
-set -euo pipefail
- 
-prefix='🚧: '
- 
-desc=$(jj log -r @ -T 'description' --no-graph)
- 
-first=${desc%%$'\n'*}
-rest=${desc#"$first"}
-[[ "$rest" != "$desc" ]] && rest=${rest#$'\n'}
-if [[ "$first" == "$prefix"* ]]; then
-  first=${first#"$prefix"}
-else
-  first="${prefix}${first}"
-fi
- 
-[[ -n "$rest" ]] && new_desc="$first"$'\n'"$rest" || new_desc="$first"
-jj describe -m "$new_desc"
-""", ""]
+ai = ["util", "exec", "--", "jj-ai"]
+wip = ["util", "exec", "--", "jj-wip.sh"]
 mergiraf = ["resolve", "--tool", "mergiraf"]
 fnt = [
   "util",
@@ -70,17 +54,6 @@ private-commits = "description(regex:'^(wip|(🚧)): .*')"
 "format_timestamp(timestamp)" = "timestamp.ago()"
 
 [templates]
-# log_node = '''
-#   label("node",
-#     coalesce(
-#       if(!self, label("elided", "~")),
-#       if(current_working_copy, label("working_copy", "@")),
-#       if(conflict, label("conflict", "×")),
-#       if(immutable, label("immutable", "*")),
-#       label("normal", "·")
-#     )
-#   )
-# '''
 log = '''
   if(root,
     format_root_commit(self),

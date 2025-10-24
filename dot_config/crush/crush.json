@@ -1,0 +1,25 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "lsp": {
+    "csharp": {
+      "command": "$HOME/.local/share/nvim/mason/bin/roslyn",
+      "args": [
+        "--stdio",
+        "--logLevel=Information",
+        "--extensionLogDirectory=/tmp",
+        "--razorSourceGenerator=$HOME/.local/share/nvim/mason/packages/rzls/libexec/Microsoft.CodeAnalysis.Razor.Compiler.dll",
+        "--razorDesignTimePath=$HOME/.local/share/nvim/mason/packages/rzls/libexec/Targets/Microsoft.NET.Sdk.Razor.DesignTime.targets",
+        "--extension",
+        "$HOME/.local/share/nvim/mason/packages/rzls/libexec/RazorExtension/Microsoft.VisualStudioCode.RazorExtension.dll"
+      ],
+      "root_markers": ["*.sln", "*.csproj"]
+    }
+  },
+  "mcp": {
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": { "CONTEXT7_API_KEY": "$(skate get context7-api-key)" }
+    }
+  }
+}

@@ -3,6 +3,7 @@ bun = "latest"
 deno = "latest"
 usage = "latest"
 nodejs = "latest"
+terraform = "latest"
 
 [settings]
 not_found_auto_install = true
