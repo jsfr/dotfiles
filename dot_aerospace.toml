@@ -37,8 +37,8 @@ ctrl-alt-shift-b = 'exec-and-forget open -a "Beeper Desktop"'
 ctrl-alt-shift-s = 'exec-and-forget open -a Signal'
 ctrl-alt-shift-o = 'exec-and-forget open -a Logseq'
 ctrl-alt-shift-t = 'exec-and-forget open -a "Microsoft Teams"'
-ctrl-alt-shift-c = 'exec-and-forget open -a "Visual Studio Code"'
 ctrl-alt-shift-r = 'exec-and-forget open -a Rider'
+ctrl-alt-shift-p = 'exec-and-forget open -a "Super Productivity"'
 cmd-esc = 'exec-and-forget open -a "Mission Control"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
