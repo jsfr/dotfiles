@@ -39,6 +39,7 @@ ctrl-alt-shift-o = 'exec-and-forget open -a Logseq'
 ctrl-alt-shift-t = 'exec-and-forget open -a "Microsoft Teams"'
 ctrl-alt-shift-r = 'exec-and-forget open -a Rider'
 ctrl-alt-shift-p = 'exec-and-forget open -a "Super Productivity"'
+ctrl-alt-shift-c = 'exec-and-forget open -a VSCodium'
 cmd-esc = 'exec-and-forget open -a "Mission Control"'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout

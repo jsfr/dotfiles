@@ -34,6 +34,9 @@ set -gx NUGET_CREDENTIALPROVIDER_FORCE_CANSHOWDIALOG_TO true
 set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 fish_add_path $DOTNET_ROOT $DOTNET_ROOT/tools
 
+# rancher
+fish_add_path $HOME/.rd/bin
+
 # mise
 if command -q mise
     fish_add_path $XDG_DATA_HOME/mise/shims

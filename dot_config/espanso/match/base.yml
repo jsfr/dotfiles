@@ -20,7 +20,7 @@ matches:
   - trigger: ";n"
     replace: "–"
 
-  - trigger: ";jf"
+  - trigger: ";j"
     replace: "jensfredskov"
 
   - trigger: ";p"
@@ -29,7 +29,7 @@ matches:
   - trigger: ";w"
     replace: "jens.fredskov@nekohealth.com"
 
-  - trigger: ";td"
+  - trigger: ";t"
     replace: "TODO: ({{today}} - jens)"
     vars:
       - name: today
@@ -37,5 +37,13 @@ matches:
         params:
           format: "%F"
 
-  - trigger: "=>;"
+  - trigger: ";d"
+    replace: "{{today}}"
+    vars:
+      - name: today
+        type: date
+        params:
+          format: "%F"
+
+  - trigger: ";=>"
     replace: "⇒"
