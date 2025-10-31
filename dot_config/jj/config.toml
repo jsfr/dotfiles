@@ -3,16 +3,6 @@
 [user]
 name = "Jens Ejbye Fredskov"
 
-[[--scope]]
---when.repositories = ["~/Repos/github.com"]
-[--scope.user]
-email = "jsfr@users.noreply.github.com"
-
-[[--scope]]
---when.repositories = ["~/Repos/ssh.dev.azure.com"]
-[--scope.user]
-email = "jens.fredskov@nekohealth.com"
-
 [revset-aliases]
 "closest_bookmark(to)" = 'heads(::to & (bookmarks() ~ (bookmarks(exact:"main") | bookmarks(exact:"master"))))'
 "immutable_heads()" = "builtin_immutable_heads() | (remote_bookmarks() ~ mine())"
@@ -28,8 +18,10 @@ e = ["edit"]
 d = ["diff"]
 n = ["new"]
 nt = ["new", "-r", "trunk()"]
-rebase-trunk = ["rebase", "-b", "closest_bookmark(@)", "-d", "trunk()"]
+rb-trunk = ["rebase", "-b", "closest_bookmark(@)", "-d", "trunk()"]
+rb = ["rebase"]
 lc = ["log", "-T", "builtin_log_compact"]
+l = ["log"]
 ai = ["util", "exec", "--", "jj-ai"]
 wip = ["util", "exec", "--", "jj-wip.sh"]
 mergiraf = ["resolve", "--tool", "mergiraf"]
@@ -48,7 +40,7 @@ default-command = "log"
 [git]
 auto-local-bookmark = true
 # Prevent pushing work in progress
-private-commits = "description(regex:'^(wip|(🚧)): .*')"
+private-commits = "description(regex:'^(wip|WIP|🚧): .*')"
 
 [template-aliases]
 "format_timestamp(timestamp)" = "timestamp.ago()"
@@ -88,3 +80,17 @@ paginate = "never"
 [--scope.ui]
 pager = "delta"
 diff-formatter = ":git"
+
+[[--scope]]
+--when.repositories = ["~/Repos/github.com"]
+[--scope.user]
+email = "jsfr@users.noreply.github.com"
+[--scope.templates]
+git_push_bookmark = '"jsfr/push-" ++ change_id.short()'
+
+[[--scope]]
+--when.repositories = ["~/Repos/ssh.dev.azure.com"]
+[--scope.user]
+email = "jens.fredskov@nekohealth.com"
+[--scope.templates]
+git_push_bookmark = '"jens/push-" ++ change_id.short()'

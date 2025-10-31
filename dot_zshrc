@@ -2,3 +2,5 @@
 if [ -f "${HOME}/.profile" ]; then
     source "${HOME}/.profile"
 fi
+
+eval "$(mise activate zsh --shims)"

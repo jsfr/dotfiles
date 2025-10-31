@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+rev="${1:-@}"
+
 prefix='🚧: '
-desc=$(jj log -r @ -T 'description' --no-graph)
+desc=$(jj log -r "$rev" -T 'description' --no-graph)
 
 first=${desc%%$'\n'*}
 rest=${desc#"$first"}
@@ -17,4 +19,4 @@ fi
 
 [[ -n "$rest" ]] && new_desc="$first"$'\n'"$rest" || new_desc="$first"
 
-jj describe -m "$new_desc"
+jj describe -r "$rev" -m "$new_desc"

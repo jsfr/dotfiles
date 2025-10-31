@@ -1,8 +1,5 @@
 [tools]
-bun = "latest"
-deno = "latest"
 usage = "latest"
-nodejs = "latest"
 terraform = "latest"
 
 [settings]
